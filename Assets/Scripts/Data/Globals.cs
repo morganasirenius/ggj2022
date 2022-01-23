@@ -14,6 +14,8 @@ public class Globals
     {
         Ally = 0,
         DownEnemy,
+        LeftEnemy,
+        RightEnemy,
         LeftCurveEnemy
     }
 

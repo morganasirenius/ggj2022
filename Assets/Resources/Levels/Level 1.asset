@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: test
-  levelEntities: 0100000002000000
+  levelEntities: 01000000020000000300000004000000
   levelCommands:
   - Spawn;DownEnemy;Up;Random;5;0.5
   - Delay;5
   - Spawn;LeftCurveEnemy;Right;Random;3;0.5
   - Delay;3
-  - Spawn;DownEnemy;Left;Random;5;0.5
+  - Spawn;RightEnemy;Left;Random;5;0.5
+  - Spawn;LeftEnemy;Right;Random;5;0.5

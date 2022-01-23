@@ -22,6 +22,6 @@ SPAWN - spawns an entity at a positiona
 DELAY - delays the next command
 
 Parameters
-SPAWN;TYPE;COUNT;POSITION;DELAY
+SPAWN;TYPE;SPAWNER_LOCATION;SPAWN_POSITION;COUNT;DELAY
 DELAY;TIME
 */
