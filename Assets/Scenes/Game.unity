@@ -5191,7 +5191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 232284445}
-  speed: 5
+  speed: 6
 --- !u!1 &232284443
 GameObject:
   m_ObjectHideFlags: 0
@@ -10657,7 +10657,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 1417550587}
   firePoint: {fileID: 1060823384}
   startVFX: {fileID: 1643179578}
-  laserDuration: 1
+  laserDuration: 0.05
 --- !u!1 &1417550585
 GameObject:
   m_ObjectHideFlags: 0

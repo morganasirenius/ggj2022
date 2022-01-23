@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class LightBeam : Laser
 {
-    public float laserDuration = 1f;
+    public float laserDuration;
     private Vector2 laserReset = new Vector2(0,16);
 
-    public override void Shoot()
+    public void Update()
+    {
+        if (lineRenderer.enabled)
+        {
+            checkHit();
+        }
+    }
+
+    public void checkHit()
     {
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, new Vector2(firePoint.position.x, 16));
@@ -28,14 +36,16 @@ public class LightBeam : Laser
         else
         {
             Debug.Log("DISABLE");
-            DisableLaser();
+            StartCoroutine(ShootEffect());
         }
+    }
+    public override void Shoot()
+    {
+        EnableLaser();
     }
     protected IEnumerator ShootEffect()
     {
-        EnableLaser();
         yield return new WaitForSeconds(laserDuration);
-        
         DisableLaser();
     }
 }

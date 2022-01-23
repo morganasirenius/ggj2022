@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private void LightBeam(InputAction.CallbackContext context)
     {
         Debug.Log("LIGHT");
-        lightBeam.EnableLaser();
+        //lightBeam.EnableLaser();
         lightBeam.Shoot();
     }
 
@@ -76,13 +76,5 @@ public class PlayerController : MonoBehaviour
             Vector2 mousePosition = playerControls.Space.MousePosition.ReadValue<Vector2>();
             darkBeam.UpdateLaser(mousePosition);
         }
-
-        if (lightBeam.lineRenderer.enabled)
-        {
-            Vector2 mousePosition = playerControls.Space.MousePosition.ReadValue<Vector2>();
-            lightBeam.Shoot();
-        }
-        
-        //RotateToMouse(mousePosition);
     }
 }

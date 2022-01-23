@@ -23,6 +23,7 @@ public class DarkBeam : Laser
         if (hit && hit.transform.gameObject.tag == "Enemy" )
         {
             Debug.Log("HITTTTT");
+            lineRenderer.SetPosition(1, hit.point);
         }
     }
 }
