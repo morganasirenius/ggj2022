@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ally : MonoBehaviour
+public class Ally : Entity
 {
     private float currentTime; // The current time a food is being transformed
     private float maxTime = 1;
     private bool rescued = false;
     [SerializeField] private Transform target;
 
-    public float speed;
+   [SerializeField] private float rescueSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class Ally : MonoBehaviour
     {
         if (rescued)
         {
-            transform.position = Vector3.MoveTowards (transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards (transform.position, target.position, rescueSpeed * Time.deltaTime);
         }
     }
 

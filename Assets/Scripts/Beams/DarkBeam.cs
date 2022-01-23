@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DarkBeam : Laser
 {
+    [SerializeField] private int damage;
     public override void Shoot()
     {
     }
@@ -20,10 +21,12 @@ public class DarkBeam : Laser
         Vector2 direction = (Vector2)newVec - (Vector2)transform.position;
         RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, direction.magnitude);
         
+        
         if (hit && hit.transform.gameObject.tag == "Enemy" )
         {
-            Debug.Log("HITTTTT");
             lineRenderer.SetPosition(1, hit.point);
+            Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
+            enemy.TakeDamage(damage);
         }
     }
 }

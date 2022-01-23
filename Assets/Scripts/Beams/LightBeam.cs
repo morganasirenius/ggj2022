@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class LightBeam : Laser
 {
-    public float laserDuration;
+    [SerializeField] private float laserDuration;
     private Vector2 laserReset = new Vector2(0,16);
 
     public void Update()
     {
         if (lineRenderer.enabled)
         {
-            checkHit();
+            CheckHit();
         }
     }
 
-    public void checkHit()
+    public void CheckHit()
     {
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, new Vector2(firePoint.position.x, 16));
@@ -24,7 +24,6 @@ public class LightBeam : Laser
         RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, direction.magnitude);
         if (hit && hit.transform.gameObject.tag == "Ally" )
         {
-            Debug.Log("ALLY");
             Ally ally = hit.transform.gameObject.GetComponent<Ally>();
             lineRenderer.SetPosition(1, new Vector2(firePoint.position.x, hit.point.y));
             if (ally.Rescue())
@@ -35,7 +34,6 @@ public class LightBeam : Laser
         }
         else
         {
-            Debug.Log("DISABLE");
             StartCoroutine(ShootEffect());
         }
     }
