@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 502711955769907589}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: -2.48, y: 3.12, z: 0}
-  m_LocalScale: {x: 0.2695, y: 0.2585, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,4 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   speed: 0.01
+  timeTilDamage: 1
+  projectileModule: {fileID: 0}
   moveDirection: 3
