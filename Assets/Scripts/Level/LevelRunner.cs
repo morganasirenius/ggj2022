@@ -14,10 +14,6 @@ public class LevelRunner : MonoBehaviour
     private Spawner LeftSpawner;
     [SerializeField]
     private Spawner RightSpawner;
-    [SerializeField]
-    private ObjectPooler TopDownEnemyPool;
-    [SerializeField]
-    private ObjectPooler CurveEnemyPool;
 
     private Dictionary<Globals.EntityType, ObjectPooler> entityObjectPoolers;
 
@@ -123,22 +119,6 @@ public class LevelRunner : MonoBehaviour
                 return RightSpawner;
             default:
                 Debug.LogError(string.Format("Invalid direction returned: %s", direction.ToString()));
-                return null;
-        }
-    }
-
-    ObjectPooler SetEntityPooler(Globals.EntityType type)
-    {
-        switch (type)
-        {
-            case Globals.EntityType.Ally:
-                return null;
-            case Globals.EntityType.DownEnemy:
-                return TopDownEnemyPool;
-            case Globals.EntityType.LeftCurveEnemy:
-                return CurveEnemyPool;
-            default:
-                Debug.LogError(string.Format("Invalid entity type returned: %s", type.ToString()));
                 return null;
         }
     }
