@@ -6,8 +6,8 @@ public abstract class Laser : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public Transform firePoint;
-    public GameObject startVFX;
-    private List<ParticleSystem> particles = new List<ParticleSystem>();
+    public GameObject StartVFX;
+    protected List<ParticleSystem> particles = new List<ParticleSystem>();
     void Start()
     {
         FillLists();
@@ -41,11 +41,11 @@ public abstract class Laser : MonoBehaviour
             particles[i].Stop();
         }
     }
-    void FillLists()
+    protected void FillLists()
     {
-        for (int i=0; i < startVFX.transform.childCount; i++)
+        for (int i=0; i < StartVFX.transform.childCount; i++)
         {
-            var ps = startVFX.transform.GetChild(i).GetComponent<ParticleSystem>();
+            var ps = StartVFX.transform.GetChild(i).GetComponent<ParticleSystem>();
             if (ps != null) particles.Add(ps);
         }
     }

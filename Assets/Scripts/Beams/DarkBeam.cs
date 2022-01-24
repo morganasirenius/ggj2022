@@ -5,11 +5,25 @@ using UnityEngine;
 public class DarkBeam : Laser
 {
     [SerializeField] private int damage;
+
+    public GameObject EndVFX;
+
+    void Start()
+    {
+        for (int i=0; i < EndVFX.transform.childCount; i++)
+        {
+            var ps = EndVFX.transform.GetChild(i).GetComponent<ParticleSystem>();
+            if (ps != null) particles.Add(ps);
+        }
+        FillLists();
+        DisableLaser();
+    }
     public override void Shoot()
     {
     }
     public void UpdateLaser(Vector2 mousePosition)
     {
+        
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         float scale = 25;
         Vector3 offsetPos = mousePosition - new Vector2(transform.position.x, transform.position.y);
@@ -24,9 +38,11 @@ public class DarkBeam : Laser
         
         if (hit && hit.transform.gameObject.tag == "Enemy" )
         {
+            Debug.Log("WEE");
             lineRenderer.SetPosition(1, hit.point);
             Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(damage);
         }
+        EndVFX.transform.position = lineRenderer.GetPosition(1);
     }
 }
