@@ -76,7 +76,7 @@ public class LevelRunner : MonoBehaviour
     {
         if (parameters.Length != RequiredSpawnParams)
         {
-            Debug.LogError(string.Format("Not enough parameters to run command: %d", parameters.Length));
+            Debug.LogError(string.Format("Not enough parameters to run command: {0}", parameters.Length));
             yield return null;
         }
 
@@ -96,7 +96,7 @@ public class LevelRunner : MonoBehaviour
     {
         if (parameters.Length != RequiredDelayParams)
         {
-            Debug.LogError(string.Format("Not enough parameters to run command: %d", parameters.Length));
+            Debug.LogError(string.Format("Not enough parameters to run command: {0}", parameters.Length));
             yield return null;
         }
 
@@ -118,7 +118,7 @@ public class LevelRunner : MonoBehaviour
             case Globals.Direction.Right:
                 return RightSpawner;
             default:
-                Debug.LogError(string.Format("Invalid direction returned: %s", direction.ToString()));
+                Debug.LogError(string.Format("Invalid direction returned: {0}", direction.ToString()));
                 return null;
         }
     }
@@ -141,7 +141,7 @@ public class LevelRunner : MonoBehaviour
                 spawnPoint = spawner.GetRandomSpawnPoint();
                 break;
             default:
-                Debug.LogError(string.Format("Invalid spawn location returned: %s", spawnLocation.ToString()));
+                Debug.LogError(string.Format("Invalid spawn location returned: {0}", spawnLocation.ToString()));
                 spawnPoint = Vector3.one;
                 break;
         }
