@@ -13,7 +13,7 @@ public class Enemy : Entity
     private float timeBetweenAttacks;
     private float currentDamageTime;
     private float currentAttackTime;
-    void Start()
+    void Awake()
     {
         currentDamageTime = timeTilDamage;
         currentAttackTime = timeBetweenAttacks;

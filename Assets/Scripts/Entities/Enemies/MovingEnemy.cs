@@ -59,7 +59,7 @@ public class MovingEnemy : Enemy
                 break;
         }
 
-        if (moveDuration > 0 && stopDuration > 0)
+        if (moveDuration > 0)
         {
             shouldStop = true;
             currentMoveTime = moveDuration;
@@ -94,7 +94,7 @@ public class MovingEnemy : Enemy
                     return true;
                 case MovementStates.Stopped:
                     currentStopTime -= Time.deltaTime;
-                    if (currentStopTime < 0)
+                    if (stopDuration != 0 && currentStopTime < 0)
                     {
                         shouldStop = false;
                         return true;

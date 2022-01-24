@@ -7,16 +7,10 @@ public class Projectile : MonoBehaviour
     private float moveSpeed;
     private Vector2 moveDirection;
     private int damage;
-    // Start is called before the first frame update
-    void OnEnable()
-    {
-        Invoke("Destroy", 3f);
-    }
 
     // Update is called once per frame
     void Update()
     {
-        // TODO: Have some way to trigger Destroy() after the projectile goes out of bounds
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
@@ -41,11 +35,6 @@ public class Projectile : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    private void OnDisable()
-    {
-        CancelInvoke();
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -53,5 +42,10 @@ public class Projectile : MonoBehaviour
             PlayerController.Instance.TakeDamage(damage);
             Destroy();
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy();
     }
 }

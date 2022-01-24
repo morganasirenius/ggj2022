@@ -15,4 +15,16 @@ public class Entity : MonoBehaviour
     public virtual void Move() { return; }
     public virtual void OnDeath() { return; }
 
+    // Think of better way to despawn when entity goes out of bounds
+
+    void Destroy()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy();
+    }
+
 }

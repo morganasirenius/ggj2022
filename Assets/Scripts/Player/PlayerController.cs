@@ -11,6 +11,7 @@ public class PlayerController : Singleton<PlayerController>
     public LightBeam lightBeam;
     public List<DarkBeam> darkBeam;
     private Quaternion rotation;
+    [SerializeField]
     private int health;
 
     private void Awake()
@@ -49,7 +50,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             darkBeam[i].DisableLaser();
         }
-        
+
 
     }
     private void EnableDarkBeam(InputAction.CallbackContext context)
@@ -63,7 +64,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         Vector2 direction = (Vector2)Camera.main.ScreenToWorldPoint(mousePosition) - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rotation.eulerAngles = new Vector3(0,0,angle-90); //Need to -90 for some reason
+        rotation.eulerAngles = new Vector3(0, 0, angle - 90); //Need to -90 for some reason
         transform.rotation = rotation;
 
     }
@@ -72,7 +73,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         Vector3 movement = playerControls.Space.Move.ReadValue<Vector2>() * movementVelocity;
         transform.position += movement * Time.deltaTime;
-        
+
         Vector2 mousePosition = playerControls.Space.MousePosition.ReadValue<Vector2>();
         for (int i = 0; i < darkBeam.Count; i++)
         {
@@ -92,6 +93,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             //Show end screen or something
             Debug.Log("you deadge");
+            Destroy(gameObject);
         }
     }
 }
