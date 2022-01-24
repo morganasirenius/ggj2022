@@ -5,15 +5,16 @@ using UnityEngine;
 public class Ally : Entity
 {
     private float currentTime; // The current time a food is being transformed
-    private float maxTime = 1;
+    [SerializeField] private float maxTime = 1;
     private bool rescued = false;
     [SerializeField] private Transform target;
 
    [SerializeField] private float rescueSpeed;
+   [SerializeField] private GameObject shield;
     // Start is called before the first frame update
     void Start()
     {
-        
+        shield.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,11 +30,11 @@ public class Ally : Entity
     {
         currentTime += Time.deltaTime;
         int timeSeconds = (int)currentTime;
-        Debug.Log(timeSeconds);
         if (timeSeconds == maxTime)
         {
             Debug.Log("You rescued them yay");
             rescued = true;
+            shield.SetActive(true);
         }
         return rescued;
     }
