@@ -13,9 +13,12 @@ public class ResourceManager : Singleton<ResourceManager>
     public LevelData[] Levels;
     public Dictionary<string, LevelData> LevelDictionary;
 
+    public ObjectPooler ProjectilePooler;
+
     private void Awake()
     {
         LoadLevels();
+        LoadProjectilePoolers();
     }
 
     void LoadLevels()
@@ -28,4 +31,17 @@ public class ResourceManager : Singleton<ResourceManager>
             LevelDictionary[level.levelName] = level;
         }
     }
+
+    void LoadProjectilePoolers()
+    {
+        // TODO: There's only one projectile pooler right now
+        // Add support for multiple projectiles
+        GameObject[] objectPoolers = Resources.LoadAll<GameObject>("Prefabs/ObjectPoolers/Projectiles");
+        foreach (GameObject obj in objectPoolers)
+        {
+            GameObject poolObj = Instantiate(obj) as GameObject;
+            ProjectilePooler = poolObj.GetComponent<ObjectPooler>();
+        }
+    }
+
 }

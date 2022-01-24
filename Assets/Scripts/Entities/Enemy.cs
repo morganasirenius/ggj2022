@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    [SerializeField] private float timeTilDamage = 1;
-    private float currentTime;
-
-    void Start()
+    [Tooltip("Module used to fire the enemy's projectile.")]
+    [SerializeField]
+    protected ProjectileModule projectileModule;
+    [SerializeField]
+    private float timeTilDamage = 1;
+    [SerializeField]
+    private float timeBetweenAttacks;
+    private float currentDamageTime;
+    private float currentAttackTime;
+    void Awake()
     {
-        currentTime = timeTilDamage;
+        currentDamageTime = timeTilDamage;
+        currentAttackTime = timeBetweenAttacks;
     }
     // Update is called once per frame
     void Update()
     {
+        currentAttackTime -= Time.deltaTime;
+        if (currentAttackTime <= 0)
+        {
+            Attack();
+            currentAttackTime = timeBetweenAttacks;
+        }
         Move();
     }
 
     public void TakeDamage(int damagedTaken)
     {
-        currentTime -= Time.deltaTime;
-        if (currentTime <= 0)
+        currentDamageTime -= Time.deltaTime;
+        if (currentDamageTime <= 0)
         {
             health -= damagedTaken;
             if (health <= 0)
@@ -29,7 +42,7 @@ public class Enemy : Entity
             }
             else
             {
-                currentTime = timeTilDamage;
+                currentDamageTime = timeTilDamage;
             }
         }
     }

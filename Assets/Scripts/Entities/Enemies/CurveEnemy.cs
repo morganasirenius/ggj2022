@@ -20,6 +20,8 @@ public class CurveEnemy : Enemy
     [SerializeField]
     private float travelHeight;
 
+    // Define direction of the curve path
+    private Vector3 direction;
 
     public void Start()
     {
@@ -27,8 +29,7 @@ public class CurveEnemy : Enemy
         endPosition = transform.position + new Vector3(0, travelDistance, 0);
         currentInterpolationPoint = 0;
 
-        // Define direction of the curve path
-        Vector3 direction;
+
         if (moveDirection == Globals.Direction.Left)
         {
             direction = Vector3.left;
@@ -61,5 +62,10 @@ public class CurveEnemy : Enemy
         Vector3 p1 = peakPosition;
         Vector3 p2 = endPosition;
         return Mathf.Pow(1 - t, 2f) * p0 + (2 * (1 - t) * t * p1) + Mathf.Pow(t, 2f) * p2;
+    }
+
+    public override void Attack()
+    {
+        projectileModule.Fire(direction);
     }
 }
