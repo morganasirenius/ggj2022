@@ -50,14 +50,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DepthOffset: 0.86
-    - _DissolveEdgeThick: 0.1
-    - _DissolveStartHeight: 0
-    - _DistortionStrength: 0.1
-    - _EdgeDissolve: 0
-    - _FresnelPower: 2.25
+    - _DepthOffset: 1.68
+    - _DisolveEdgeThick: 0.1
+    - _DissolveEdgeThick: 1
+    - _DissolveStartHeight: 3.75
+    - _DistortionStrength: 0.46
+    - _EdgeDisolve: 1
+    - _EdgeDissolve: 1
+    - _FresnelPower: 0.81
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0.5176471}
+    - _DisolveEdgeColor: {r: 0, g: 0, b: 0, a: 0}
+    - _FresnoColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
