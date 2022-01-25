@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22429608}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0.023, z: 0}
+  m_LocalPosition: {x: 0, y: 0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,10 +42,10 @@ GameObject:
   - component: {fileID: 502711955769907586}
   - component: {fileID: 502711955769907587}
   - component: {fileID: 502711955769907588}
-  - component: {fileID: 8332667076958421905}
+  - component: {fileID: 4132119150226136713}
   - component: {fileID: -5276820041182803937}
   m_Layer: 0
-  m_Name: BurstDownEnemy
+  m_Name: StraightDownEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7370c5c29720489408c77243c7d1c898, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9eba869de391c0343ba1d207489eeabb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,16 +131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8c1f4eadb4574498eeaa63005a4e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  speed: 0.01
-  projectileModule: {fileID: 0}
+  health: 2
+  speed: 0.002
+  projectileModule: {fileID: 4132119150226136713}
   timeTilDamage: 1
-  timeBetweenAttacks: 10
+  timeBetweenAttacks: 3.5
   moveDirection: 1
-  moveDuration: 1.5
-  stopDuration: 3
-  fireWhenStopped: 1
---- !u!114 &8332667076958421905
+  moveDuration: 0
+  stopDuration: 0
+  fireWhenStopped: 0
+--- !u!114 &4132119150226136713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,16 +149,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 502711955769907589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81f824539c5a29648b896b2ce6f427ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 71beb016a48fe0241be306a5f6f79692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  projectileCount: 0
-  timeBetweenProjectiles: 0
+  speed: 8
+  projectileCount: 3
+  timeBetweenProjectiles: 0.3
   projectileDamage: 1
   firePoint: {fileID: 22429608}
-  startAngle: 0
-  endAngle: 360
 --- !u!61 &-5276820041182803937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +170,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0019373894, y: 0.036809206}
+  m_Offset: {x: -0.0012241602, y: -0.045391567}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -183,5 +181,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.78800964, y: 0.656271}
+  m_Size: {x: 0.5203302, y: 0.5719625}
   m_EdgeRadius: 0

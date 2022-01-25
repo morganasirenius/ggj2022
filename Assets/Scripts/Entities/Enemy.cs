@@ -11,21 +11,39 @@ public class Enemy : Entity
     private float timeTilDamage = 1;
     [SerializeField]
     private float timeBetweenAttacks;
+    // Maximum attacks the enemy can do
+    // A max attack of 0 means the enemy can do infinite attacks
+    [SerializeField]
+    private int maximumAttacks;
     private float currentDamageTime;
     private float currentAttackTime;
+    private int currentAttacks;
     void Awake()
     {
         currentDamageTime = timeTilDamage;
         currentAttackTime = timeBetweenAttacks;
+        if (maximumAttacks > 0)
+        {
+            currentAttacks = maximumAttacks;
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        currentAttackTime -= Time.deltaTime;
-        if (currentAttackTime <= 0)
+        // Only attempt to attack if infinite attacks
+        // or there are enough current attacks
+        if (maximumAttacks <= 0 || currentAttacks > 0)
         {
-            Attack();
-            currentAttackTime = timeBetweenAttacks;
+            currentAttackTime -= Time.deltaTime;
+            if (currentAttackTime <= 0)
+            {
+                Attack();
+                currentAttackTime = timeBetweenAttacks;
+                if (maximumAttacks > 0)
+                {
+                    currentAttacks--;
+                }
+            }
         }
         Move();
     }

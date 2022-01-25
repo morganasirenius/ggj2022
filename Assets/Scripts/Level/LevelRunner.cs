@@ -26,7 +26,7 @@ public class LevelRunner : MonoBehaviour
     {
         // Setup Object Poolers based on level- cache them
         // TODO: Make objectpoolers into prefabs and load them this way
-        LevelData testLevel = ResourceManager.Instance.LevelDictionary["test"];
+        LevelData testLevel = ResourceManager.Instance.LevelDictionary["LevelOne"];
         List<Globals.EntityType> entities = testLevel.levelEntities;
         List<string> commands = testLevel.levelCommands;
         SetupObjectPoolers(entities);
