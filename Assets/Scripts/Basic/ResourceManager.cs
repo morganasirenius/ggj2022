@@ -12,6 +12,8 @@ public class ResourceManager : Singleton<ResourceManager>
     // Contains all recipes in the game
     public LevelData[] Levels;
     public Dictionary<string, LevelData> LevelDictionary;
+    public Dictionary<string, Material> MaterialDictionary;
+    public Dictionary<string, GameObject> ParticleDictionary;
 
     public ObjectPooler ProjectilePooler;
 
@@ -19,6 +21,8 @@ public class ResourceManager : Singleton<ResourceManager>
     {
         LoadLevels();
         LoadProjectilePoolers();
+        LoadMaterials();
+        LoadParticles();
     }
 
     void LoadLevels()
@@ -41,6 +45,28 @@ public class ResourceManager : Singleton<ResourceManager>
         {
             GameObject poolObj = Instantiate(obj) as GameObject;
             ProjectilePooler = poolObj.GetComponent<ObjectPooler>();
+        }
+    }
+
+    void LoadMaterials()
+    {
+        Material[] materials = Resources.LoadAll<Material>("Materials");
+        MaterialDictionary = new Dictionary<string, Material>();
+
+        foreach (Material mat in materials)
+        {
+            MaterialDictionary[mat.name] = mat;
+        }
+    }
+
+    void LoadParticles()
+    {
+        GameObject[] particles = Resources.LoadAll<GameObject>("ParticleSystems");
+        ParticleDictionary = new Dictionary<string, GameObject>();
+
+        foreach (GameObject particle in particles)
+        {
+            ParticleDictionary[particle.name] = particle;
         }
     }
 

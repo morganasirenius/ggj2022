@@ -18,6 +18,12 @@ public class Enemy : Entity
     private float currentDamageTime;
     private float currentAttackTime;
     private int currentAttacks;
+
+    private float materialResetTime = 0.08f;
+
+    // Materials
+    private Material matDefault;
+    private SpriteRenderer sr;
     void Awake()
     {
         currentDamageTime = timeTilDamage;
@@ -26,6 +32,8 @@ public class Enemy : Entity
         {
             currentAttacks = maximumAttacks;
         }
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        matDefault = sr.material;
     }
     // Update is called once per frame
     void Update()
@@ -39,6 +47,7 @@ public class Enemy : Entity
             {
                 Attack();
                 currentAttackTime = timeBetweenAttacks;
+
                 if (maximumAttacks > 0)
                 {
                     currentAttacks--;
@@ -54,14 +63,22 @@ public class Enemy : Entity
         if (currentDamageTime <= 0)
         {
             health -= damagedTaken;
+            sr.material = ResourceManager.Instance.MaterialDictionary["WhiteFlash"];
             if (health <= 0)
             {
+                GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
                 gameObject.SetActive(false);
             }
             else
             {
                 currentDamageTime = timeTilDamage;
+                Invoke("ResetMaterial", materialResetTime);
             }
         }
+    }
+
+    private void ResetMaterial()
+    {
+        sr.material = matDefault;
     }
 }
