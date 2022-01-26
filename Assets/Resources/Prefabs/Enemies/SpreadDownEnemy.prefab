@@ -131,11 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8c1f4eadb4574498eeaa63005a4e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 1
   speed: 0.001
   projectileModule: {fileID: 5763963021006144630}
   timeTilDamage: 1
   timeBetweenAttacks: 3
+  maximumAttacks: 0
   moveDirection: 1
   moveDuration: 0
   stopDuration: 0

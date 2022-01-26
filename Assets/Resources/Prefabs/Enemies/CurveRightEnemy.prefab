@@ -135,7 +135,8 @@ MonoBehaviour:
   speed: 0.3
   projectileModule: {fileID: 7372073500056015142}
   timeTilDamage: 0.5
-  timeBetweenAttacks: 3
+  timeBetweenAttacks: 1.5
+  maximumAttacks: 0
   moveDirection: 3
   travelDistance: -5
   travelHeight: 15
@@ -156,8 +157,8 @@ MonoBehaviour:
   timeBetweenProjectiles: 0
   projectileDamage: 1
   firePoint: {fileID: 7740167907771062385}
-  startAngle: 90
-  endAngle: 270
+  startAngle: -45
+  endAngle: -90
 --- !u!61 &4561789017648308447
 BoxCollider2D:
   m_ObjectHideFlags: 0

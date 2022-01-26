@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4397516844913430795}
   - component: {fileID: 4397516844913430794}
   m_Layer: 0
-  m_Name: RightEnemyObjectPooler
+  m_Name: StraightDownEnemyObjectPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ca297c326153c4f86b343b6815b832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObject: {fileID: 502711955769907589, guid: a3b34fba7950413448f0288329945b6b, type: 3}
+  pooledObject: {fileID: 502711955769907589, guid: 871dadb0f0da76649b2e4b457c174003, type: 3}
   pooledAmount: 10

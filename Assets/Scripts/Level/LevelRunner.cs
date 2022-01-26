@@ -18,7 +18,7 @@ public class LevelRunner : MonoBehaviour
     private Dictionary<Globals.EntityType, ObjectPooler> entityObjectPoolers;
 
     private const string CommandDelimiter = ";";
-    private const int RequiredSpawnParams = 6;
+    private const int RequiredSpawnParams = 7;
     private const int RequiredDelayParams = 2;
 
     // Start is called before the first frame update
@@ -39,7 +39,6 @@ public class LevelRunner : MonoBehaviour
         foreach (Globals.EntityType type in entityTypes)
         {
             string path = string.Format("Prefabs/ObjectPoolers/{0}ObjectPooler", type.ToString());
-            Debug.Log(path);
             GameObject poolObj = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
             entityObjectPoolers[type] = poolObj.GetComponent<ObjectPooler>();
         }
@@ -83,13 +82,14 @@ public class LevelRunner : MonoBehaviour
         Globals.EntityType entityType = (Globals.EntityType)System.Enum.Parse(typeof(Globals.EntityType), parameters[1]);
         Globals.Direction spawnerDirection = (Globals.Direction)System.Enum.Parse(typeof(Globals.Direction), parameters[2]);
         Globals.SpawnPoints spawnLocation = (Globals.SpawnPoints)System.Enum.Parse(typeof(Globals.SpawnPoints), parameters[3]);
-        int count = int.Parse(parameters[4]);
-        float delay = float.Parse(parameters[5]);
+        Globals.SpawnStyle spawnStyle = (Globals.SpawnStyle)System.Enum.Parse(typeof(Globals.SpawnStyle), parameters[4]);
+        int count = int.Parse(parameters[5]);
+        float delay = float.Parse(parameters[6]);
 
         Spawner spawner = SetSpawner(spawnerDirection);
         ObjectPooler pooler = entityObjectPoolers[entityType];
 
-        yield return StartCoroutine(SpawnEntity(pooler, spawner, spawnLocation, count, delay));
+        yield return StartCoroutine(SpawnEntity(pooler, spawner, spawnLocation, spawnStyle, count, delay));
     }
 
     IEnumerator ExecuteDelayCommand(string[] parameters)
@@ -123,7 +123,7 @@ public class LevelRunner : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnEntity(ObjectPooler entityPooler, Spawner spawner, Globals.SpawnPoints spawnLocation, int entitiesToSpawn, float delay)
+    IEnumerator SpawnEntity(ObjectPooler entityPooler, Spawner spawner, Globals.SpawnPoints spawnLocation, Globals.SpawnStyle spawnStyle, int entitiesToSpawn, float delay)
     {
         Vector3 spawnPoint;
         switch (spawnLocation)
@@ -150,6 +150,11 @@ public class LevelRunner : MonoBehaviour
         while (spawnedEntities < entitiesToSpawn)
         {
             yield return new WaitForSeconds(delay);
+            // For random spawn styles, generate new spawnpoint for each entity
+            if (spawnStyle == Globals.SpawnStyle.Random)
+            {
+                spawnPoint = spawner.GetRandomSpawnPoint();
+            }
             spawner.SpawnAt(entityPooler.GetPooledObject(), spawnPoint);
             spawnedEntities++;
         }

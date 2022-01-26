@@ -134,8 +134,9 @@ MonoBehaviour:
   health: 1
   speed: 0.3
   projectileModule: {fileID: 3695355335642394797}
-  timeTilDamage: 1
-  timeBetweenAttacks: 3
+  timeTilDamage: 0.5
+  timeBetweenAttacks: 1.5
+  maximumAttacks: 0
   moveDirection: 2
   travelDistance: -5
   travelHeight: 15
@@ -151,13 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f824539c5a29648b896b2ce6f427ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   projectileCount: 3
   timeBetweenProjectiles: 0
   projectileDamage: 1
   firePoint: {fileID: 311438771349860219}
-  startAngle: 90
-  endAngle: 270
+  startAngle: 45
+  endAngle: 90
 --- !u!61 &515016298930781713
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ public class Enemy : Entity
             health -= damagedTaken;
             if (health <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             else
             {

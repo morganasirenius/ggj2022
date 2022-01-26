@@ -481,7 +481,7 @@ MonoBehaviour:
   lightBeam: {fileID: 472064602}
   darkBeam:
   - {fileID: 423472011}
-  health: 0
+  health: 999
 --- !u!4 &99699962
 Transform:
   m_ObjectHideFlags: 0
