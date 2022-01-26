@@ -11,6 +11,8 @@ public class LevelData : ScriptableObject
 {
     // The name of the level
     public string levelName;
+    // Name of the track of music to play
+    public string levelMusic;
     public List<Globals.EntityType> levelEntities;
     // The commands used for the level. Each command is a string separated by semicolons
     public List<String> levelCommands;

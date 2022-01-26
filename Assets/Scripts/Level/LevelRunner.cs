@@ -26,11 +26,17 @@ public class LevelRunner : MonoBehaviour
     {
         // Setup Object Poolers based on level- cache them
         // TODO: Make objectpoolers into prefabs and load them this way
-        LevelData testLevel = ResourceManager.Instance.LevelDictionary["LevelOne"];
-        List<Globals.EntityType> entities = testLevel.levelEntities;
-        List<string> commands = testLevel.levelCommands;
+        LevelData level = ResourceManager.Instance.LevelDictionary["LevelOne"];
+        List<Globals.EntityType> entities = level.levelEntities;
+        List<string> commands = level.levelCommands;
         SetupObjectPoolers(entities);
+        PlayLevelMusic(level.levelMusic);
         StartCoroutine(RunLevel(commands));
+    }
+
+    void PlayLevelMusic(string trackName)
+    {
+        AudioManager.Instance.PlaySong(trackName);
     }
 
     void SetupObjectPoolers(List<Globals.EntityType> entityTypes)

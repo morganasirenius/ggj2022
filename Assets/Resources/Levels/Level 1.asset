@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   levelName: LevelOne
+  levelMusic: Pixel War 2
   levelEntities: 0100000002000000030000000400000005000000060000000700000008000000
   levelCommands:
-  - Spawn;StraightDownEnemy;Up;Random;Random;3;1
+  - Spawn;StraightDownEnemy;Up;Random;Random;5;1
   - Delay;3
   - Spawn;CurveLeftEnemy;Right;Start;Same;3;1
-  - Spawn;BurstDownEnemy;Up;Random;Same;3;1
+  - Spawn;BurstDownEnemy;Up;Random;Random;3;1
   - Delay;3
   - Spawn;AimRightEnemy;Left;Random;Same;3;1
   - Spawn;AimLeftEnemy;Right;Random;Same;5;1
