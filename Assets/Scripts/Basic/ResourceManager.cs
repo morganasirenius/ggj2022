@@ -11,9 +11,12 @@ public class ResourceManager : Singleton<ResourceManager>
 {
     // Contains all recipes in the game
     public LevelData[] Levels;
-    public Dictionary<string, LevelData> LevelDictionary;
-    public Dictionary<string, Material> MaterialDictionary;
-    public Dictionary<string, GameObject> ParticleDictionary;
+    public Dictionary<string, LevelData> LevelDictionary { get; set; }
+    public Dictionary<string, Material> MaterialDictionary { get; set; }
+    public Dictionary<string, GameObject> ParticleDictionary { get; set; }
+
+    public Dictionary<string, AudioClip> MusicDictionary { get; set; }
+    public Dictionary<string, AudioClip> SfxDictionary { get; set; }
 
     public ObjectPooler ProjectilePooler;
 
@@ -23,6 +26,7 @@ public class ResourceManager : Singleton<ResourceManager>
         LoadProjectilePoolers();
         LoadMaterials();
         LoadParticles();
+        LoadAudio();
     }
 
     void LoadLevels()
@@ -67,6 +71,25 @@ public class ResourceManager : Singleton<ResourceManager>
         foreach (GameObject particle in particles)
         {
             ParticleDictionary[particle.name] = particle;
+        }
+    }
+
+    void LoadAudio()
+    {
+        AudioClip[] music = Resources.LoadAll<AudioClip>("Audio/Music");
+        AudioClip[] sfx = Resources.LoadAll<AudioClip>("Audio/SFX");
+
+        MusicDictionary = new Dictionary<string, AudioClip>();
+        SfxDictionary = new Dictionary<string, AudioClip>();
+
+        foreach (AudioClip clip in music)
+        {
+            MusicDictionary[clip.name] = clip;
+        }
+
+        foreach (AudioClip clip in sfx)
+        {
+            SfxDictionary[clip.name] = clip;
         }
     }
 

@@ -67,6 +67,7 @@ public class Enemy : Entity
             if (health <= 0)
             {
                 GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
+                AudioManager.Instance.PlaySfx("explode-2");
                 gameObject.SetActive(false);
             }
             else
