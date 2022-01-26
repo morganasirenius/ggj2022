@@ -18,10 +18,18 @@ public class LevelData : ScriptableObject
 
 /*
 Current Commands
-SPAWN - spawns an entity at a positiona
+SPAWN - Spawns an entity at a position
 DELAY - delays the next command
 
 Parameters
 SPAWN;TYPE;SPAWNER_LOCATION;SPAWN_POSITION;SPAWN_STYLE;COUNT;DELAY
+TYPE - The entity type to spawn
+SPAWNER_LOCATION - The location of which the entity spawns in. See Globals.Direction for possible values.
+SPAWN_POSITION - Where the entity spawns in from the spawner. See Globals.Spawnpoints for possible values.
+SPAWN_STYLE - How the entities will spawn. See Globals.SpawnStyles for possible values. If same, all entities will spawn in the same location. If random, each entity will have their own random spawnpoint.
+COUNT - How many entities to spawn.
+Delay - The delay between spawning each entity. 
+
 DELAY;TIME
+TIME - How long to delay for.
 */
