@@ -224,10 +224,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  speed: 6
-  maxTime: 5
+  speed: 0.002
+  maxTime: 2
   rescueSpeed: 5
   shield: {fileID: 2100000, guid: 9f7ab3c1699d92a499b057cba8767abb, type: 2}
+  moveDirection: 1
+  moveDuration: 2
+  stopDuration: 0
   TheShield: {fileID: 948906679947641065}
 --- !u!58 &948906680092964853
 CircleCollider2D:

@@ -26,18 +26,27 @@ public class Enemy : Entity
     private SpriteRenderer sr;
     void Awake()
     {
+        InitializeEnemy();
+        // Setup renderer and materials for damaging visual effect
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        matDefault = sr.material;
+    }
+
+    private void InitializeEnemy()
+    {
         currentDamageTime = timeTilDamage;
         currentAttackTime = timeBetweenAttacks;
         if (maximumAttacks > 0)
         {
             currentAttacks = maximumAttacks;
         }
-        sr = gameObject.GetComponent<SpriteRenderer>();
-        matDefault = sr.material;
     }
+
+
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         // Only attempt to attack if infinite attacks
         // or there are enough current attacks
         if (maximumAttacks <= 0 || currentAttacks > 0)
@@ -57,6 +66,11 @@ public class Enemy : Entity
         Move();
     }
 
+    protected override void OnBecameInvisible()
+    {
+        ResetEnemy();
+    }
+
     public void TakeDamage(int damagedTaken)
     {
         currentDamageTime -= Time.deltaTime;
@@ -68,7 +82,7 @@ public class Enemy : Entity
             {
                 GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
                 AudioManager.Instance.PlaySfx("explode-2");
-                gameObject.SetActive(false);
+                ResetEnemy();
             }
             else
             {
@@ -81,5 +95,12 @@ public class Enemy : Entity
     private void ResetMaterial()
     {
         sr.material = matDefault;
+    }
+
+    private void ResetEnemy()
+    {
+        InitializeEnemy();
+        ResetMaterial();
+        ResetEntity();
     }
 }
