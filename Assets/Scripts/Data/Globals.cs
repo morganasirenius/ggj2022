@@ -13,10 +13,14 @@ public class Globals
     public enum EntityType
     {
         Ally = 0,
-        DownEnemy,
-        LeftEnemy,
-        RightEnemy,
-        LeftCurveEnemy
+        AimDownEnemy,
+        AimLeftEnemy,
+        AimRightEnemy,
+        BurstDownEnemy,
+        CurveLeftEnemy,
+        CurveRightEnemy,
+        SpreadDownEnemy,
+        StraightDownEnemy
     }
 
     public enum Direction
@@ -31,6 +35,14 @@ public class Globals
         Start = 0,
         Middle,
         End,
+        Random
+    }
+
+    // Determines how entities should be spawned
+    public enum SpawnStyle
+    {
+
+        Same = 0,
         Random
     }
 }

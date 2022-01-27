@@ -10,21 +10,42 @@ public class Entity : MonoBehaviour
     [SerializeField]
     protected float speed;
 
+    protected int currentHealth;
+
+    // private bool hasBeenInvisible;
+
     public virtual void OnSpawn() { return; }
     public virtual void Attack() { return; }
     public virtual void Move() { return; }
     public virtual void OnDeath() { return; }
 
-    // Think of better way to despawn when entity goes out of bounds
-
-    void Destroy()
+    protected virtual void Update()
     {
-        gameObject.SetActive(false);
+        /*
+        // If the object is now seen in the camera, it has been invisible before (when it was spawning)
+        if (GetComponent<Renderer>().isVisible && hasBeenInvisible == false)
+        {
+            Debug.Log("Object spawning in the screen!");
+            hasBeenInvisible = true;
+        }
+        else if (hasBeenInvisible == true) // If has been invisble already and is out of the screen, disable the gameobject
+        {
+            Debug.Log("Object off the screen!");
+            gameObject.SetActive(false);
+            hasBeenInvisible = false;
+        }*/
     }
 
-    void OnBecameInvisible()
+    protected void ResetEntity()
     {
-        Destroy();
+        gameObject.SetActive(false);
+        currentHealth = health;
+    }
+
+    protected virtual void OnBecameInvisible()
+    {
+        Debug.Log("Entity invisible: " + gameObject.name);
+        ResetEntity();
     }
 
 }

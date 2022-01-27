@@ -12,12 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd38c83609d26c4449cf920ab72d5d53, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  levelName: test
-  levelEntities: 01000000020000000300000004000000
+  levelName: LevelOne
+  levelMusic: Pixel War 2
+  levelEntities: 010000000200000003000000040000000500000006000000070000000800000000000000
   levelCommands:
-  - Spawn;DownEnemy;Up;Random;5;0.5
-  - Delay;20
-  - Spawn;LeftCurveEnemy;Right;Random;3;0.5
+  - Spawn;StraightDownEnemy;Up;Random;Random;5;1
   - Delay;3
-  - Spawn;RightEnemy;Left;Random;5;0.5
-  - Spawn;LeftEnemy;Right;Random;5;0.5
+  - Spawn;CurveLeftEnemy;Right;Start;Same;3;1
+  - Spawn;BurstDownEnemy;Up;Random;Random;3;1
+  - Delay;3
+  - Spawn;Ally;Up;Random;Same;1;1
+  - Spawn;AimRightEnemy;Left;Random;Same;3;1
+  - Spawn;AimLeftEnemy;Right;Random;Same;5;1
+  - Spawn;AimDownEnemy;Up;Random;Random;2;0
+  - Spawn;SpreadDownEnemy;Up;Random;Random;3;0
+  - Delay;5
+  - Spawn;AimRightEnemy;Left;Random;Same;3;1
+  - Delay;1
+  - Spawn;AimLeftEnemy;Left;Random;Same;3;1
+  - Spawn;Ally;Up;Random;Random;3;1
+  - Delay;2
+  - Spawn;CurveRightEnemy;Left;Start;Same;3;1
+  - Spawn;BurstDownEnemy;Up;Random;Random;1;1

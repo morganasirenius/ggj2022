@@ -11,23 +11,64 @@ public class Enemy : Entity
     private float timeTilDamage = 1;
     [SerializeField]
     private float timeBetweenAttacks;
+    // Maximum attacks the enemy can do
+    // A max attack of 0 means the enemy can do infinite attacks
+    [SerializeField]
+    private int maximumAttacks;
     private float currentDamageTime;
     private float currentAttackTime;
+    private int currentAttacks;
+
+    private float materialResetTime = 0.08f;
+
+    // Materials
+    private Material matDefault;
+    private SpriteRenderer sr;
     void Awake()
+    {
+        InitializeEnemy();
+        // Setup renderer and materials for damaging visual effect
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        matDefault = sr.material;
+    }
+
+    private void InitializeEnemy()
     {
         currentDamageTime = timeTilDamage;
         currentAttackTime = timeBetweenAttacks;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        currentAttackTime -= Time.deltaTime;
-        if (currentAttackTime <= 0)
+        if (maximumAttacks > 0)
         {
-            Attack();
-            currentAttackTime = timeBetweenAttacks;
+            currentAttacks = maximumAttacks;
+        }
+    }
+
+
+    // Update is called once per frame
+    protected override void Update()
+    {
+        base.Update();
+        // Only attempt to attack if infinite attacks
+        // or there are enough current attacks
+        if (maximumAttacks <= 0 || currentAttacks > 0)
+        {
+            currentAttackTime -= Time.deltaTime;
+            if (currentAttackTime <= 0)
+            {
+                Attack();
+                currentAttackTime = timeBetweenAttacks;
+
+                if (maximumAttacks > 0)
+                {
+                    currentAttacks--;
+                }
+            }
         }
         Move();
+    }
+
+    protected override void OnBecameInvisible()
+    {
+        ResetEnemy();
     }
 
     public void TakeDamage(int damagedTaken)
@@ -36,14 +77,31 @@ public class Enemy : Entity
         if (currentDamageTime <= 0)
         {
             health -= damagedTaken;
+            sr.material = ResourceManager.Instance.MaterialDictionary["WhiteFlash"];
             if (health <= 0)
             {
-                Destroy(gameObject);
+                GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
+                AudioManager.Instance.PlaySfx("explode-2");
+                ResetEnemy();
             }
             else
             {
                 currentDamageTime = timeTilDamage;
+                Invoke("ResetMaterial", materialResetTime);
+                AudioManager.Instance.PlaySfx("hit-2");
             }
         }
+    }
+
+    private void ResetMaterial()
+    {
+        sr.material = matDefault;
+    }
+
+    private void ResetEnemy()
+    {
+        InitializeEnemy();
+        ResetMaterial();
+        ResetEntity();
     }
 }
