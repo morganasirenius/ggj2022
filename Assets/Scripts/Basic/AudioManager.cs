@@ -9,6 +9,9 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField]
     private AudioSource SoundEffect;
 
+    [SerializeField]
+    private AudioSource BeamEffect;
+
     public void PlaySong(string name)
     {
         BackgroundMusic.clip = ResourceManager.Instance.MusicDictionary[name];
@@ -20,9 +23,21 @@ public class AudioManager : Singleton<AudioManager>
         SoundEffect.PlayOneShot(ResourceManager.Instance.SfxDictionary[name]);
     }
 
+    public void PlayBeamSound(string name)
+    {
+        BeamEffect.clip = ResourceManager.Instance.SfxDictionary[name];
+        BeamEffect.Play();
+    }
+
+    public void StopBeamSound()
+    {
+        BeamEffect.Stop();
+    }
+
     public void StopSounds()
     {
         BackgroundMusic.Stop();
         SoundEffect.Stop();
+        BeamEffect.Stop();
     }
 }

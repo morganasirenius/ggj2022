@@ -147,6 +147,7 @@ public class Ally : Entity
         {
             Debug.Log("You rescued them yay");
             rescued = true;
+            AudioManager.Instance.PlaySfx("rescue");
         }
         return rescued;
     }
@@ -155,8 +156,18 @@ public class Ally : Entity
         Debug.Log(collision);
         if (collision.gameObject.tag == "Player" && rescued)
         {
-            Destroy(gameObject);
+            ResetAlly();
+            gameObject.SetActive(false);
         }
+    }
+
+    void ResetAlly()
+    {
+        rescued = false;
+        currentTime = 0;
+        _renderer.GetPropertyBlock(_propBlock);
+        _propBlock.SetFloat("_EdgeDisolve", 1);
+        _renderer.SetPropertyBlock(_propBlock);
     }
 
 }

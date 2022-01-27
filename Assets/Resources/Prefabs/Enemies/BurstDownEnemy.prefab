@@ -138,7 +138,7 @@ MonoBehaviour:
   timeBetweenAttacks: 3
   maximumAttacks: 0
   moveDirection: 1
-  moveDuration: 1.5
+  moveDuration: 1.2
   stopDuration: 3
   fireWhenStopped: 1
 --- !u!114 &8332667076958421905
