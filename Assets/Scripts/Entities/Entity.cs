@@ -36,10 +36,9 @@ public class Entity : MonoBehaviour
         }*/
     }
 
-    protected void ResetEntity()
+    protected virtual void OnDisable()
     {
-        gameObject.SetActive(false);
-        currentHealth = health;
+        ResetEntity();
     }
 
     protected virtual void OnBecameInvisible()
@@ -48,4 +47,9 @@ public class Entity : MonoBehaviour
         ResetEntity();
     }
 
+    protected void ResetEntity()
+    {
+        gameObject.SetActive(false);
+        currentHealth = health;
+    }
 }

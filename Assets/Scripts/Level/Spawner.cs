@@ -10,8 +10,8 @@ public class Spawner : MonoBehaviour
 
     public void SpawnAt(GameObject obj, Vector3 pos)
     {
-        obj.SetActive(true);
         obj.transform.position = pos;
+        obj.SetActive(true);
     }
 
     public Vector3 GetRandomSpawnPoint()
