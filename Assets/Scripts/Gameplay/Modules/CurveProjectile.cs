@@ -26,6 +26,7 @@ public class CurveProjectile : ProjectileModule
 
             proj.GetComponent<Projectile>().SetMoveSpeed(speed);
             proj.GetComponent<Projectile>().SetMoveDirection(projDir);
+            proj.GetComponent<Projectile>().SetDamage(projectileDamage);
             angle += angleStep;
             yield return new WaitForSeconds(timeBetweenProjectiles);
         }

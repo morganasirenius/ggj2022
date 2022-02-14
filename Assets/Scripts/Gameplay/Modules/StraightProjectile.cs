@@ -17,6 +17,7 @@ public class StraightProjectile : ProjectileModule
 
             proj.GetComponent<Projectile>().SetMoveSpeed(speed);
             proj.GetComponent<Projectile>().SetMoveDirection(projDir);
+            proj.GetComponent<Projectile>().SetDamage(projectileDamage);
             yield return new WaitForSeconds(timeBetweenProjectiles);
         }
     }

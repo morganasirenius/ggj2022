@@ -17,6 +17,7 @@ public class AimingProjectile : ProjectileModule
 
             proj.GetComponent<Projectile>().SetMoveSpeed(speed);
             proj.GetComponent<Projectile>().SetMoveDirection(projDirection);
+            proj.GetComponent<Projectile>().SetDamage(projectileDamage);
             yield return new WaitForSeconds(timeBetweenProjectiles);
         }
     }

@@ -6,7 +6,6 @@ public class Projectile : MonoBehaviour
 {
     private float moveSpeed;
     private Vector2 moveDirection;
-    [SerializeField]
     private int damage;
 
     // Update is called once per frame
