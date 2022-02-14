@@ -24,14 +24,13 @@ public class LevelRunner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Setup Object Poolers based on level- cache them
-        // TODO: Make objectpoolers into prefabs and load them this way
         LevelData level = ResourceManager.Instance.LevelDictionary["LevelOne"];
         List<Globals.EntityType> entities = level.levelEntities;
         List<string> commands = level.levelCommands;
         SetupObjectPoolers(entities);
         PlayLevelMusic(level.levelMusic);
-        StartCoroutine(RunLevel(commands));
+        StartCoroutine(RunEndlessLevel());
+        // StartCoroutine(RunLevel(commands));
     }
 
     void PlayLevelMusic(string trackName)
@@ -39,6 +38,7 @@ public class LevelRunner : MonoBehaviour
         AudioManager.Instance.PlaySong(trackName);
     }
 
+    // Setup Object Poolers based on level- cache them
     void SetupObjectPoolers(List<Globals.EntityType> entityTypes)
     {
         entityObjectPoolers = new Dictionary<Globals.EntityType, ObjectPooler>();
@@ -75,6 +75,31 @@ public class LevelRunner : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator RunEndlessLevel()
+    {
+        while (!PlayerController.Instance.isDead)
+        {
+            // Delay first
+            float randomDelay = Random.Range(0f, 3f);
+            Debug.Log(string.Format("Delay for {0} seconds!", randomDelay));
+            yield return StartCoroutine(Delay(randomDelay));
+            // Spawn next
+            Globals.EntityType entityType = (Globals.EntityType)Random.Range(0, System.Enum.GetValues(typeof(Globals.EntityType)).Length);
+            Globals.EntityProperties properties = Globals.entityMap[entityType];
+            Globals.Direction spawnerDirection = properties.spawnDirection;
+            Globals.SpawnPoints spawnPoint = properties.possibleSpawnPoints[Random.Range(0, properties.possibleSpawnPoints.Count)];
+            Globals.SpawnStyle spawnStyle = properties.possibleSpawnStyles[Random.Range(0, properties.possibleSpawnStyles.Count)];
+            int count = Random.Range(1, properties.maxSpawnCount + 1);
+            float delay = Random.Range(0f, 3f);
+
+            Spawner spawner = SetSpawner(spawnerDirection);
+            ObjectPooler pooler = entityObjectPoolers[entityType];
+            Debug.Log(string.Format("Spawning {0} entity!", entityType));
+            yield return StartCoroutine(SpawnEntity(pooler, spawner, spawnPoint, spawnStyle, count, delay));
+        }
+        yield return null;
     }
 
     IEnumerator ExecuteSpawnCommand(string[] parameters)

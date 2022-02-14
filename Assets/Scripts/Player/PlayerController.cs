@@ -5,14 +5,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    private PlayerControls playerControls;
+
     [SerializeField]
     private float movementVelocity = 3f;
-    public LightBeam lightBeam;
-    public List<DarkBeam> darkBeam;
-    private Quaternion rotation;
     [SerializeField]
     private int health;
+
+
+    public LightBeam lightBeam;
+    public List<DarkBeam> darkBeam;
+    private PlayerControls playerControls;
+    private Quaternion rotation;
+
+    public bool isDead;
+
 
     private void Awake()
     {

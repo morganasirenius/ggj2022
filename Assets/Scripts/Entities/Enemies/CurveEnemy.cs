@@ -25,6 +25,11 @@ public class CurveEnemy : Enemy
 
     public void Start()
     {
+        Initialize();
+    }
+
+    void Initialize()
+    {
         startPosition = transform.position;
         endPosition = transform.position + new Vector3(0, travelDistance, 0);
         currentInterpolationPoint = 0;
