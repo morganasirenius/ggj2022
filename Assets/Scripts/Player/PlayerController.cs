@@ -99,6 +99,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             //Show end screen or something
             Debug.Log("you deadge");
+            ScoreManager.Instance.ResetScore();
             Destroy(gameObject);
         }
     }

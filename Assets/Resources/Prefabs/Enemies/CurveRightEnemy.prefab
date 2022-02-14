@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   speed: 0.3
+  scoreValue: 5
   projectileModule: {fileID: 7372073500056015142}
   timeTilDamage: 0.5
   timeBetweenAttacks: 1.5

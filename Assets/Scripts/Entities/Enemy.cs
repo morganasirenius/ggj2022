@@ -82,6 +82,7 @@ public class Enemy : Entity
             {
                 GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
                 AudioManager.Instance.PlaySfx("explode-2");
+                addScore();
                 ResetEnemy();
             }
             else
