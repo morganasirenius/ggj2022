@@ -19,7 +19,6 @@ public class PlayerController : Singleton<PlayerController>
 
     public bool isDead;
 
-
     private void Awake()
     {
         playerControls = new PlayerControls();
@@ -40,6 +39,7 @@ public class PlayerController : Singleton<PlayerController>
     // Start is called before the first frame update
     void Start()
     {
+        UIManager.Instance.UpdateHealth(health);
         playerControls.Space.LightBeam.performed += LightBeam;
         playerControls.Space.Shoot.performed += EnableDarkBeam;
         playerControls.Space.Shoot.canceled += DisableDarkBeam;
@@ -95,12 +95,14 @@ public class PlayerController : Singleton<PlayerController>
     {
         health -= damagedTaken;
         Debug.Log(health);
+        UIManager.Instance.UpdateHealth(health);
         if (health <= 0)
         {
             //Show end screen or something
             Debug.Log("you deadge");
-            ScoreManager.Instance.ResetScore();
-            Destroy(gameObject);
+            UIManager.Instance.ResetScore();
+            gameObject.SetActive(false);
+            isDead = true;
         }
     }
 }

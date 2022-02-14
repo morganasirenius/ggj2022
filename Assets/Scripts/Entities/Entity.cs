@@ -58,6 +58,6 @@ public class Entity : MonoBehaviour
 
     protected void addScore()
     {
-        ScoreManager.Instance.AddScore(scoreValue);
+        UIManager.Instance.AddScore(scoreValue);
     }
 }

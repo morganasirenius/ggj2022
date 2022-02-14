@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class ScoreManager : Singleton<ScoreManager>
+public class UIManager : Singleton<UIManager>
 {
-    public TMP_Text scoreText;
-    public TMP_Text highscoreText;
-
+    public TMP_Text ScoreText;
+    public TMP_Text HighscoreText;
+    public TMP_Text HealthText;
     private int score = 0;
     private int highscore = 0;
     // Start is called before the first frame update
@@ -15,10 +15,14 @@ public class ScoreManager : Singleton<ScoreManager>
         updateText();
     }
 
+    public void UpdateHealth(int health)
+    {
+        HealthText.text = "Health: " + health;
+    }
     private void updateText()
     {
-        scoreText.text = "Score: " + score.ToString();
-        highscoreText.text = "Highscore: " + highscore.ToString();
+        ScoreText.text = "Score: " + score.ToString();
+        HighscoreText.text = "Highscore: " + highscore.ToString();
     }
     public void AddScore(int score_num)
     {
