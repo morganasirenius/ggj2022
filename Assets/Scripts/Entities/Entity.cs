@@ -10,6 +10,9 @@ public class Entity : MonoBehaviour
     [SerializeField]
     protected float speed;
 
+    [SerializeField]
+    protected int scoreValue;
+
     protected int currentHealth;
 
     // private bool hasBeenInvisible;
@@ -51,5 +54,10 @@ public class Entity : MonoBehaviour
     {
         gameObject.SetActive(false);
         currentHealth = health;
+    }
+
+    protected void addScore()
+    {
+        ScoreManager.Instance.AddScore(scoreValue);
     }
 }

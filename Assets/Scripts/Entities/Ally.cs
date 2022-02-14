@@ -147,6 +147,7 @@ public class Ally : Entity
         {
             Debug.Log("You rescued them yay");
             rescued = true;
+            addScore();
             AudioManager.Instance.PlaySfx("rescue");
         }
         return rescued;
