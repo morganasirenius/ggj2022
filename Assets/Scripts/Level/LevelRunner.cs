@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class LevelRunner : MonoBehaviour
 {
+    [SerializeField]
+    private float minCommmandDelay, maxCommandDelay;
 
+    [SerializeField]
+    private float minSpawnDelay, maxSpawnDelay;
 
     [SerializeField]
     private Spawner TopSpawner;
@@ -82,7 +86,7 @@ public class LevelRunner : MonoBehaviour
         while (!PlayerController.Instance.isDead)
         {
             // Delay first
-            float randomDelay = Random.Range(0f, 3f);
+            float randomDelay = Random.Range(minCommmandDelay, maxCommandDelay);
             Debug.Log(string.Format("Delay for {0} seconds!", randomDelay));
             yield return StartCoroutine(Delay(randomDelay));
             // Spawn next
@@ -92,12 +96,12 @@ public class LevelRunner : MonoBehaviour
             Globals.SpawnPoints spawnPoint = properties.possibleSpawnPoints[Random.Range(0, properties.possibleSpawnPoints.Count)];
             Globals.SpawnStyle spawnStyle = properties.possibleSpawnStyles[Random.Range(0, properties.possibleSpawnStyles.Count)];
             int count = Random.Range(1, properties.maxSpawnCount + 1);
-            float delay = Random.Range(0f, 3f);
-
+            float spawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+            Debug.Log(string.Format("Spawn delay per entity: {0}!", spawnDelay));
             Spawner spawner = SetSpawner(spawnerDirection);
             ObjectPooler pooler = entityObjectPoolers[entityType];
             Debug.Log(string.Format("Spawning {0} entity!", entityType));
-            yield return StartCoroutine(SpawnEntity(pooler, spawner, spawnPoint, spawnStyle, count, delay));
+            yield return StartCoroutine(SpawnEntity(pooler, spawner, spawnPoint, spawnStyle, count, spawnDelay));
         }
         yield return null;
     }
