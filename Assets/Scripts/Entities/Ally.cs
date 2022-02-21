@@ -71,7 +71,7 @@ public class Ally : Entity
         }
         else if (ShouldMove())
         {
-            this.transform.position += direction * speed;
+            this.transform.position += direction * speed * Time.deltaTime;
         }
     }
 
