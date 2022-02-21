@@ -72,7 +72,7 @@ public class MovingEnemy : Enemy
         base.Move();
         if (ShouldMove())
         {
-            this.transform.position += direction * speed;
+            this.transform.position += direction * speed * Time.deltaTime;
         }
     }
 
