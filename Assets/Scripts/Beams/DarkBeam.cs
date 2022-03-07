@@ -18,9 +18,6 @@ public class DarkBeam : Laser
         FillLists();
         DisableLaser();
     }
-    public override void Shoot()
-    {
-    }
     public void UpdateLaser(Vector2 mousePosition)
     {
 
@@ -38,7 +35,6 @@ public class DarkBeam : Laser
 
         if (hit && hit.transform.gameObject.tag == "Enemy")
         {
-            // Debug.Log("WEE");
             lineRenderer.SetPosition(1, hit.point);
             Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(damage);

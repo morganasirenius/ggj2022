@@ -14,7 +14,6 @@ public abstract class Laser : MonoBehaviour
         DisableLaser();
 
     }
-    public abstract void Shoot();
     public void EnableLaser()
     {
         lineRenderer.enabled = true;

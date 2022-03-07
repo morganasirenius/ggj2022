@@ -38,24 +38,7 @@ public class LightBeam : Laser
         {
             Ally ally = hit.transform.gameObject.GetComponent<Ally>();
             lineRenderer.SetPosition(1, new Vector2(firePoint.position.x, hit.point.y));
-            if (ally.Rescue())
-            {
-                DisableLaser();
-            }
-
+            ally.Rescue();
         }
-        else
-        {
-            StartCoroutine(ShootEffect());
-        }
-    }
-    public override void Shoot()
-    {
-        EnableLaser();
-    }
-    protected IEnumerator ShootEffect()
-    {
-        yield return new WaitForSeconds(laserDuration);
-        DisableLaser();
     }
 }
