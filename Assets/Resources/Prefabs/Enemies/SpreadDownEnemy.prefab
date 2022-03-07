@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 22429610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 502711955769907588}
   - component: {fileID: 5763963021006144630}
   - component: {fileID: -5276820041182803937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpreadDownEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

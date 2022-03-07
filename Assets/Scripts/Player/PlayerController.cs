@@ -32,7 +32,8 @@ public class PlayerController : Singleton<PlayerController>
     private void OnDisable()
     {
         playerControls.Disable();
-        playerControls.Space.LightBeam.performed -= LightBeam;
+        playerControls.Space.LightBeam.performed -= EnableLightBeam;
+        playerControls.Space.LightBeam.canceled -= DisableLightBeam;
         playerControls.Space.Shoot.performed -= EnableDarkBeam;
         playerControls.Space.Shoot.canceled -= DisableDarkBeam;
     }
@@ -40,16 +41,19 @@ public class PlayerController : Singleton<PlayerController>
     void Start()
     {
         UIManager.Instance.UpdateHealth(health);
-        playerControls.Space.LightBeam.performed += LightBeam;
+        playerControls.Space.LightBeam.performed += EnableLightBeam;
+        playerControls.Space.LightBeam.canceled += DisableLightBeam;
         playerControls.Space.Shoot.performed += EnableDarkBeam;
         playerControls.Space.Shoot.canceled += DisableDarkBeam;
     }
-
-    private void LightBeam(InputAction.CallbackContext context)
+    private void EnableLightBeam(InputAction.CallbackContext context)
     {
-        lightBeam.Shoot();
+        lightBeam.EnableLaser();
     }
-
+    private void DisableLightBeam(InputAction.CallbackContext context)
+    {
+        lightBeam.DisableLaser();
+    }
     private void DisableDarkBeam(InputAction.CallbackContext context)
     {
         for (int i = 0; i < darkBeam.Count; i++)
