@@ -1,39 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class UIManager : Singleton<UIManager>
 {
+    //Game UI
     public TMP_Text ScoreText;
     public TMP_Text HighscoreText;
     public TMP_Text HealthText;
-    private int score = 0;
-    private int highscore = 0;
+
+    // End Game UI
+    public GameObject EndScreenUI;
+    public TMP_Text EndScreenHighscoreText;
+    public TMP_Text EndScreenScoreText;
+    
     // Start is called before the first frame update
     void Start()
     {
-        updateText();
+        Score.Instance.OnScoreChange += UpdateText;
+        UpdateText(0, Score.Instance.HighScore);
     }
 
     public void UpdateHealth(int health)
     {
         HealthText.text = "Health: " + health;
     }
-    private void updateText()
+    public void UpdateText(int playScore, int highScore)
     {
-        ScoreText.text = "Score: " + score.ToString();
-        HighscoreText.text = "Highscore: " + highscore.ToString();
-    }
-    public void AddScore(int score_num)
-    {
-        score += score_num;
-        if (score > highscore) highscore = score;
-        updateText();
+        ScoreText.text = "Score: " + playScore.ToString();
+        HighscoreText.text = "Highscore: " + highScore.ToString();
+        EndScreenScoreText.text = "Your score: " + playScore.ToString();
+        EndScreenHighscoreText.text = "Highscore: " + highScore.ToString();
     }
 
-    public void ResetScore()
+    public void EndScreen()
     {
-        score = 0;
-        updateText();
+        EndScreenUI.SetActive(true);
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene("LevelOne");
+    }
+
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
