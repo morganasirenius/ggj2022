@@ -18,9 +18,9 @@ public class AudioManager : Singleton<AudioManager>
         BackgroundMusic.Play();
     }
 
-    public void PlaySfx(string name)
+    public void PlaySfx(string name, float volume = 1.0f)
     {
-        SoundEffect.PlayOneShot(ResourceManager.Instance.SfxDictionary[name]);
+        SoundEffect.PlayOneShot(ResourceManager.Instance.SfxDictionary[name], volume);
     }
 
     public void PlayBeamSound(string name)
