@@ -22,6 +22,8 @@ public class Entity : MonoBehaviour
     public virtual void Move() { return; }
     public virtual void OnDeath() { return; }
 
+    public virtual void OnReset() { return; }
+
     protected virtual void Update()
     {
         /*
@@ -41,12 +43,14 @@ public class Entity : MonoBehaviour
 
     protected virtual void OnDisable()
     {
+        OnReset();
         ResetEntity();
     }
 
     protected virtual void OnBecameInvisible()
     {
         Debug.Log("Entity invisible: " + gameObject.name);
+        OnReset();
         ResetEntity();
     }
 

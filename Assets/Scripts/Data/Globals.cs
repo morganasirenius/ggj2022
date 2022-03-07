@@ -71,7 +71,7 @@ public static class Globals
                                             maxSpawnCount = 5,
                                             spawnDirection = Direction.Up,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
-                                            possibleSpawnStyles = new List<SpawnStyle>(){SpawnStyle.Same, SpawnStyle.Random}
+                                            possibleSpawnStyles = new List<SpawnStyle>(){SpawnStyle.Random}
                                         }},
         {(EntityType.AimLeftEnemy), new EntityProperties
                                         {
@@ -93,7 +93,7 @@ public static class Globals
                                             maxSpawnCount = 3,
                                             spawnDirection = Direction.Up,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
-                                            possibleSpawnStyles = new List<SpawnStyle>(){SpawnStyle.Same, SpawnStyle.Random}
+                                            possibleSpawnStyles = new List<SpawnStyle>(){SpawnStyle.Random}
                                         }},
         // Curve Enemies
         {(EntityType.CurveLeftEnemy), new EntityProperties

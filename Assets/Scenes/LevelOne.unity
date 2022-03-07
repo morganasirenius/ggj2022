@@ -16459,6 +16459,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffec8c7e504884e418bd4a6a911c0acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minCommandDelay: 3
+  maxCommandDelay: 5
+  minSpawnDelay: 1
+  maxSpawnDelay: 2
+  entitiesUntilDifficultyScaling: 5
+  commandDelayReduction: 0.15
   TopSpawner: {fileID: 1300198092}
   BottomSpawner: {fileID: 1450338061}
   LeftSpawner: {fileID: 260806706}

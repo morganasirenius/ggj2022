@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class LevelRunner : MonoBehaviour
 {
+    // Delays between running the next command
+    [SerializeField]
+    private float minCommandDelay, maxCommandDelay;
+    // Delays for spawning the next entity within a spawn command
+    [SerializeField]
+    private float minSpawnDelay, maxSpawnDelay;
+    [SerializeField]
+    private int entitiesUntilDifficultyScaling;
+    // The amount of time to reduce maxCommandDelay when difficulty scales
+    [SerializeField]
+    private float commandDelayReduction;
 
 
+    // Spawners for spawning entities
     [SerializeField]
     private Spawner TopSpawner;
     [SerializeField]
@@ -17,9 +29,17 @@ public class LevelRunner : MonoBehaviour
 
     private Dictionary<Globals.EntityType, ObjectPooler> entityObjectPoolers;
 
+    // Delimiter to split parameters for commands
     private const string CommandDelimiter = ";";
+
+    // Required parameters for commands
     private const int RequiredSpawnParams = 7;
     private const int RequiredDelayParams = 2;
+
+    // The amount of entities spawned so far
+    private int entitiesSpawned;
+    // Boolean to detect if this is the first spawn
+    private bool isFirstSpawn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -82,10 +102,19 @@ public class LevelRunner : MonoBehaviour
     {
         while (!PlayerController.Instance.isDead)
         {
-            // Delay first
-            float randomDelay = Random.Range(0f, 3f);
-            Debug.Log(string.Format("Delay for {0} seconds!", randomDelay));
-            yield return StartCoroutine(Delay(randomDelay));
+            // Don't delay if its the first spawn
+            if (!isFirstSpawn)
+            {
+                // Delay first
+                float randomDelay = Random.Range(minCommandDelay, maxCommandDelay);
+                Debug.Log(string.Format("Delay for {0} seconds!", randomDelay));
+                yield return StartCoroutine(Delay(randomDelay));
+            }
+            else
+            {
+                isFirstSpawn = false;
+            }
+
             // Spawn next
             Globals.EntityType entityType = (Globals.EntityType)Random.Range(0, System.Enum.GetValues(typeof(Globals.EntityType)).Length);
             Globals.EntityProperties properties = Globals.entityMap[entityType];
@@ -93,12 +122,15 @@ public class LevelRunner : MonoBehaviour
             Globals.SpawnPoints spawnPoint = properties.possibleSpawnPoints[Random.Range(0, properties.possibleSpawnPoints.Count)];
             Globals.SpawnStyle spawnStyle = properties.possibleSpawnStyles[Random.Range(0, properties.possibleSpawnStyles.Count)];
             int count = Random.Range(1, properties.maxSpawnCount + 1);
-            float delay = Random.Range(0f, 3f);
-
+            float spawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+            Debug.Log(string.Format("Spawn delay per entity: {0}!", spawnDelay));
             Spawner spawner = SetSpawner(spawnerDirection);
             ObjectPooler pooler = entityObjectPoolers[entityType];
             Debug.Log(string.Format("Spawning {0} entity!", entityType));
-            yield return StartCoroutine(SpawnEntity(pooler, spawner, spawnPoint, spawnStyle, count, delay));
+            AdjustDifficulty();
+            // Spawn entity
+            StartCoroutine(SpawnEntity(pooler, spawner, spawnPoint, spawnStyle, count, spawnDelay));
+            yield return null;
         }
         yield return null;
     }
@@ -195,5 +227,28 @@ public class LevelRunner : MonoBehaviour
     IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
+    }
+
+    // Updates the difficulty based off of the number of entities that are spawned already.
+    // Currently decreases the time between spawning the next entity
+    void AdjustDifficulty()
+    {
+        entitiesSpawned++;
+        // If a set amount of entities are spawned, decrease the delay times
+        // between spawn commands
+        if (entitiesSpawned % entitiesUntilDifficultyScaling == 0)
+        {
+            if (minCommandDelay - commandDelayReduction > 0)
+            {
+                minCommandDelay -= commandDelayReduction;
+                Debug.Log(string.Format("Adjusted difficulty. New min delay: {0}", minCommandDelay));
+            }
+            if (maxCommandDelay - commandDelayReduction > 0)
+            {
+                maxCommandDelay -= commandDelayReduction;
+                Debug.Log(string.Format("Adjusted difficulty. New max delay: {0}", maxCommandDelay));
+
+            }
+        }
     }
 }
