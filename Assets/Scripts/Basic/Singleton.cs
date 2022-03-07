@@ -41,6 +41,13 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
+    public void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
     public static GameObject GameObject
     {
         get { return Instance.gameObject; }
