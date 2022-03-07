@@ -30,9 +30,7 @@ public class DarkBeam : Laser
         lineRenderer.SetPosition(1, newVec);
 
         Vector2 direction = (Vector2)newVec - (Vector2)transform.position;
-        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, direction.magnitude);
-
-
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, direction.magnitude, LayerMask.GetMask("Enemy"));
         if (hit && hit.transform.gameObject.tag == "Enemy")
         {
             lineRenderer.SetPosition(1, hit.point);

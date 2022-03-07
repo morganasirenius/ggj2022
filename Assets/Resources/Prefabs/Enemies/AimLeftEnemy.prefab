@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 502711955769907588}
   - component: {fileID: 6911115032455514576}
   - component: {fileID: 3404267714523473115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AimLeftEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4797570731799910607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
