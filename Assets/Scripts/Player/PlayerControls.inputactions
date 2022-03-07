@@ -40,20 +40,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Nuke",
+                    "type": "Button",
+                    "id": "44d531d3-c8e2-45d6-9f40-17bf5b73b7e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "514a71f0-e818-4e67-b6d7-c2dc00e8fe1d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "b9ffcf80-1711-42e4-b748-4f1f9b680355",
@@ -177,17 +175,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9dcdfabb-371c-461f-b6ce-ad1fd1c73707",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LightBeam",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "30cf6833-8908-4bb5-835f-4f17ade0f5c8",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -205,6 +192,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfcf2ada-15f7-42d3-b709-22e334087fe6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Nuke",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca922ed1-f682-477f-871b-21de23fd477c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Nuke",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

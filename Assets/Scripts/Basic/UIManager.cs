@@ -9,12 +9,13 @@ public class UIManager : Singleton<UIManager>
     public TMP_Text ScoreText;
     public TMP_Text HighscoreText;
     public TMP_Text HealthText;
+    public TMP_Text NukeChargeText;
 
     // End Game UI
     public GameObject EndScreenUI;
     public TMP_Text EndScreenHighscoreText;
     public TMP_Text EndScreenScoreText;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,11 @@ public class UIManager : Singleton<UIManager>
         HighscoreText.text = "Highscore: " + highScore.ToString();
         EndScreenScoreText.text = "Your score: " + playScore.ToString();
         EndScreenHighscoreText.text = "Highscore: " + highScore.ToString();
+    }
+
+    public void UpdateNukeCharges(int charges)
+    {
+        NukeChargeText.text = "Charges: " + charges;
     }
 
     public void EndScreen()

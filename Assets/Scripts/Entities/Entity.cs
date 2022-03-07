@@ -60,7 +60,7 @@ public class Entity : MonoBehaviour
         currentHealth = health;
     }
 
-    protected void addScore()
+    protected void AddScore()
     {
         Score.Instance.AddScore(scoreValue);
     }

@@ -80,10 +80,7 @@ public class Enemy : Entity
             sr.material = ResourceManager.Instance.MaterialDictionary["WhiteFlash"];
             if (health <= 0)
             {
-                GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
-                AudioManager.Instance.PlaySfx("explode-2");
-                addScore();
-                ResetEnemy();
+                DestroyEnemy();
             }
             else
             {
@@ -94,6 +91,13 @@ public class Enemy : Entity
         }
     }
 
+    public void DestroyEnemy()
+    {
+        GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
+        AudioManager.Instance.PlaySfx("explode-2", 0.5f);
+        AddScore();
+        ResetEnemy();
+    }
     private void ResetMaterial()
     {
         sr.material = matDefault;
