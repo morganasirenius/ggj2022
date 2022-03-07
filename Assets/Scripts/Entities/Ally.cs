@@ -46,7 +46,7 @@ public class Ally : Entity
     private MovementStates state;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _propBlock = new MaterialPropertyBlock();
         _renderer = TheShield.GetComponent<Renderer>();
@@ -157,12 +157,12 @@ public class Ally : Entity
         Debug.Log(collision);
         if (collision.gameObject.tag == "Player" && rescued)
         {
-            ResetAlly();
+            OnReset();
             gameObject.SetActive(false);
         }
     }
 
-    void ResetAlly()
+    public override void OnReset()
     {
         rescued = false;
         currentTime = 0;
