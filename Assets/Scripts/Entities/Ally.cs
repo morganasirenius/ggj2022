@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Ally : Entity
 {
 
+    public SpriteRenderer spriteRenderer;
 
     [SerializeField]
     private float maxTime = 1;
@@ -53,11 +53,13 @@ public class Ally : Entity
         Debug.Log(_propBlock);
         Debug.Log(_renderer);
         target = PlayerController.Instance.transform;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Initialize();
     }
 
     void OnEnable()
     {
+        spriteRenderer.sprite = ResourceManager.Instance.AnimalSpriteArray[Random.Range(0,ResourceManager.Instance.AnimalSpriteArray.Length)];
         Initialize();
     }
 

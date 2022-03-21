@@ -17,6 +17,7 @@ public class ResourceManager : Singleton<ResourceManager>
 
     public Dictionary<string, AudioClip> MusicDictionary { get; set; }
     public Dictionary<string, AudioClip> SfxDictionary { get; set; }
+    public Sprite[] AnimalSpriteArray { get; set; }
 
     public ObjectPooler ProjectilePooler;
 
@@ -27,6 +28,7 @@ public class ResourceManager : Singleton<ResourceManager>
         LoadMaterials();
         LoadParticles();
         LoadAudio();
+        LoadAnimalSprites();
     }
 
     void LoadLevels()
@@ -93,4 +95,8 @@ public class ResourceManager : Singleton<ResourceManager>
         }
     }
 
+    void LoadAnimalSprites()
+    {
+        AnimalSpriteArray = Resources.LoadAll<Sprite>("Animals");
+    }
 }
