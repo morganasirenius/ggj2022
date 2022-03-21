@@ -65,7 +65,7 @@ public class Ally : Entity
 
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
         if (rescued)
         {

@@ -44,9 +44,8 @@ public class Enemy : Entity
 
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
-        base.Update();
         // Only attempt to attack if infinite attacks
         // or there are enough current attacks
         if (maximumAttacks <= 0 || currentAttacks > 0)
@@ -76,9 +75,9 @@ public class Enemy : Entity
         currentDamageTime -= Time.deltaTime;
         if (currentDamageTime <= 0)
         {
-            health -= damagedTaken;
+            currentHealth -= damagedTaken;
             sr.material = ResourceManager.Instance.MaterialDictionary["WhiteFlash"];
-            if (health <= 0)
+            if (currentHealth <= 0)
             {
                 DestroyEnemy();
             }
