@@ -147,9 +147,9 @@ public class Ally : Entity
 
             if (currentTime >= maxTime)
             {
-                Debug.Log("You rescued them yay");
                 rescued = true;
                 AddScore();
+                PlayerController.Instance.UpdateAlliesSaved();
                 AudioManager.Instance.PlaySfx("rescue");
             }
         }
