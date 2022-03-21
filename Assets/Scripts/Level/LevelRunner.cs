@@ -116,7 +116,7 @@ public class LevelRunner : MonoBehaviour
             }
 
             // Spawn next
-            Globals.EntityType entityType = (Globals.EntityType)Random.Range(0, 1);
+            Globals.EntityType entityType = (Globals.EntityType)Random.Range(0, System.Enum.GetValues(typeof(Globals.EntityType)).Length);
             Globals.EntityProperties properties = Globals.entityMap[entityType];
             Globals.Direction spawnerDirection = properties.spawnDirection;
             Globals.SpawnPoints spawnPoint = properties.possibleSpawnPoints[Random.Range(0, properties.possibleSpawnPoints.Count)];
