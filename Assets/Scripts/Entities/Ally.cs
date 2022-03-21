@@ -135,22 +135,24 @@ public class Ally : Entity
         return true;
     }
 
-    public bool Rescue()
+    public void Rescue()
     {
-        currentTime += Time.deltaTime;
-        float percentageTime = 1 - (currentTime / maxTime);
-        _renderer.GetPropertyBlock(_propBlock);
-        _propBlock.SetFloat("_EdgeDisolve", percentageTime);
-        _renderer.SetPropertyBlock(_propBlock);
-
-        if (currentTime >= maxTime)
+        if (!rescued)
         {
-            Debug.Log("You rescued them yay");
-            rescued = true;
-            AddScore();
-            AudioManager.Instance.PlaySfx("rescue");
+            currentTime += Time.deltaTime;
+            float percentageTime = 1 - (currentTime / maxTime);
+            _renderer.GetPropertyBlock(_propBlock);
+            _propBlock.SetFloat("_EdgeDisolve", percentageTime);
+            _renderer.SetPropertyBlock(_propBlock);
+
+            if (currentTime >= maxTime)
+            {
+                Debug.Log("You rescued them yay");
+                rescued = true;
+                AddScore();
+                AudioManager.Instance.PlaySfx("rescue");
+            }
         }
-        return rescued;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
