@@ -14,14 +14,18 @@ public class PlayerController : Singleton<PlayerController>
     private int nukeCharges = 3;
     [SerializeField]
     private float nukeClearDelay = 0.1f;
+    [SerializeField]
+    private int numAlliesToNukeCharge = 5;
 
-
-    public LightBeam lightBeam;
-    public List<DarkBeam> darkBeam;
     private PlayerControls playerControls;
     private Quaternion rotation;
 
+    private int alliesSaved;
+
+    public LightBeam lightBeam;
+    public List<DarkBeam> darkBeam;
     public bool isDead;
+
 
     private void Awake()
     {
@@ -112,6 +116,18 @@ public class PlayerController : Singleton<PlayerController>
             UIManager.Instance.EndScreen();
             gameObject.SetActive(false);
             isDead = true;
+        }
+    }
+
+    // Updates the number of allies saved for the player
+    // If the number of allies saved hits a threshold, add a nuke charge
+    public void UpdateAlliesSaved()
+    {
+        alliesSaved++;
+        if (alliesSaved % numAlliesToNukeCharge == 0)
+        {
+            nukeCharges++;
+            UIManager.Instance.UpdateNukeCharges(nukeCharges);
         }
     }
 
