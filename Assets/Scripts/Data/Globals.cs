@@ -4,6 +4,15 @@ using UnityEngine;
 
 public static class Globals
 {
+    // Defines tutorial text associated with a part of a tutorial
+    // These enums map 1-1 with the associated scriptable object
+    public enum TutorialTextNames
+    {
+        Movement = 0,
+        Attack,
+        Nuke,
+        Save
+    }
     public enum Action
     {
         Spawn = 0,
