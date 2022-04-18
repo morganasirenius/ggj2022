@@ -15,6 +15,7 @@ public class TutorialMovementState : State
         Debug.Log("Movement Tutorial Start");
         playerControls.Space.Move.performed += HandleInput;
         //Display Dialogue UI
+        //TutorialManager.Instance.DisplayTutorialText('sdf');
     }
 
     public override void HandleInput(InputAction.CallbackContext context)

@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 68305557}
   - component: {fileID: 68305559}
   - component: {fileID: 68305560}
+  - component: {fileID: 68305561}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -290,6 +291,19 @@ MonoBehaviour:
   EndScreenUI: {fileID: 1270165936}
   EndScreenHighscoreText: {fileID: 1930090887}
   EndScreenScoreText: {fileID: 2129802412}
+--- !u!114 &68305561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68305556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080dc457d767b6141bf5d8a21f0069c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: {fileID: 0}
 --- !u!1 &99699956
 GameObject:
   m_ObjectHideFlags: 0
