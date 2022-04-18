@@ -9,7 +9,6 @@ using UnityEngine;
 /// </summary> 
 public class ResourceManager : Singleton<ResourceManager>
 {
-    // Contains all recipes in the game
     public LevelData[] Levels;
     public Dictionary<string, LevelData> LevelDictionary { get; set; }
     public Dictionary<string, Material> MaterialDictionary { get; set; }
@@ -17,6 +16,8 @@ public class ResourceManager : Singleton<ResourceManager>
 
     public Dictionary<string, AudioClip> MusicDictionary { get; set; }
     public Dictionary<string, AudioClip> SfxDictionary { get; set; }
+    public Dictionary<string, TutorialText> TutorialTextDictionary { get; set; }
+
     public Sprite[] AnimalSpriteArray { get; set; }
 
     public ObjectPooler ProjectilePooler;
@@ -29,6 +30,7 @@ public class ResourceManager : Singleton<ResourceManager>
         LoadParticles();
         LoadAudio();
         LoadAnimalSprites();
+        LoadTutorialText();
     }
 
     void LoadLevels()
@@ -98,5 +100,16 @@ public class ResourceManager : Singleton<ResourceManager>
     void LoadAnimalSprites()
     {
         AnimalSpriteArray = Resources.LoadAll<Sprite>("Animals");
+    }
+
+    void LoadTutorialText()
+    {
+        TutorialText[] tutorialTexts = Resources.LoadAll<TutorialText>("TutorialTexts");
+        TutorialTextDictionary = new Dictionary<string, TutorialText>();
+
+        foreach (TutorialText text in tutorialTexts)
+        {
+            TutorialTextDictionary[text.name] = text;
+        }
     }
 }
