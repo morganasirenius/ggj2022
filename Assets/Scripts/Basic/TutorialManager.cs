@@ -14,10 +14,6 @@ public class TutorialManager : Singleton<TutorialManager>
     [SerializeField]
     private TMP_Text tutorialText;
 
-    // State currentState;
-    // State stateMovement;
-    // State ...
-
     void Start()
     {
         // DisplayTutorialText(Globals.TutorialTextNames.Save);
