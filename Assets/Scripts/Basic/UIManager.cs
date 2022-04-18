@@ -19,6 +19,8 @@ public class UIManager : Singleton<UIManager>
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("NGUEYEBGN");
+
         Score.Instance.OnScoreChange += UpdateText;
         UpdateText(0, Score.Instance.HighScore);
     }
