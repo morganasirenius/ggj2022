@@ -284,10 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fb5a5d452e2204986a8ff0ee65664c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreText: {fileID: 0}
-  HighscoreText: {fileID: 0}
-  HealthText: {fileID: 0}
-  NukeChargeText: {fileID: 0}
+  ScoreText: {fileID: 598975450}
+  HighscoreText: {fileID: 1447089854}
+  HealthText: {fileID: 1360468755}
+  NukeChargeText: {fileID: 1387814753}
   EndScreenUI: {fileID: 1270165936}
   EndScreenHighscoreText: {fileID: 1930090887}
   EndScreenScoreText: {fileID: 2129802412}
@@ -16368,8 +16368,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.5
-  m_fontSizeBase: 20.5
+  m_fontSize: 25.68
+  m_fontSizeBase: 25.68
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
