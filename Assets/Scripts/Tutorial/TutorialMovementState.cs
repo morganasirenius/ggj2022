@@ -12,10 +12,9 @@ public class TutorialMovementState : State
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Movement Tutorial Start");
         playerControls.Space.Move.performed += HandleInput;
         //Display Dialogue UI
-        //TutorialManager.Instance.DisplayTutorialText('sdf');
+        TutorialManager.Instance.DisplayTutorialText(Globals.TutorialTextNames.Movement);
     }
 
     public override void HandleInput(InputAction.CallbackContext context)
@@ -46,8 +45,7 @@ public class TutorialMovementState : State
         base.LogicUpdate();
         if (left_triggered && right_triggered && up_triggered && down_triggered)
         {
-            Debug.Log("Movement Tutorial completed");
-            //StateMachine.Instance.ChangeState();
+            TutorialManager.Instance.ChangeState(new TutorialAttackState());
         }
     }
 

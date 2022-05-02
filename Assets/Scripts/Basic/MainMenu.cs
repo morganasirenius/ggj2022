@@ -7,6 +7,14 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("LevelOne");
+        
+        if (PlayerData.Instance.TutorialDone)
+        {
+            SceneManager.LoadScene("LevelOne");
+        }
+        else
+        {
+            SceneManager.LoadScene("LevelTutorial");
+        }
     }
 }

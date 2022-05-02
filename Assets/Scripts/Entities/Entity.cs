@@ -46,6 +46,6 @@ public class Entity : MonoBehaviour
 
     protected void AddScore()
     {
-        Score.Instance.AddScore(scoreValue);
+        PlayerData.Instance.AddScore(scoreValue);
     }
 }
