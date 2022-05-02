@@ -19,8 +19,8 @@ public class UIManager : Singleton<UIManager>
     // Start is called before the first frame update
     void Start()
     {
-        Score.Instance.OnScoreChange += UpdateText;
-        UpdateText(0, Score.Instance.HighScore);
+        PlayerData.Instance.OnScoreChange += UpdateText;
+        UpdateText(0, PlayerData.Instance.HighScore);
     }
 
     public void UpdateHealth(int health)

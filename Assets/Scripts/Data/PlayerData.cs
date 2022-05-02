@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Score : Singleton<Score>
+//Rename this to PlayerData
+public class PlayerData : Singleton<PlayerData>
 {
+    public bool TutorialDone = false;
     public int HighScore = 0;
     private int m_PlayerScore = 0;
     public int PlayerScore
@@ -27,6 +29,11 @@ public class Score : Singleton<Score>
     public void ResetScore()
     {
         PlayerScore = 0;
+    }
+
+    public void ResetHighScore()
+    {
+        HighScore = 0;
     }
 
 }

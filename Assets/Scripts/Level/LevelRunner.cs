@@ -47,7 +47,7 @@ public class LevelRunner : MonoBehaviour
         LevelData level = ResourceManager.Instance.LevelDictionary["LevelOne"];
         List<Globals.EntityType> entities = level.levelEntities;
         List<string> commands = level.levelCommands;
-        Score.Instance.ResetScore();
+        PlayerData.Instance.ResetScore();
         SetupObjectPoolers(entities);
         PlayLevelMusic(level.levelMusic);
         StartCoroutine(RunEndlessLevel());

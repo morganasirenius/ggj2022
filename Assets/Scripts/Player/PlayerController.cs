@@ -17,7 +17,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField]
     private int numAlliesToNukeCharge = 5;
 
-    private PlayerControls playerControls;
+    public PlayerControls playerControls;
     private Quaternion rotation;
 
     private int alliesSaved;
