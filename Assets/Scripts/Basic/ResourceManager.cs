@@ -16,7 +16,10 @@ public class ResourceManager : Singleton<ResourceManager>
 
     public Dictionary<string, AudioClip> MusicDictionary { get; set; }
     public Dictionary<string, AudioClip> SfxDictionary { get; set; }
+    public Dictionary<string, AudioClip> RescueSfxDictionary { get; set; }
     public Dictionary<string, TutorialText> TutorialTextDictionary { get; set; }
+
+    public List<string> RescueSfxNames { get; set; }
 
     public Sprite[] AnimalSpriteArray { get; set; }
 
@@ -82,9 +85,13 @@ public class ResourceManager : Singleton<ResourceManager>
     {
         AudioClip[] music = Resources.LoadAll<AudioClip>("Audio/Music");
         AudioClip[] sfx = Resources.LoadAll<AudioClip>("Audio/SFX");
+        AudioClip[] rescueSfx = Resources.LoadAll<AudioClip>("Audio/SFX/Rescues");
 
         MusicDictionary = new Dictionary<string, AudioClip>();
         SfxDictionary = new Dictionary<string, AudioClip>();
+        RescueSfxDictionary = new Dictionary<string, AudioClip>();
+
+        RescueSfxNames = new List<string>();
 
         foreach (AudioClip clip in music)
         {
@@ -94,6 +101,12 @@ public class ResourceManager : Singleton<ResourceManager>
         foreach (AudioClip clip in sfx)
         {
             SfxDictionary[clip.name] = clip;
+        }
+
+        foreach (AudioClip clip in rescueSfx)
+        {
+            RescueSfxDictionary[clip.name] = clip;
+            RescueSfxNames.Add(clip.name);
         }
     }
 

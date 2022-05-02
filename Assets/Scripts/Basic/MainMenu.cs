@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject MainScreen;
+    [SerializeField]
+    private GameObject CreditsScreen;
     public void StartGame()
     {
-        
+
         if (PlayerData.Instance.TutorialDone)
         {
             SceneManager.LoadScene("LevelOne");
@@ -18,4 +22,15 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void SetCreditsScreen()
+    {
+        MainScreen.SetActive(false);
+        CreditsScreen.SetActive(true);
+    }
+
+    public void SetMainScreen()
+    {
+        CreditsScreen.SetActive(false);
+        MainScreen.SetActive(true);
+    }
 }
