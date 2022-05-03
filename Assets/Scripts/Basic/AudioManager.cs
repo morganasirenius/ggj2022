@@ -23,6 +23,13 @@ public class AudioManager : Singleton<AudioManager>
         SoundEffect.PlayOneShot(ResourceManager.Instance.SfxDictionary[name], volume);
     }
 
+    public void PlayRandomRescueSfx(float volume = 1.0f)
+    {
+        string sfxName = ResourceManager.Instance.RescueSfxNames[Random.Range(0, ResourceManager.Instance.RescueSfxNames.Count)];
+        SoundEffect.PlayOneShot(ResourceManager.Instance.RescueSfxDictionary[sfxName], volume);
+    }
+
+
     public void PlayBeamSound(string name)
     {
         BeamEffect.clip = ResourceManager.Instance.SfxDictionary[name];

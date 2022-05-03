@@ -59,7 +59,7 @@ public class Ally : Entity
 
     void OnEnable()
     {
-        spriteRenderer.sprite = ResourceManager.Instance.AnimalSpriteArray[Random.Range(0,ResourceManager.Instance.AnimalSpriteArray.Length)];
+        spriteRenderer.sprite = ResourceManager.Instance.AnimalSpriteArray[Random.Range(0, ResourceManager.Instance.AnimalSpriteArray.Length)];
         Initialize();
     }
 
@@ -152,7 +152,7 @@ public class Ally : Entity
                 rescued = true;
                 AddScore();
                 PlayerController.Instance.UpdateAlliesSaved();
-                AudioManager.Instance.PlaySfx("rescue");
+                AudioManager.Instance.PlayRandomRescueSfx();
             }
         }
     }
