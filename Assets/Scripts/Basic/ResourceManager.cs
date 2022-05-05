@@ -23,6 +23,8 @@ public class ResourceManager : Singleton<ResourceManager>
 
     public Sprite[] AnimalSpriteArray { get; set; }
 
+    public Dictionary<string, List<Sprite>> SpaceObjectsDictionary { get; set; }
+
     public ObjectPooler ProjectilePooler;
 
     private void Awake()
@@ -34,6 +36,7 @@ public class ResourceManager : Singleton<ResourceManager>
         LoadAudio();
         LoadAnimalSprites();
         LoadTutorialText();
+        LoadSpaceObjects();
     }
 
     void LoadLevels()
@@ -113,6 +116,27 @@ public class ResourceManager : Singleton<ResourceManager>
     void LoadAnimalSprites()
     {
         AnimalSpriteArray = Resources.LoadAll<Sprite>("Animals");
+    }
+
+    void LoadSpaceObjects()
+    {
+        SpaceObjectsDictionary = new Dictionary<string, List<Sprite>>();
+        string[] spriteNames = { "Asteroids", "Planets", "Clouds", "Stars" };
+        foreach (string name in spriteNames)
+        {
+            List<Sprite> SpriteArray = new List<Sprite>();
+            Sprite[] sprites = Resources.LoadAll<Sprite>("SpaceObjects/" + name);
+            foreach (Sprite sprite in sprites)
+            {
+                SpriteArray.Add(sprite);
+            }
+            SpaceObjectsDictionary[name] = SpriteArray;
+        }
+    }
+
+    public List<Sprite> ReturnSpaceObjects(string name)
+    {
+        return SpaceObjectsDictionary[name];
     }
 
     void LoadTutorialText()

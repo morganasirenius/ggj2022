@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 25c6e9ae632f4c845a5ad0954e432211
+guid: 5195dcccd06369c4e8a8edd6c01d467a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Asteroids_0
+      name: Stars_Blue_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 3
+        y: 3
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ab369b0315dbe54ea58ccf9b0ce89aa
-      internalID: -1977832597
+      spriteID: b543187f4dc153e43a9586d3731be75a
+      internalID: -382957493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroids_1
+      name: Stars_Blue_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 40
+        y: 7
+        width: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffc24a58e5584604d82e589e10ec7ff4
-      internalID: -1958507403
+      spriteID: 34b96c89ec2a99149a47cd8f914f59c6
+      internalID: 615197717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroids_2
+      name: Stars_Blue_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
+        x: 72
+        y: 7
+        width: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e7a51b9aeededf42bfe2d83cf62869e
-      internalID: -761782287
+      spriteID: 770ee57c17bccc24ab46d742a2034779
+      internalID: -286563774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroids_3
+      name: Stars_Blue_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
+        x: 104
+        y: 7
+        width: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9245a66d6f69ff540a5e4c89d657c507
-      internalID: 443107862
+      spriteID: 3985f6db8469ac64c8281b21be0f5193
+      internalID: 587526104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroids_4
+      name: Stars_Blue_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 138
+        y: 8
+        width: 11
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10edae3201203ea498f0994999eb16fd
-      internalID: 1312427433
+      spriteID: 4a13762d136e0004184bb034aa85f018
+      internalID: -69925366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroids_5
+      name: Stars_Blue_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 171
+        y: 11
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19ca7e05805eef4419e2a7b47ddd9b3e
-      internalID: -226776297
+      spriteID: a16c7038909175b4ebfa26361ee45864
+      internalID: -736918964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroids_6
+      name: Stars_Blue_6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 203
+        y: 11
+        width: 9
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6481622731865647a6dd8d503f7aaf9
-      internalID: -627956419
+      spriteID: 555a1a861ec660d4998de680f45af5ee
+      internalID: 371813914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroids_7
+      name: Stars_Blue_7
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 238
+        y: 11
+        width: 5
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,8 +277,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3296418a04420d04689de2f9c4008cca
-      internalID: -1469959051
+      spriteID: 052af80072b0bdf4bbb293bea8d1b292
+      internalID: 1106536634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stars_Blue_8
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 11
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8423b17e0333ecd458d69d96c88c2d9c
+      internalID: -1765911019
       vertices: []
       indices: 
       edges: []
@@ -294,14 +315,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Asteroids_5: -226776297
-      Asteroids_0: -1977832597
-      Asteroids_3: 443107862
-      Asteroids_6: -627956419
-      Asteroids_2: -761782287
-      Asteroids_4: 1312427433
-      Asteroids_1: -1958507403
-      Asteroids_7: -1469959051
+      Stars_Blue_4: -69925366
+      Stars_Blue_1: 615197717
+      Stars_Blue_5: -736918964
+      Stars_Blue_2: -286563774
+      Stars_Blue_6: 371813914
+      Stars_Blue_3: 587526104
+      Stars_Blue_0: -382957493
+      Stars_Blue_7: 1106536634
+      Stars_Blue_8: -1765911019
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
