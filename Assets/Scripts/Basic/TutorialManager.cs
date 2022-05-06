@@ -77,7 +77,6 @@ public class TutorialManager : Singleton<TutorialManager>
 
     public bool TutorialNukeEnemiesDead()
     {
-        Debug.Log("Child count: " + nukeEnemies.transform.childCount);
         foreach(Transform enemy in nukeEnemies.transform)
         {
             if (enemy.gameObject.activeSelf) return false;

@@ -50,8 +50,6 @@ public class Ally : Entity
     {
         _propBlock = new MaterialPropertyBlock();
         _renderer = TheShield.GetComponent<Renderer>();
-        Debug.Log(_propBlock);
-        Debug.Log(_renderer);
         target = PlayerController.Instance.transform;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Initialize();
@@ -158,7 +156,6 @@ public class Ally : Entity
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision);
         if (collision.gameObject.tag == "Player" && rescued)
         {
             OnReset();
