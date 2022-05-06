@@ -39,7 +39,9 @@ public class Descend : MonoBehaviour
         
         spriteRenderer.sprite = spriteList[Random.Range(0, spriteList.Count)];
         float randScale = Random.Range(MinScale, MaxScale);
-        transform.Rotate (0,0,Random.Range(0, 360));
+        int random_z = Random.Range(0, 22);
+        random_z = random_z * (Random.Range(0, 1) == 0 ? -1 : 1);
+        transform.Rotate (0,0,random_z);
         gameObject.transform.localScale = new Vector3(randScale, randScale, 0);
         transform.position = new Vector2(spawnX, spawnY);
     }

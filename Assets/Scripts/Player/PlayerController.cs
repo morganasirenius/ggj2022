@@ -107,12 +107,10 @@ public class PlayerController : Singleton<PlayerController>
     public void TakeDamage(int damagedTaken)
     {
         health -= damagedTaken;
-        Debug.Log(health);
         UIManager.Instance.UpdateHealth(health);
         if (health <= 0)
         {
             //Show end screen or something
-            Debug.Log("you deadge");
             UIManager.Instance.EndScreen();
             gameObject.SetActive(false);
             isDead = true;
