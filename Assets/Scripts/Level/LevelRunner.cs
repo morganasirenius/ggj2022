@@ -116,7 +116,7 @@ public class LevelRunner : MonoBehaviour
             }
 
             // Spawn next
-            int randomProb = Random.Range(0, 101);
+            int randomProb = Random.Range(0, 101); // Random.Range for ints takes an exclusive upper bound
             Debug.Log(string.Format("Probability: {0}!", randomProb));
             int cumulativeProb = 0;
             Globals.EntityType entityType = Globals.EntityType.Ally;
