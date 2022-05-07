@@ -4,6 +4,14 @@ using UnityEngine;
 
 public static class Globals
 {
+    public enum GachaponRarities
+    {
+        Common = 0,
+        Uncommon,
+        Rare,
+        SuperRare,
+    }
+
     // Defines tutorial text associated with a part of a tutorial
     // These enums map 1-1 with the associated scriptable object
     public enum TutorialTextNames
