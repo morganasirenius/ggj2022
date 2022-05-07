@@ -59,6 +59,7 @@ public static class Globals
 
     public struct EntityProperties
     {
+        public float spawnRate;
         public int maxSpawnCount;
         public Direction spawnDirection;
 
@@ -72,6 +73,7 @@ public static class Globals
         // Allies
         {(EntityType.Ally), new EntityProperties
                                         {
+                                            spawnRate = 0.20f,
                                             maxSpawnCount = 3,
                                             spawnDirection = Direction.Up,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
@@ -80,6 +82,7 @@ public static class Globals
         // Aiming Enemies
         {(EntityType.AimDownEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             maxSpawnCount = 5,
                                             spawnDirection = Direction.Up,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
@@ -87,6 +90,7 @@ public static class Globals
                                         }},
         {(EntityType.AimLeftEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             maxSpawnCount = 5,
                                             spawnDirection = Direction.Right,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
@@ -94,6 +98,7 @@ public static class Globals
                                         }},
         {(EntityType.AimRightEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             maxSpawnCount = 5,
                                             spawnDirection = Direction.Left,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
@@ -102,6 +107,7 @@ public static class Globals
         // Burst Enemies
         {(EntityType.BurstDownEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             maxSpawnCount = 3,
                                             spawnDirection = Direction.Up,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
@@ -110,6 +116,7 @@ public static class Globals
         // Curve Enemies
         {(EntityType.CurveLeftEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             maxSpawnCount = 5,
                                             spawnDirection = Direction.Right,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle},
@@ -117,6 +124,7 @@ public static class Globals
                                         }},
         {(EntityType.CurveRightEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             spawnDirection = Direction.Left,
                                             maxSpawnCount = 5,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle},
@@ -125,6 +133,7 @@ public static class Globals
         // Spread Enemies
         {(EntityType.SpreadDownEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             spawnDirection = Direction.Up,
                                             maxSpawnCount = 5,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},
@@ -133,6 +142,7 @@ public static class Globals
         // Straight Down Enemies
         {(EntityType.StraightDownEnemy), new EntityProperties
                                         {
+                                            spawnRate = 0.10f,
                                             spawnDirection = Direction.Up,
                                             maxSpawnCount = 5,
                                             possibleSpawnPoints = new List<SpawnPoints>(){SpawnPoints.Start, SpawnPoints.Middle, SpawnPoints.Random},

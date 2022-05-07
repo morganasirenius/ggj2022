@@ -116,7 +116,20 @@ public class LevelRunner : MonoBehaviour
             }
 
             // Spawn next
-            Globals.EntityType entityType = (Globals.EntityType)Random.Range(0, System.Enum.GetValues(typeof(Globals.EntityType)).Length);
+            float randomProb = Random.Range(0f, 1f);
+            float cumulativeProb = 0.0f;
+            Globals.EntityType entityType = Globals.EntityType.Ally;
+            foreach (Globals.EntityType type in System.Enum.GetValues(typeof(Globals.EntityType)))
+            {
+                cumulativeProb += Globals.entityMap[type].spawnRate;
+                if (randomProb <= cumulativeProb)
+                {
+                    entityType = type;
+                    Debug.Log(string.Format("Spawning {0}!", entityType));
+                    break;
+                }
+            }
+
             Globals.EntityProperties properties = Globals.entityMap[entityType];
             Globals.Direction spawnerDirection = properties.spawnDirection;
             Globals.SpawnPoints spawnPoint = properties.possibleSpawnPoints[Random.Range(0, properties.possibleSpawnPoints.Count)];
