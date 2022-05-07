@@ -116,8 +116,9 @@ public class LevelRunner : MonoBehaviour
             }
 
             // Spawn next
-            float randomProb = Random.Range(0f, 1f);
-            float cumulativeProb = 0.0f;
+            int randomProb = Random.Range(0, 101);
+            Debug.Log(string.Format("Probability: {0}!", randomProb));
+            int cumulativeProb = 0;
             Globals.EntityType entityType = Globals.EntityType.Ally;
             foreach (Globals.EntityType type in System.Enum.GetValues(typeof(Globals.EntityType)))
             {
@@ -125,7 +126,7 @@ public class LevelRunner : MonoBehaviour
                 if (randomProb <= cumulativeProb)
                 {
                     entityType = type;
-                    Debug.Log(string.Format("Spawning {0}!", entityType));
+                    Debug.Log(string.Format("Spawning enitity: {0}!", entityType));
                     break;
                 }
             }
@@ -139,7 +140,6 @@ public class LevelRunner : MonoBehaviour
             Debug.Log(string.Format("Spawn delay per entity: {0}!", spawnDelay));
             Spawner spawner = SetSpawner(spawnerDirection);
             ObjectPooler pooler = entityObjectPoolers[entityType];
-            Debug.Log(string.Format("Spawning {0} entity!", entityType));
             AdjustDifficulty();
             // Spawn entity
             StartCoroutine(SpawnEntity(pooler, spawner, spawnPoint, spawnStyle, count, spawnDelay));
