@@ -19,6 +19,8 @@ public class ResourceManager : Singleton<ResourceManager>
     public Dictionary<string, AudioClip> RescueSfxDictionary { get; set; }
     public Dictionary<string, TutorialText> TutorialTextDictionary { get; set; }
 
+    public Dictionary<string, AnimalData[]> AnimalDataDictionary { get; set; }
+
     public List<string> RescueSfxNames { get; set; }
 
     public Sprite[] AnimalSpriteArray { get; set; }
@@ -35,6 +37,7 @@ public class ResourceManager : Singleton<ResourceManager>
         LoadParticles();
         LoadAudio();
         LoadAnimalSprites();
+        LoadAnimalData();
         LoadTutorialText();
         LoadSpaceObjects();
     }
@@ -115,7 +118,18 @@ public class ResourceManager : Singleton<ResourceManager>
 
     void LoadAnimalSprites()
     {
-        AnimalSpriteArray = Resources.LoadAll<Sprite>("Animals");
+        AnimalSpriteArray = Resources.LoadAll<Sprite>("AnimalSprites");
+    }
+
+    void LoadAnimalData()
+    {
+        AnimalDataDictionary = new Dictionary<string, AnimalData[]>();
+
+        foreach (Globals.GachaponRarities rarity in System.Enum.GetValues(typeof(Globals.GachaponRarities)))
+        {
+            AnimalData[] dataArray = Resources.LoadAll<AnimalData>(string.Format("AnimalData/{0}", rarity.ToString()));
+            AnimalDataDictionary[rarity.ToString()] = dataArray;
+        }
     }
 
     void LoadSpaceObjects()

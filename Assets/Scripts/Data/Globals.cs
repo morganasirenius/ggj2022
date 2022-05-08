@@ -4,6 +4,24 @@ using UnityEngine;
 
 public static class Globals
 {
+    public enum GachaponRarities
+    {
+        Common = 0,
+        Great,
+        Cool,
+        Wonderful,
+        Glorious,
+    }
+
+    public static Dictionary<GachaponRarities, int> gachaponProbabilities = new Dictionary<GachaponRarities, int>()
+    {
+        {(GachaponRarities.Common), 59},
+        {(GachaponRarities.Great), 25},
+        {(GachaponRarities.Cool), 10},
+        {(GachaponRarities.Wonderful), 5},
+        {(GachaponRarities.Glorious), 1},
+    };
+
     // Defines tutorial text associated with a part of a tutorial
     // These enums map 1-1 with the associated scriptable object
     public enum TutorialTextNames
