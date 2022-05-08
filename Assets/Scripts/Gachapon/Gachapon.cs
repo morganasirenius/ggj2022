@@ -18,7 +18,14 @@ public class Gachapon : MonoBehaviour
         AnimalData[] dataArray = ResourceManager.Instance.AnimalDataDictionary[rarity.ToString()];
         AnimalData animal = dataArray[Random.Range(0, dataArray.Length)];
         GachaImage.sprite = animal.sprite;
-
+        if (PlayerData.Instance.acquiredAnimals.ContainsKey(animal))
+        {
+            PlayerData.Instance.acquiredAnimals[animal] += 1;
+        }
+        else
+        {
+            PlayerData.Instance.acquiredAnimals[animal] = 1;
+        }
         GachaText.text = string.Format("You got a {0} animal: {1}!", animal.rarity.ToString(), animal.animalName);
     }
 
