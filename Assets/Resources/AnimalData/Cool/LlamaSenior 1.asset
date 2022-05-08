@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d4839c79b3d15443af9df463b84ff2e, type: 3}
-  m_Name: LlamaAnya
+  m_Name: LlamaSenior 1
   m_EditorClassIdentifier: 
-  animalName: Llamya
-  sprite: {fileID: 21300000, guid: be004e9ac5d17724b8a8935f1ea94033, type: 3}
-  rarity: 1
+  animalName: Senior Llama
+  sprite: {fileID: 21300000, guid: c32aa7aae7a55bb4c8acb7974a3ff4a5, type: 3}
+  rarity: 2

@@ -19,11 +19,11 @@ public class ResourceManager : Singleton<ResourceManager>
     public Dictionary<string, AudioClip> RescueSfxDictionary { get; set; }
     public Dictionary<string, TutorialText> TutorialTextDictionary { get; set; }
 
+    public Dictionary<string, AnimalData[]> AnimalDataDictionary { get; set; }
+
     public List<string> RescueSfxNames { get; set; }
 
     public Sprite[] AnimalSpriteArray { get; set; }
-
-    public AnimalData[] AnimalDataArray { get; set; }
 
     public Dictionary<string, List<Sprite>> SpaceObjectsDictionary { get; set; }
 
@@ -123,7 +123,13 @@ public class ResourceManager : Singleton<ResourceManager>
 
     void LoadAnimalData()
     {
-        AnimalDataArray = Resources.LoadAll<AnimalData>("AnimalData");
+        AnimalDataDictionary = new Dictionary<string, AnimalData[]>();
+
+        foreach (Globals.GachaponRarities rarity in System.Enum.GetValues(typeof(Globals.GachaponRarities)))
+        {
+            AnimalData[] dataArray = Resources.LoadAll<AnimalData>(string.Format("AnimalData/{0}", rarity.ToString()));
+            AnimalDataDictionary[rarity.ToString()] = dataArray;
+        }
     }
 
     void LoadSpaceObjects()

@@ -14,9 +14,27 @@ public class Gachapon : MonoBehaviour
 
     public void Roll()
     {
-        AnimalData animal = ResourceManager.Instance.AnimalDataArray[Random.Range(0, ResourceManager.Instance.AnimalDataArray.Length)];
+        Globals.GachaponRarities rarity = DetermineRarity();
+        AnimalData[] dataArray = ResourceManager.Instance.AnimalDataDictionary[rarity.ToString()];
+        AnimalData animal = dataArray[Random.Range(0, dataArray.Length)];
         GachaImage.sprite = animal.sprite;
 
-        GachaText.text = string.Format("You got {0}!", animal.animalName);
+        GachaText.text = string.Format("You got a {0} animal: {1}!", animal.rarity.ToString(), animal.animalName);
+    }
+
+    public Globals.GachaponRarities DetermineRarity()
+    {
+        int randomProb = Random.Range(0, 101); // Random.Range for ints takes an exclusive upper bound
+        Debug.Log(string.Format("Probability: {0}!", randomProb));
+        int cumulativeProb = 0;
+        foreach (Globals.GachaponRarities rarity in System.Enum.GetValues(typeof(Globals.GachaponRarities)))
+        {
+            cumulativeProb += Globals.gachaponProbabilities[rarity];
+            if (randomProb <= cumulativeProb)
+            {
+                return rarity;
+            }
+        }
+        return Globals.GachaponRarities.Common;
     }
 }
