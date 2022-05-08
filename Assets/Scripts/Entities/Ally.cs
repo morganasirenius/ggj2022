@@ -57,7 +57,7 @@ public class Ally : Entity
 
     void OnEnable()
     {
-        spriteRenderer.sprite = ResourceManager.Instance.AnimalSpriteArray[Random.Range(0, ResourceManager.Instance.AnimalSpriteArray.Length)];
+        spriteRenderer.sprite = PlayerData.Instance.currentAnimalSkins[Random.Range(0, PlayerData.Instance.currentAnimalSkins.Count)];
         Initialize();
     }
 

@@ -18,14 +18,14 @@ public class ResourceManager : Singleton<ResourceManager>
     public Dictionary<string, AudioClip> SfxDictionary { get; set; }
     public Dictionary<string, AudioClip> RescueSfxDictionary { get; set; }
     public Dictionary<string, TutorialText> TutorialTextDictionary { get; set; }
-
     public Dictionary<string, AnimalData[]> AnimalDataDictionary { get; set; }
+    public Dictionary<string, List<Sprite>> SpaceObjectsDictionary { get; set; }
 
     public List<string> RescueSfxNames { get; set; }
 
     public Sprite[] AnimalSpriteArray { get; set; }
 
-    public Dictionary<string, List<Sprite>> SpaceObjectsDictionary { get; set; }
+
 
     public ObjectPooler ProjectilePooler;
 
@@ -118,7 +118,7 @@ public class ResourceManager : Singleton<ResourceManager>
 
     void LoadAnimalSprites()
     {
-        AnimalSpriteArray = Resources.LoadAll<Sprite>("AnimalSprites");
+        AnimalSpriteArray = Resources.LoadAll<Sprite>("AnimalSprites/Default");
     }
 
     void LoadAnimalData()
