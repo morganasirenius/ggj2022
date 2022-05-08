@@ -6,12 +6,16 @@ using UnityEngine;
 public class PlayerData : Singleton<PlayerData>
 {
     public bool TutorialDone = false;
+
+    // Dictionary of animals acquired by rolling in gachapon
+    public Dictionary<AnimalData, int> acquiredAnimals = new Dictionary<AnimalData, int>();
     public int HighScore = 0;
     private int m_PlayerScore = 0;
     public int PlayerScore
     {
-        get {return m_PlayerScore;}
-        set {
+        get { return m_PlayerScore; }
+        set
+        {
             if (m_PlayerScore == value) return;
             m_PlayerScore = value;
             if (m_PlayerScore > HighScore) HighScore = PlayerScore;
