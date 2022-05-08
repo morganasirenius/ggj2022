@@ -9,6 +9,7 @@ public class PlayerData : Singleton<PlayerData>
 
     // Dictionary of animals acquired by rolling in gachapon
     public Dictionary<AnimalData, int> acquiredAnimals = new Dictionary<AnimalData, int>();
+    public List<Sprite> currentAnimalSkins = new List<Sprite>();
     public int HighScore = 0;
     private int m_PlayerScore = 0;
     public int PlayerScore
@@ -40,4 +41,11 @@ public class PlayerData : Singleton<PlayerData>
         HighScore = 0;
     }
 
+    public void Start()
+    {
+        foreach (Sprite animal in ResourceManager.Instance.AnimalSpriteArray)
+        {
+            currentAnimalSkins.Add(animal);
+        }
+    }
 }
