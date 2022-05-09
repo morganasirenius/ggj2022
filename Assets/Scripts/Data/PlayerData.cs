@@ -21,7 +21,12 @@ public class PlayerData : Singleton<PlayerData>
         {
             if (m_PlayerScore == value) return;
             m_PlayerScore = value;
-            if (m_PlayerScore > HighScore) HighScore = PlayerScore;
+            if (m_PlayerScore > HighScore)
+            {
+                HighScore = PlayerScore;
+                PlayerPrefs.SetInt("HighScore", HighScore);
+                PlayerPrefs.Save();
+            }
             if (OnScoreChange != null)
                 OnScoreChange(m_PlayerScore, HighScore);
         }
@@ -51,6 +56,10 @@ public class PlayerData : Singleton<PlayerData>
 
     public void Start()
     {
+        // Get saved values
+        HighScore = PlayerPrefs.GetInt("HighScore", HighScore);
+        // TODO: Add rolls when change is merged in
+
         foreach (Sprite animal in ResourceManager.Instance.AnimalSpriteArray)
         {
             currentAnimalSkins.Add(animal);
