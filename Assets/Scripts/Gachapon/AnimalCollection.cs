@@ -25,14 +25,12 @@ public class AnimalCollection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SetupCollection();
         SetupCurrentAnimals();
     }
 
     void OnEnable()
     {
         SetupCollection();
-        // SetupCurrentAnimals();
     }
 
     void OnDisable()

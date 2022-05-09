@@ -6,20 +6,20 @@ public static class Globals
 {
     public enum GachaponRarities
     {
-        Common = 0,
+        Nice = 0,
         Great,
-        Cool,
+        Awesome,
         Wonderful,
-        Glorious,
+        Amazing,
     }
 
     public static Dictionary<GachaponRarities, int> gachaponProbabilities = new Dictionary<GachaponRarities, int>()
     {
-        {(GachaponRarities.Common), 59},
+        {(GachaponRarities.Nice), 59},
         {(GachaponRarities.Great), 25},
-        {(GachaponRarities.Cool), 10},
+        {(GachaponRarities.Awesome), 10},
         {(GachaponRarities.Wonderful), 5},
-        {(GachaponRarities.Glorious), 1},
+        {(GachaponRarities.Amazing), 1},
     };
 
     // Defines tutorial text associated with a part of a tutorial
