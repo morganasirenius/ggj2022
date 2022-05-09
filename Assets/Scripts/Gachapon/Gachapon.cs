@@ -26,7 +26,7 @@ public class Gachapon : MonoBehaviour
         {
             PlayerData.Instance.acquiredAnimals[animal] = 1;
         }
-        GachaText.text = string.Format("You got a {0} animal: {1}!", animal.rarity.ToString(), animal.animalName);
+        GachaText.text = string.Format("{0}! \n You got {1}!", animal.rarity.ToString(), animal.animalName);
     }
 
     public Globals.GachaponRarities DetermineRarity()
@@ -42,6 +42,6 @@ public class Gachapon : MonoBehaviour
                 return rarity;
             }
         }
-        return Globals.GachaponRarities.Common;
+        return Globals.GachaponRarities.Nice;
     }
 }
