@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalName: Llama Lena
   sprite: {fileID: 21300000, guid: a0d7f094f87029b429568685ea600328, type: 3}
-  rarity: 2
+  rarity: 3

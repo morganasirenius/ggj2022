@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class Globals
 {
+    // For every X score, get a roll
+    public static int scoreForRoll = 500;
     public enum GachaponRarities
     {
         Nice = 0,
@@ -84,8 +86,6 @@ public static class Globals
         public List<SpawnPoints> possibleSpawnPoints;
         public List<SpawnStyle> possibleSpawnStyles;
     }
-
-
     public static Dictionary<EntityType, EntityProperties> entityMap = new Dictionary<EntityType, EntityProperties>()
     {
         // Allies
