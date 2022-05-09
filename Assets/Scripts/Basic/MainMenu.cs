@@ -9,6 +9,12 @@ public class MainMenu : MonoBehaviour
     private GameObject MainScreen;
     [SerializeField]
     private GameObject CreditsScreen;
+    [SerializeField]
+    private GameObject GachaScreen;
+    [SerializeField]
+    private GameObject CollectionScreen;
+    [SerializeField]
+    private GameObject CurrentScreen;
     public void StartGame()
     {
 
@@ -24,13 +30,28 @@ public class MainMenu : MonoBehaviour
 
     public void SetCreditsScreen()
     {
-        MainScreen.SetActive(false);
+        CurrentScreen.SetActive(false);
         CreditsScreen.SetActive(true);
+        CurrentScreen = CreditsScreen;
     }
 
     public void SetMainScreen()
     {
-        CreditsScreen.SetActive(false);
+        CurrentScreen.SetActive(false);
         MainScreen.SetActive(true);
+        CurrentScreen = MainScreen;
+    }
+    public void SetGachaScreen()
+    {
+        CurrentScreen.SetActive(false);
+        GachaScreen.SetActive(true);
+        CurrentScreen = GachaScreen;
+    }
+
+    public void SetCollectionScreen()
+    {
+        CurrentScreen.SetActive(false);
+        CollectionScreen.SetActive(true);
+        CurrentScreen = CollectionScreen;
     }
 }
