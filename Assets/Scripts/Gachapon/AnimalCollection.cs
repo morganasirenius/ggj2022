@@ -18,9 +18,10 @@ public class AnimalCollection : MonoBehaviour
     [SerializeField]
     private TMP_Text AnimalCountText;
 
-    private List<GameObject> SelectionSlots;
-    private Sprite SelectedSprite;
-    private int SelectionIndex;
+    private List<GameObject> selectionSlots;
+    private GameObject currentSelectedAnimal;
+    private Sprite selectedSprite;
+    private int selectionIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,7 @@ public class AnimalCollection : MonoBehaviour
 
     public void SetupCurrentAnimals()
     {
-        SelectionSlots = new List<GameObject>();
+        selectionSlots = new List<GameObject>();
 
         for (int i = 0; i < PlayerData.Instance.currentAnimalSkins.Count; i++)
         {
@@ -49,19 +50,23 @@ public class AnimalCollection : MonoBehaviour
             Sprite sprite = PlayerData.Instance.currentAnimalSkins[i];
             GameObject slot = (GameObject)Instantiate(Resources.Load("Prefabs/Gachapon/Slot"));
             slot.transform.SetParent(SelectedGrid.transform, false);
-            Transform cardGameObject = slot.transform.Find("Card");
-            Transform animalGameObject = slot.transform.Find("Animal");
+            GameObject cardGameObject = slot.transform.Find("Card").gameObject;
+            GameObject animalGameObject = slot.transform.Find("Animal").gameObject;
             animalGameObject.GetComponent<Image>().sprite = sprite;
             cardGameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("CollectionView/SelectedAnimal");
             slot.GetComponent<Button>().onClick.AddListener(delegate
             {
-                SelectionIndex = slotIndex;
-                Debug.Log(sprite.name);
-                ColorBlock block = slot.GetComponent<Button>().colors;
-                block.selectedColor = Color.green;
-                slot.GetComponent<Button>().colors = block;
+                selectionIndex = slotIndex;
+                // Highlight the clicked animal
+                animalGameObject.GetComponent<Image>().color = Color.green;
+                // If an animal is already selected, unhighlight it
+                if (currentSelectedAnimal != null)
+                {
+                    currentSelectedAnimal.GetComponent<Image>().color = Color.white;
+                }
+                currentSelectedAnimal = animalGameObject;
             });
-            SelectionSlots.Add(slot);
+            selectionSlots.Add(slot);
         }
     }
 
@@ -71,8 +76,8 @@ public class AnimalCollection : MonoBehaviour
         {
             GameObject slot = (GameObject)Instantiate(Resources.Load("Prefabs/Gachapon/Slot"));
             slot.transform.SetParent(CollectionGrid.transform, false);
-            Transform cardGameObject = slot.transform.Find("Card");
-            Transform animalGameObject = slot.transform.Find("Animal");
+            GameObject cardGameObject = slot.transform.Find("Card").gameObject;
+            GameObject animalGameObject = slot.transform.Find("Animal").gameObject;
             animalGameObject.GetComponent<Image>().sprite = data.Key.sprite;
             cardGameObject.GetComponent<Image>().sprite = ResourceManager.Instance.RarityCardsDictionary[data.Key.rarity.ToString()];
             slot.GetComponent<Button>().onClick.AddListener(delegate
@@ -86,8 +91,8 @@ public class AnimalCollection : MonoBehaviour
 
     public void SetSelectedAnimal()
     {
-        PlayerData.Instance.currentAnimalSkins[SelectionIndex] = CurrentAnimalImage.sprite;
-        SelectionSlots[SelectionIndex].transform.Find("Animal").GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
+        PlayerData.Instance.currentAnimalSkins[selectionIndex] = CurrentAnimalImage.sprite;
+        selectionSlots[selectionIndex].transform.Find("Animal").GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
     }
 
     public void CleanUpCollection()
