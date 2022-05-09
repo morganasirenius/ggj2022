@@ -26,14 +26,16 @@ public class Gachapon : MonoBehaviour
 
     public void Roll()
     {
-        if (GachaImage.color.a == 0)
-        {
-            // Set sprite to be visible
-            GachaImage.color = new Color32(255, 255, 255, 255);
-        }
+
 
         if (PlayerData.Instance.Rolls > 0)
         {
+            // Set sprite to be visible if it was previously invisible
+            if (GachaImage.color.a == 0)
+            {
+                GachaImage.color = new Color32(255, 255, 255, 255);
+            }
+
             Globals.GachaponRarities rarity = DetermineRarity();
             AnimalData[] dataArray = ResourceManager.Instance.AnimalDataDictionary[rarity.ToString()];
             AnimalData animal = dataArray[Random.Range(0, dataArray.Length)];
