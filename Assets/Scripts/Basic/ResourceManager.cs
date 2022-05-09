@@ -21,6 +21,8 @@ public class ResourceManager : Singleton<ResourceManager>
     public Dictionary<string, AnimalData[]> AnimalDataDictionary { get; set; }
     public Dictionary<string, List<Sprite>> SpaceObjectsDictionary { get; set; }
 
+    public Dictionary<string, Sprite> RarityCardsDictionary {get; set;}
+
     public List<string> RescueSfxNames { get; set; }
 
     public Sprite[] AnimalSpriteArray { get; set; }
@@ -40,6 +42,7 @@ public class ResourceManager : Singleton<ResourceManager>
         LoadAnimalData();
         LoadTutorialText();
         LoadSpaceObjects();
+        LoadRarityCards();
     }
 
     void LoadLevels()
@@ -132,6 +135,15 @@ public class ResourceManager : Singleton<ResourceManager>
         }
     }
 
+    void LoadRarityCards()
+    {
+        RarityCardsDictionary = new Dictionary<string, Sprite>();
+        Sprite[] RarirtyCards = Resources.LoadAll<Sprite>("CollectionView/RarityCards/");
+        foreach (Sprite sprite in RarirtyCards)
+        {
+            RarityCardsDictionary[sprite.name] = sprite;
+        }
+    }
     void LoadSpaceObjects()
     {
         SpaceObjectsDictionary = new Dictionary<string, List<Sprite>>();

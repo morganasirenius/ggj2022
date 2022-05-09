@@ -49,7 +49,10 @@ public class AnimalCollection : MonoBehaviour
             Sprite sprite = PlayerData.Instance.currentAnimalSkins[i];
             GameObject slot = (GameObject)Instantiate(Resources.Load("Prefabs/Gachapon/Slot"));
             slot.transform.SetParent(SelectedGrid.transform, false);
-            slot.GetComponent<Image>().sprite = sprite;
+            Transform cardGameObject = slot.transform.Find("Card");
+            Transform animalGameObject = slot.transform.Find("Animal");
+            animalGameObject.GetComponent<Image>().sprite = sprite;
+            cardGameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("CollectionView/SelectedAnimal");
             slot.GetComponent<Button>().onClick.AddListener(delegate
             {
                 SelectionIndex = slotIndex;
@@ -68,12 +71,15 @@ public class AnimalCollection : MonoBehaviour
         {
             GameObject slot = (GameObject)Instantiate(Resources.Load("Prefabs/Gachapon/Slot"));
             slot.transform.SetParent(CollectionGrid.transform, false);
-            slot.GetComponent<Image>().sprite = data.Key.sprite;
+            Transform cardGameObject = slot.transform.Find("Card");
+            Transform animalGameObject = slot.transform.Find("Animal");
+            animalGameObject.GetComponent<Image>().sprite = data.Key.sprite;
+            cardGameObject.GetComponent<Image>().sprite = ResourceManager.Instance.RarityCardsDictionary[data.Key.rarity.ToString()];
             slot.GetComponent<Button>().onClick.AddListener(delegate
             {
                 CurrentAnimalText.text = data.Key.animalName;
                 CurrentAnimalImage.sprite = data.Key.sprite;
-                AnimalCountText.text = data.Value.ToString();
+                AnimalCountText.text = "Saved: " + data.Value.ToString();
             });
         }
     }
@@ -81,7 +87,7 @@ public class AnimalCollection : MonoBehaviour
     public void SetSelectedAnimal()
     {
         PlayerData.Instance.currentAnimalSkins[SelectionIndex] = CurrentAnimalImage.sprite;
-        SelectionSlots[SelectionIndex].GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
+        SelectionSlots[SelectionIndex].transform.Find("Animal").GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
     }
 
     public void CleanUpCollection()
