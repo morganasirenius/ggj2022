@@ -15,7 +15,7 @@ public class LightBeam : Laser
         {
             if (!soundPlaying)
             {
-                AudioManager.Instance.PlayBeamSound("light_beam");
+                AudioManager.Instance.PlayBeamSound("light_beam", 0.3f);
                 soundPlaying = true;
             }
             CheckHit();

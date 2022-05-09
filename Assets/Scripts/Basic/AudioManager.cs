@@ -30,9 +30,10 @@ public class AudioManager : Singleton<AudioManager>
     }
 
 
-    public void PlayBeamSound(string name)
+    public void PlayBeamSound(string name, float volume = 1.0f)
     {
         BeamEffect.clip = ResourceManager.Instance.SfxDictionary[name];
+        BeamEffect.volume = volume;
         BeamEffect.Play();
     }
 
