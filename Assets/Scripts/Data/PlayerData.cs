@@ -24,8 +24,7 @@ public class PlayerData : Singleton<PlayerData>
             if (m_PlayerScore > HighScore)
             {
                 HighScore = PlayerScore;
-                PlayerPrefs.SetInt("HighScore", HighScore);
-                PlayerPrefs.Save();
+                JSONSaver.Instance.SaveData();
             }
             if (OnScoreChange != null)
                 OnScoreChange(m_PlayerScore, HighScore);
@@ -41,6 +40,7 @@ public class PlayerData : Singleton<PlayerData>
         {
             scoreUntilRoll = 0;
             Rolls++;
+            JSONSaver.Instance.SaveData();
         }
     }
 
@@ -57,12 +57,13 @@ public class PlayerData : Singleton<PlayerData>
     public void Start()
     {
         // Get saved values
-        HighScore = PlayerPrefs.GetInt("HighScore", HighScore);
-        // TODO: Add rolls when change is merged in
-
-        foreach (Sprite animal in ResourceManager.Instance.AnimalSpriteArray)
+        if (!JSONSaver.Instance.LoadData())
         {
-            currentAnimalSkins.Add(animal);
+            foreach (Sprite animal in ResourceManager.Instance.AnimalSpriteArray)
+            {
+                currentAnimalSkins.Add(animal);
+            }
         }
+        Debug.Log(currentAnimalSkins.Count);
     }
 }
