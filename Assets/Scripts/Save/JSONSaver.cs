@@ -8,17 +8,13 @@ public class JSONSaver : Singleton<JSONSaver>
     private string path;
     private string persistentPath;
     private string saveDataFileName = "SaveData.json";
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetPaths();
-    }
 
     public void SetPaths()
     {
         // path is used to debug save data since its saved to the project path
         // path = Application.dataPath + Path.AltDirectorySeparatorChar + saveDataFileName;
-        persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + saveDataFileName;
+        persistentPath = Application.persistentDataPath + Path.DirectorySeparatorChar + saveDataFileName;
+        Debug.Log("Setting paths!");
         Debug.Log(persistentPath);
     }
 
@@ -39,11 +35,14 @@ public class JSONSaver : Singleton<JSONSaver>
 
     public bool LoadData()
     {
+        SetPaths();
         if (!File.Exists(persistentPath))
         {
+            Debug.Log("Save data does not exist!");
             // File does not exist
             return false;
         }
+        Debug.Log("Attempting to load data!");
         using StreamReader reader = new StreamReader(persistentPath);
         string jsonData = reader.ReadToEnd();
         SaveData save = JsonUtility.FromJson<SaveData>(jsonData);
