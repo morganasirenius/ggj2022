@@ -31,6 +31,10 @@ public class AnimalCollection : MonoBehaviour
 
     void OnEnable()
     {
+        CurrentAnimalText.text = "Select an animal!";
+        AnimalCountText.text = "";
+        // Set sprite to be invisible
+        CurrentAnimalImage.color = new Color32(255, 255, 255, 0);
         SetupCollection();
     }
 
@@ -42,7 +46,6 @@ public class AnimalCollection : MonoBehaviour
     public void SetupCurrentAnimals()
     {
         selectionSlots = new List<GameObject>();
-
         for (int i = 0; i < PlayerData.Instance.currentAnimalSkins.Count; i++)
         {
             // Need to define a local variable since i dynamically changes for listeners
@@ -82,6 +85,13 @@ public class AnimalCollection : MonoBehaviour
             cardGameObject.GetComponent<Image>().sprite = ResourceManager.Instance.RarityCardsDictionary[data.Key.rarity.ToString()];
             slot.GetComponent<Button>().onClick.AddListener(delegate
             {
+                // Set sprite to be visible if it was previously invisible
+                Debug.Log(CurrentAnimalImage.color.a);
+                if (CurrentAnimalImage.color.a == 0)
+                {
+                    CurrentAnimalImage.color = new Color32(255, 255, 255, 255);
+                }
+
                 CurrentAnimalText.text = data.Key.animalName;
                 CurrentAnimalImage.sprite = data.Key.sprite;
                 AnimalCountText.text = "Saved: " + data.Value.ToString();
