@@ -21,7 +21,11 @@ public class PlayerData : Singleton<PlayerData>
         {
             if (m_PlayerScore == value) return;
             m_PlayerScore = value;
-            if (m_PlayerScore > HighScore) HighScore = PlayerScore;
+            if (m_PlayerScore > HighScore)
+            {
+                HighScore = PlayerScore;
+                JSONSaver.Instance.SaveData();
+            }
             if (OnScoreChange != null)
                 OnScoreChange(m_PlayerScore, HighScore);
         }
@@ -36,6 +40,7 @@ public class PlayerData : Singleton<PlayerData>
         {
             scoreUntilRoll = 0;
             Rolls++;
+            JSONSaver.Instance.SaveData();
         }
     }
 
@@ -51,9 +56,14 @@ public class PlayerData : Singleton<PlayerData>
 
     public void Start()
     {
-        foreach (Sprite animal in ResourceManager.Instance.AnimalSpriteArray)
+        // Get saved values
+        if (!JSONSaver.Instance.LoadData())
         {
-            currentAnimalSkins.Add(animal);
+            foreach (Sprite animal in ResourceManager.Instance.AnimalSpriteArray)
+            {
+                currentAnimalSkins.Add(animal);
+            }
         }
+        Debug.Log(currentAnimalSkins.Count);
     }
 }

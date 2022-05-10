@@ -26,8 +26,6 @@ public class Gachapon : MonoBehaviour
 
     public void Roll()
     {
-
-
         if (PlayerData.Instance.Rolls > 0)
         {
             // Set sprite to be visible if it was previously invisible
@@ -52,6 +50,7 @@ public class Gachapon : MonoBehaviour
 
             PlayerData.Instance.Rolls--;
             RollsText.text = PlayerData.Instance.Rolls.ToString();
+            JSONSaver.Instance.SaveData();
             Debug.Log(string.Format("Rolls remaining: {0}", PlayerData.Instance.Rolls.ToString()));
         }
     }

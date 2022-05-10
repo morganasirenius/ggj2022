@@ -60,7 +60,7 @@ public class AnimalCollection : MonoBehaviour
                 // Highlight the clicked animal
                 animalGameObject.GetComponent<Image>().color = Color.green;
                 // If an animal is already selected, unhighlight it
-                if (currentSelectedAnimal != null)
+                if (currentSelectedAnimal != null && currentSelectedAnimal != animalGameObject)
                 {
                     currentSelectedAnimal.GetComponent<Image>().color = Color.white;
                 }
@@ -93,6 +93,7 @@ public class AnimalCollection : MonoBehaviour
     {
         PlayerData.Instance.currentAnimalSkins[selectionIndex] = CurrentAnimalImage.sprite;
         selectionSlots[selectionIndex].transform.Find("Animal").GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
+        JSONSaver.Instance.SaveData();
     }
 
     public void CleanUpCollection()
