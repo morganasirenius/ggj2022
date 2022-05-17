@@ -24,6 +24,7 @@ public class ObjectPooler : MonoBehaviour
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
+        poolContainer.transform.SetParent(this.transform, false);
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class ObjectPooler : MonoBehaviour
             }
         }
         GameObject obj = (GameObject)Instantiate(pooledObject);
-        obj.transform.parent = poolContainer.transform;
+        obj.transform.SetParent(poolContainer.transform, false);
         obj.SetActive(false);
         pooledObjects.Add(obj);
         return obj;

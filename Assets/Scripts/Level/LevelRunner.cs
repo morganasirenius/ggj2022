@@ -16,7 +16,9 @@ public class LevelRunner : MonoBehaviour
     [SerializeField]
     private float commandDelayReduction;
 
-
+    // Canvas for initializing ally object pooler
+    [SerializeField]
+    private GameObject Canvas;
     // Spawners for spawning entities
     [SerializeField]
     private Spawner TopSpawner;
@@ -68,6 +70,11 @@ public class LevelRunner : MonoBehaviour
             string path = string.Format("Prefabs/ObjectPoolers/{0}ObjectPooler", type.ToString());
             GameObject poolObj = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
             entityObjectPoolers[type] = poolObj.GetComponent<ObjectPooler>();
+
+            if (type == Globals.EntityType.Ally)
+            {
+                poolObj.transform.SetParent(Canvas.gameObject.transform, false);
+            }
         }
     }
 
