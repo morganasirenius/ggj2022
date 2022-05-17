@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d4839c79b3d15443af9df463b84ff2e, type: 3}
-  m_Name: LlamaShin
+  m_Name: turtle_purple
   m_EditorClassIdentifier: 
-  animalName: Llama Shin
-  sprite: {fileID: 21300000, guid: 137faa8677d801d4f844b9334755ae1e, type: 3}
-  rarity: 3
+  animalName: Purple Turtle
+  sprite: {fileID: 21300000, guid: 3658b03e93220fe47985e4d01ff43746, type: 3}
+  rarity: 0
