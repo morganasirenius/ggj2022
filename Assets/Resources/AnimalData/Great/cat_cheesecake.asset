@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalName: Cheesecake Cat
   sprite: {fileID: 21300000, guid: a230c3770a2e4cb439471ea2da0ae2a3, type: 3}
-  rarity: 2
+  rarity: 1

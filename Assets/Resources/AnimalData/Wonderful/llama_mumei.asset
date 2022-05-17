@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4839c79b3d15443af9df463b84ff2e, type: 3}
   m_Name: llama_mumei
   m_EditorClassIdentifier: 
-  animalName: Mumei Llama
+  animalName: Muma
   sprite: {fileID: 21300000, guid: 5b946fd930574bf4cb1c2443204a5a20, type: 3}
   rarity: 3
