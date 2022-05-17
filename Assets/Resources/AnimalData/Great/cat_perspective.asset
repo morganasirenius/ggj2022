@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d4839c79b3d15443af9df463b84ff2e, type: 3}
-  m_Name: LlamaAnya
+  m_Name: cat_perspective
   m_EditorClassIdentifier: 
-  animalName: Llamya
-  sprite: {fileID: 21300000, guid: 22424c33278b1ff48a059fe7ad0c8a64, type: 3}
-  rarity: 4
+  animalName: Perspective Cat
+  sprite: {fileID: 21300000, guid: 82339a98cebf5894fa8819d4e7aa7d73, type: 3}
+  rarity: 1

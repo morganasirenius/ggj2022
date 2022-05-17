@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d4839c79b3d15443af9df463b84ff2e, type: 3}
-  m_Name: Unicorn
+  m_Name: unicorn_perspective
   m_EditorClassIdentifier: 
-  animalName: Unicorn
-  sprite: {fileID: 21300000, guid: ae0b4250e5b3ca542a50f4c7b04c29f1, type: 3}
+  animalName: Perspective Unicorn
+  sprite: {fileID: 21300000, guid: bbcbca20a575916418616d3a03059e90, type: 3}
   rarity: 1
