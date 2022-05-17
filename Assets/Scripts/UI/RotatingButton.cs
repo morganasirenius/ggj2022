@@ -13,7 +13,14 @@ public class RotatingButton : MonoBehaviour
     [SerializeField]
     public GameObject button;
 
+    private float initialRotation;
+
     private bool rotating;
+
+    void Start()
+    {
+        initialRotation = button.transform.rotation.y;
+    }
 
     // Update is called once per frame
     void Update()
@@ -32,10 +39,10 @@ public class RotatingButton : MonoBehaviour
     public bool IsInOriginalPosition()
     {
         float yRot = button.transform.rotation.y;
-        if (yRot < 0)
+        if (yRot < initialRotation)
         {
-            return yRot + rotatingThreshold >= 0;
+            return yRot + rotatingThreshold >= initialRotation;
         }
-        return yRot - rotatingThreshold <= 0;
+        return yRot - rotatingThreshold <= initialRotation;
     }
 }
