@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class Ally : Entity
 {
 
-    public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private Image image;
 
     [SerializeField]
     private float maxTime = 1;
@@ -51,13 +53,12 @@ public class Ally : Entity
         _propBlock = new MaterialPropertyBlock();
         _renderer = TheShield.GetComponent<Renderer>();
         target = PlayerController.Instance.transform;
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Initialize();
     }
 
     void OnEnable()
     {
-        spriteRenderer.sprite = PlayerData.Instance.currentAnimalSkins[Random.Range(0, PlayerData.Instance.currentAnimalSkins.Count)];
+        image.sprite = PlayerData.Instance.currentAnimalSkins[Random.Range(0, PlayerData.Instance.currentAnimalSkins.Count)];
         Initialize();
     }
 
