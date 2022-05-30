@@ -7,37 +7,45 @@ using TMPro;
 public class Gachapon : MonoBehaviour
 {
     [SerializeField]
-    private Image GachaImage;
+    private GachaponItem gachaItem;
 
     [SerializeField]
-    private TMP_Text GachaText;
+    private TMP_Text rarityText;
 
     [SerializeField]
-    private TMP_Text RollsText;
+    private TMP_Text animalText;
+
+    [SerializeField]
+    private TMP_Text rollsText;
+
+    [SerializeField]
+    private ParticleSystem beamUp;
+    [SerializeField]
+    private ParticleSystem beamDown;
+    [SerializeField]
+    private ParticleSystem baseCircle;
+
+    private bool rolling;
 
     void OnEnable()
     {
-        GachaText.text = "Roll to see what you get!";
-        RollsText.text = PlayerData.Instance.Rolls.ToString();
-        // Set sprite to be invisible
-        GachaImage.color = new Color32(255, 255, 255, 0);
+        rarityText.text = "Gachapon";
+        animalText.text = "Roll to see what you get!";
+        rollsText.text = PlayerData.Instance.Rolls.ToString();
+        gachaItem.InitializeImage();
         Debug.Log(string.Format("You have {0} rolls!", PlayerData.Instance.Rolls.ToString()));
     }
 
     public void Roll()
     {
-        if (PlayerData.Instance.Rolls > 0)
+        if (PlayerData.Instance.Rolls <= 0 && !rolling)
         {
-            // Set sprite to be visible if it was previously invisible
-            if (GachaImage.color.a == 0)
-            {
-                GachaImage.color = new Color32(255, 255, 255, 255);
-            }
 
             Globals.GachaponRarities rarity = DetermineRarity();
             AnimalData[] dataArray = ResourceManager.Instance.AnimalDataDictionary[rarity.ToString()];
             AnimalData animal = dataArray[Random.Range(0, dataArray.Length)];
-            GachaImage.sprite = animal.sprite;
+            StartCoroutine(GachaAnimation(rarity, animal));
+
             if (PlayerData.Instance.acquiredAnimals.ContainsKey(animal))
             {
                 PlayerData.Instance.acquiredAnimals[animal] += 1;
@@ -46,10 +54,10 @@ public class Gachapon : MonoBehaviour
             {
                 PlayerData.Instance.acquiredAnimals[animal] = 1;
             }
-            GachaText.text = string.Format("{0}! \n You got {1}!", animal.rarity.ToString(), animal.animalName);
+
 
             PlayerData.Instance.Rolls--;
-            RollsText.text = PlayerData.Instance.Rolls.ToString();
+            rollsText.text = PlayerData.Instance.Rolls.ToString();
             JSONSaver.Instance.SaveData();
             Debug.Log(string.Format("Rolls remaining: {0}", PlayerData.Instance.Rolls.ToString()));
         }
@@ -69,5 +77,31 @@ public class Gachapon : MonoBehaviour
             }
         }
         return Globals.GachaponRarities.Nice;
+    }
+
+    IEnumerator GachaAnimation(Globals.GachaponRarities rarity, AnimalData animal)
+    {
+        rolling = true;
+        // Set the beam color based off of rarity
+        Color color = Globals.rarityToColor[rarity];
+        ParticleSystem.TrailModule trailBeamUp = beamUp.trails;
+        trailBeamUp.colorOverTrail = color;
+
+        ParticleSystem.TrailModule trailBeamDown = beamDown.trails;
+        trailBeamDown.colorOverTrail = color;
+
+        // Start playing the particle effects
+        baseCircle.Play();
+        //AudioManager.Instance.PlaySfx("beam_circle_spin", 0.1f);
+        yield return new WaitForSeconds(1.3f);
+        beamUp.Play();
+        yield return new WaitForSeconds(1.7f);
+        beamDown.Play();
+        //AudioManager.Instance.PlaySfx("beam_down", 0.1f);
+        yield return new WaitForSeconds(0.8f);
+        gachaItem.SetSprite(animal.sprite);
+        rarityText.text = animal.rarity.ToString();
+        animalText.text = animal.animalName;
+        rolling = false;
     }
 }
