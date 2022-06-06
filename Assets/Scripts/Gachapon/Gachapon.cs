@@ -37,6 +37,7 @@ public class Gachapon : MonoBehaviour
         rarityText.text = "Gachapon";
         animalText.text = "Roll to see what you get!";
         rollsText.text = PlayerData.Instance.Rolls.ToString();
+        SetSkipAnimationText();
         gachaItem.InitializeImage();
         Debug.Log(string.Format("You have {0} rolls!", PlayerData.Instance.Rolls.ToString()));
     }
@@ -74,7 +75,7 @@ public class Gachapon : MonoBehaviour
         foreach (Globals.GachaponRarities
             rarity
             in
-            System.Enum.GetValues(typeof (Globals.GachaponRarities))
+            System.Enum.GetValues(typeof(Globals.GachaponRarities))
         )
         {
             cumulativeProb += Globals.gachaponProbabilities[rarity];
@@ -117,14 +118,21 @@ public class Gachapon : MonoBehaviour
 
     public void ToggleSkipAnimation()
     {
-        Debug.Log("Toggling Skip Animation!");  
+        Debug.Log("Toggling Skip Animation!");
         PlayerData.Instance.SkipRollAnimations = !PlayerData.Instance.SkipRollAnimations;
+        JSONSaver.Instance.SaveData();
+        SetSkipAnimationText();
+    }
+
+    public void SetSkipAnimationText()
+    {
         if (PlayerData.Instance.SkipRollAnimations)
         {
+            skipAnimationTexts.text = "Skip Animation: On";
         }
         else
         {
+            skipAnimationTexts.text = "Skip Animation: Off";
         }
-        // Change text to say its on or off?
     }
 }

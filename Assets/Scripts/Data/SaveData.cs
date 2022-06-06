@@ -2,26 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// JSON serializable data representing the player data we want to save.
+/// </summary>
 [System.Serializable]
 public class SaveData
 {
     public bool TutorialDone;
+    public bool SkipRollAnimations;
     public int HighScore;
     public int Rolls;
     public List<SaveAnimalData> AnimalData;
 
     public List<Sprite> AnimalSkins;
 
-    public SaveData(bool tutorialDone, int highScore, int rolls, List<SaveAnimalData> animalData, List<Sprite> animalSkins)
+    public SaveData(PlayerData data, List<SaveAnimalData> acquiredAnimalData)
     {
-        TutorialDone = tutorialDone;
-        HighScore = highScore;
-        Rolls = rolls;
-        AnimalData = animalData;
-        AnimalSkins = animalSkins;
+        TutorialDone = data.TutorialDone;
+        SkipRollAnimations = data.SkipRollAnimations;
+        HighScore = data.HighScore;
+        Rolls = data.Rolls;
+        AnimalData = acquiredAnimalData;
+        AnimalSkins = data.currentAnimalSkins;
     }
 }
 
+/// <summary>
+/// JSON serializable data representing data about an acquired animal
+/// </summary>
 [System.Serializable]
 public class SaveAnimalData
 {

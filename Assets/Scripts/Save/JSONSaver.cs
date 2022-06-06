@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+/// <summary>
+/// Utility class to save player data into a JSON object.
+/// </summary>
 public class JSONSaver : Singleton<JSONSaver>
 {
     private string path;
@@ -27,7 +30,7 @@ public class JSONSaver : Singleton<JSONSaver>
             SaveAnimalData animalData = new SaveAnimalData(data.Key.animalName, data.Value);
             acquiredAnimalData.Add(animalData);
         }
-        SaveData save = new SaveData(PlayerData.Instance.TutorialDone, PlayerData.Instance.HighScore, PlayerData.Instance.Rolls, acquiredAnimalData, PlayerData.Instance.currentAnimalSkins);
+        SaveData save = new SaveData(PlayerData.Instance, acquiredAnimalData);
         string jsonData = JsonUtility.ToJson(save);
         using StreamWriter writer = new StreamWriter(persistentPath);
         writer.Write(jsonData);
@@ -52,6 +55,7 @@ public class JSONSaver : Singleton<JSONSaver>
             Dictionary<AnimalData, int> savedAcquiredAnimals = new Dictionary<AnimalData, int>();
             // Load high score and rolls
             PlayerData.Instance.TutorialDone = save.TutorialDone;
+            PlayerData.Instance.SkipRollAnimations = save.SkipRollAnimations;
             PlayerData.Instance.HighScore = save.HighScore;
             PlayerData.Instance.Rolls = save.Rolls;
             PlayerData.Instance.currentAnimalSkins = save.AnimalSkins;
