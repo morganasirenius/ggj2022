@@ -20,11 +20,23 @@ public class CheatCodeManager : Singleton<CheatCodeManager>
     public void AddAnimalOrder(string animalName)
     {
         userOrder.Add(animalName);
-        if (userOrder.Count == 5)
+        if (userOrder.Count == unlockAllAnimalsOrder.Count)
         {
             if (Enumerable.SequenceEqual(userOrder, unlockAllAnimalsOrder))
             {
                 AudioManager.Instance.PlaySfx("ohyesdesuwa", 2f);
+                foreach (KeyValuePair<string, AnimalData> animalData in ResourceManager.Instance.AnimalToDataDictionary)
+                {
+                    if (PlayerData.Instance.acquiredAnimals.ContainsKey(animalData.Value))
+                    {
+                        PlayerData.Instance.acquiredAnimals[animalData.Value] += 1;
+                    }
+                    else 
+                    {
+                        PlayerData.Instance.acquiredAnimals[animalData.Value] = 1;
+                    }
+                }
+                JSONSaver.Instance.SaveData();
             }
             else
             {
