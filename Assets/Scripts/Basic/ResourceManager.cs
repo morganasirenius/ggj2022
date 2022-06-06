@@ -18,7 +18,7 @@ public class ResourceManager : Singleton<ResourceManager>
     public Dictionary<string, AudioClip> SfxDictionary { get; set; }
     public Dictionary<string, AudioClip> RescueSfxDictionary { get; set; }
     public Dictionary<string, TutorialText> TutorialTextDictionary { get; set; }
-    public Dictionary<string, AnimalData[]> AnimalDataDictionary { get; set; }
+    public Dictionary<string, AnimalData[]> RarityToAnimalDataDictionary { get; set; }
     public Dictionary<string, AnimalData> AnimalToDataDictionary { get; set; }
     public Dictionary<string, List<Sprite>> SpaceObjectsDictionary { get; set; }
 
@@ -26,7 +26,7 @@ public class ResourceManager : Singleton<ResourceManager>
 
     public List<string> RescueSfxNames { get; set; }
 
-    public Sprite[] AnimalSpriteArray { get; set; }
+    public AnimalData[] DefaultAnimalArray { get; set; }
 
 
 
@@ -122,12 +122,12 @@ public class ResourceManager : Singleton<ResourceManager>
 
     void LoadAnimalSprites()
     {
-        AnimalSpriteArray = Resources.LoadAll<Sprite>("AnimalSprites/Default");
+        DefaultAnimalArray = Resources.LoadAll<AnimalData>("AnimalData/Default");
     }
 
     void LoadAnimalData()
     {
-        AnimalDataDictionary = new Dictionary<string, AnimalData[]>();
+        RarityToAnimalDataDictionary = new Dictionary<string, AnimalData[]>();
         AnimalToDataDictionary = new Dictionary<string, AnimalData>();
 
         foreach (Globals.GachaponRarities rarity in System.Enum.GetValues(typeof(Globals.GachaponRarities)))
@@ -137,7 +137,7 @@ public class ResourceManager : Singleton<ResourceManager>
             {
                 AnimalToDataDictionary[data.animalName] = data;
             }
-            AnimalDataDictionary[rarity.ToString()] = dataArray;
+            RarityToAnimalDataDictionary[rarity.ToString()] = dataArray;
         }
     }
 

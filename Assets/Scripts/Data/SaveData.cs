@@ -14,7 +14,7 @@ public class SaveData
     public int Rolls;
     public List<SaveAnimalData> AnimalData;
 
-    public List<Sprite> AnimalSkins;
+    public List<string> AnimalSkins;
 
     public SaveData(PlayerData data, List<SaveAnimalData> acquiredAnimalData)
     {

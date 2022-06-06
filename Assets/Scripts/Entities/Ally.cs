@@ -58,7 +58,9 @@ public class Ally : Entity
 
     void OnEnable()
     {
-        image.sprite = PlayerData.Instance.currentAnimalSkins[Random.Range(0, PlayerData.Instance.currentAnimalSkins.Count)];
+        string animalName = PlayerData.Instance.currentAnimalSkins[Random.Range(0, PlayerData.Instance.currentAnimalSkins.Count)];
+        AnimalData data = ResourceManager.Instance.AnimalToDataDictionary[animalName];
+        image.sprite = data.sprite;
         Initialize();
     }
 
