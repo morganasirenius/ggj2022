@@ -12,7 +12,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject GachaScreen;
     [SerializeField]
+    private GameObject GachaHelpScreen;
+    [SerializeField]
     private GameObject CollectionScreen;
+    [SerializeField]
+    private GameObject CollectionHelpScreen;
     [SerializeField]
     private GameObject CurrentScreen;
     public void StartGame()
@@ -53,5 +57,25 @@ public class MainMenu : MonoBehaviour
         CurrentScreen.SetActive(false);
         CollectionScreen.SetActive(true);
         CurrentScreen = CollectionScreen;
+    }
+
+    public void OpenGachaHelpScreen()
+    {
+        GachaHelpScreen.SetActive(true);
+    }
+
+    public void CloseGachaHelpScreen()
+    {
+        GachaHelpScreen.SetActive(false);
+    }
+
+    public void OpenCollectionHelpScreen()
+    {
+        CollectionHelpScreen.SetActive(true);
+    }
+
+    public void CloseCollectionHelpScreen()
+    {
+        CollectionHelpScreen.SetActive(false);
     }
 }

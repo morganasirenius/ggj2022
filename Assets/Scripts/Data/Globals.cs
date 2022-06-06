@@ -23,6 +23,14 @@ public static class Globals
         {(GachaponRarities.Wonderful), 5},
         {(GachaponRarities.Amazing), 1},
     };
+    public static Dictionary<GachaponRarities, Color> rarityToColor = new Dictionary<GachaponRarities, Color>()
+    {
+        {(GachaponRarities.Nice), new Color32(30,32,36,255)}, // Gray
+        {(GachaponRarities.Great), new Color32(9,82,24,255)}, // Green
+        {(GachaponRarities.Awesome), new Color32(14,50,73,255)}, // Blue
+        {(GachaponRarities.Wonderful), new Color32(56,14,81,255)}, // Purple
+        {(GachaponRarities.Amazing), new Color32(90,86,35,255)}, // Golden
+    };
 
     // Defines tutorial text associated with a part of a tutorial
     // These enums map 1-1 with the associated scriptable object

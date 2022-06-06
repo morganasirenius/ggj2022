@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerData : Singleton<PlayerData>
 {
     public bool TutorialDone = false;
+    public bool SkipRollAnimations = false;
 
     // Dictionary of animals acquired by rolling in gachapon
     public Dictionary<AnimalData, int> acquiredAnimals = new Dictionary<AnimalData, int>();
