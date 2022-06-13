@@ -175,6 +175,17 @@
                 },
                 {
                     "name": "",
+                    "id": "402c4ee1-44a6-430c-8c18-c0310e848d9a",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "30cf6833-8908-4bb5-835f-4f17ade0f5c8",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -188,6 +199,17 @@
                     "name": "",
                     "id": "7786d030-1ebf-460a-b115-1152a3749ad4",
                     "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6aada917-b603-4638-87ce-35885178d786",
+                    "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
