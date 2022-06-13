@@ -50,7 +50,7 @@ public class AnimalCollection : MonoBehaviour
         {
             // Need to define a local variable since i dynamically changes for listeners
             int slotIndex = i;
-            Sprite sprite = PlayerData.Instance.currentAnimalSkins[i];
+            Sprite sprite = ResourceManager.Instance.AnimalToDataDictionary[PlayerData.Instance.currentAnimalSkins[i]].sprite;
             GameObject slot = (GameObject)Instantiate(Resources.Load("Prefabs/Gachapon/Slot"));
             slot.transform.SetParent(SelectedGrid.transform, false);
             GameObject cardGameObject = slot.transform.Find("Card").gameObject;
@@ -86,7 +86,6 @@ public class AnimalCollection : MonoBehaviour
             slot.GetComponent<Button>().onClick.AddListener(delegate
             {
                 // Set sprite to be visible if it was previously invisible
-                Debug.Log(CurrentAnimalImage.color.a);
                 if (CurrentAnimalImage.color.a == 0)
                 {
                     CurrentAnimalImage.color = new Color32(255, 255, 255, 255);
@@ -101,7 +100,7 @@ public class AnimalCollection : MonoBehaviour
 
     public void SetSelectedAnimal()
     {
-        PlayerData.Instance.currentAnimalSkins[selectionIndex] = CurrentAnimalImage.sprite;
+        PlayerData.Instance.currentAnimalSkins[selectionIndex] = CurrentAnimalText.text;
         selectionSlots[selectionIndex].transform.Find("Animal").GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
         JSONSaver.Instance.SaveData();
     }

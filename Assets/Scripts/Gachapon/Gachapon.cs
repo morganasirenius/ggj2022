@@ -44,10 +44,10 @@ public class Gachapon : MonoBehaviour
 
     public void Roll()
     {
-        if (PlayerData.Instance.Rolls >= 0 && !rolling)
+        if (PlayerData.Instance.Rolls > 0 && !rolling)
         {
             Globals.GachaponRarities rarity = DetermineRarity();
-            AnimalData[] dataArray = ResourceManager.Instance.AnimalDataDictionary[rarity.ToString()];
+            AnimalData[] dataArray = ResourceManager.Instance.RarityToAnimalDataDictionary[rarity.ToString()];
             AnimalData animal = dataArray[Random.Range(0, dataArray.Length)];
             StartCoroutine(GachaAnimation(rarity, animal));
 

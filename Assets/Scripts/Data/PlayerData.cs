@@ -10,7 +10,8 @@ public class PlayerData : Singleton<PlayerData>
 
     // Dictionary of animals acquired by rolling in gachapon
     public Dictionary<AnimalData, int> acquiredAnimals = new Dictionary<AnimalData, int>();
-    public List<Sprite> currentAnimalSkins = new List<Sprite>();
+    // List of strings deonting the current animals used for the game
+    public List<string> currentAnimalSkins = new List<string>();
     public int Rolls { get; set; }
     private int scoreUntilRoll = 0;
     public int HighScore = 0;
@@ -60,9 +61,9 @@ public class PlayerData : Singleton<PlayerData>
         // Get saved values
         if (!JSONSaver.Instance.LoadData())
         {
-            foreach (Sprite animal in ResourceManager.Instance.AnimalSpriteArray)
+            foreach (AnimalData animal in ResourceManager.Instance.DefaultAnimalArray)
             {
-                currentAnimalSkins.Add(animal);
+                currentAnimalSkins.Add(animal.animalName);
             }
         }
         Debug.Log(currentAnimalSkins.Count);
