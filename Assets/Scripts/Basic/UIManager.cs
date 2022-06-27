@@ -16,6 +16,9 @@ public class UIManager : Singleton<UIManager>
     public TMP_Text EndScreenHighscoreText;
     public TMP_Text EndScreenScoreText;
 
+    // Mobile UI
+    public GameObject MobileUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,5 +56,10 @@ public class UIManager : Singleton<UIManager>
     public void MainMenuButton()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void DisplayMobileUI()
+    {
+        MobileUI.SetActive(true);
     }
 }

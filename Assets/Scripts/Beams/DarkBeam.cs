@@ -20,12 +20,20 @@ public class DarkBeam : Laser
     }
     public void UpdateLaser(Vector2 mousePosition)
     {
-
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 mainPosition;
         float scale = 25;
-        Vector3 offsetPos = mousePosition - new Vector2(transform.position.x, transform.position.y);
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            mainPosition = new Vector2(firePoint.position.x, 16);
+        }
+        else
+        {
+            mainPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        }
+        Vector3 offsetPos = mainPosition - new Vector2(transform.position.x, transform.position.y);
         Vector3 newVec = offsetPos.normalized * scale;
         newVec += transform.position;
+
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, newVec);
 
