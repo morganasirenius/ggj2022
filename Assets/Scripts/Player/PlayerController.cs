@@ -26,6 +26,9 @@ public class PlayerController : Singleton<PlayerController>
     public List<DarkBeam> darkBeam;
     public bool isDead;
 
+    private bool darkBeamEnabled;
+    private bool lightBeamEnabled;
+
 
     private void Awake()
     {
@@ -36,11 +39,20 @@ public class PlayerController : Singleton<PlayerController>
     {
         UIManager.Instance.UpdateHealth(health);
         UIManager.Instance.UpdateNukeCharges(nukeCharges);
-
-        playerControls.Space.LightBeam.performed += EnableLightBeam;
-        playerControls.Space.LightBeam.canceled += DisableLightBeam;
-        playerControls.Space.Shoot.performed += EnableDarkBeam;
-        playerControls.Space.Shoot.canceled += DisableDarkBeam;
+        // If handheld device, display mobile controls
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            UIManager.Instance.DisplayMobileUI();
+            playerControls.Space.LightBeam.performed += ToggleLightBeam;
+            playerControls.Space.Shoot.performed += ToggleDarkBeam;
+        }
+        else
+        {
+            playerControls.Space.LightBeam.performed += EnableLightBeam;
+            playerControls.Space.LightBeam.canceled += DisableLightBeam;
+            playerControls.Space.Shoot.performed += EnableDarkBeam;
+            playerControls.Space.Shoot.canceled += DisableDarkBeam;
+        }
         playerControls.Space.Nuke.performed += Nuke;
     }
 
@@ -51,6 +63,11 @@ public class PlayerController : Singleton<PlayerController>
         transform.position += movement * Time.deltaTime;
 
         Vector2 mousePosition = playerControls.Space.MousePosition.ReadValue<Vector2>();
+        // Don't make ship rotate for handheld devices
+        if (SystemInfo.deviceType != DeviceType.Handheld)
+        {
+            RotateToMouse(mousePosition);
+        }
         for (int i = 0; i < darkBeam.Count; i++)
         {
             if (darkBeam[i].lineRenderer.enabled)
@@ -58,7 +75,6 @@ public class PlayerController : Singleton<PlayerController>
                 darkBeam[i].UpdateLaser(mousePosition);
             }
         }
-        RotateToMouse(mousePosition);
     }
     private void OnEnable()
     {
@@ -73,6 +89,29 @@ public class PlayerController : Singleton<PlayerController>
         playerControls.Space.Shoot.performed -= EnableDarkBeam;
         playerControls.Space.Shoot.canceled -= DisableDarkBeam;
     }
+
+    private void ToggleLightBeam(InputAction.CallbackContext context)
+    {
+        if (!lightBeamEnabled)
+        {
+            lightBeam.EnableLaser();
+            lightBeamEnabled = true;
+        }
+        else
+        {
+            lightBeam.DisableLaser();
+            lightBeamEnabled = false;
+        }
+
+        if (darkBeamEnabled)
+        {
+            for (int i = 0; i < darkBeam.Count; i++)
+            {
+                darkBeam[i].DisableLaser();
+            }
+            darkBeamEnabled = false;
+        }
+    }
     private void EnableLightBeam(InputAction.CallbackContext context)
     {
         lightBeam.EnableLaser();
@@ -80,6 +119,32 @@ public class PlayerController : Singleton<PlayerController>
     private void DisableLightBeam(InputAction.CallbackContext context)
     {
         lightBeam.DisableLaser();
+    }
+    private void ToggleDarkBeam(InputAction.CallbackContext context)
+    {
+        if (!darkBeamEnabled)
+        {
+            for (int i = 0; i < darkBeam.Count; i++)
+            {
+                darkBeam[i].EnableLaser();
+            }
+            darkBeamEnabled = true;
+        }
+        else
+        {
+            for (int i = 0; i < darkBeam.Count; i++)
+            {
+                darkBeam[i].DisableLaser();
+            }
+            darkBeamEnabled = false;
+        }
+
+        // Turn off light beam if enabled
+        if (lightBeamEnabled)
+        {
+            lightBeam.DisableLaser();
+            lightBeamEnabled = false;
+        }
     }
     private void DisableDarkBeam(InputAction.CallbackContext context)
     {
