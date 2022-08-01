@@ -34,6 +34,7 @@ public class SpaceObjectSpawner : MonoBehaviour
             IEnumerator coroutine = ReleaseTheBeast(Random.Range(0, 2), obj);
             StartCoroutine(coroutine);
         }
+        poolContainer.transform.SetParent(this.transform, false);
     }
 
     // Update is called once per frame
