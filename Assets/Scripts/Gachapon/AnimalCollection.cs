@@ -22,6 +22,7 @@ public class AnimalCollection : MonoBehaviour
     private GameObject currentSelectedAnimal;
     private Sprite selectedSprite;
     private int selectionIndex;
+    private bool animalSelected;
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +89,7 @@ public class AnimalCollection : MonoBehaviour
                 // Set sprite to be visible if it was previously invisible
                 if (CurrentAnimalImage.color.a == 0)
                 {
+                    animalSelected = true;
                     CurrentAnimalImage.color = new Color32(255, 255, 255, 255);
                 }
 
@@ -100,9 +102,13 @@ public class AnimalCollection : MonoBehaviour
 
     public void SetSelectedAnimal()
     {
-        PlayerData.Instance.currentAnimalSkins[selectionIndex] = CurrentAnimalText.text;
-        selectionSlots[selectionIndex].transform.Find("Animal").GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
-        JSONSaver.Instance.SaveData();
+        // Only set animal if actually selected
+        if (animalSelected)
+        {
+            PlayerData.Instance.currentAnimalSkins[selectionIndex] = CurrentAnimalText.text;
+            selectionSlots[selectionIndex].transform.Find("Animal").GetComponent<Image>().sprite = CurrentAnimalImage.sprite;
+            JSONSaver.Instance.SaveData();
+        }
     }
 
     public void CleanUpCollection()

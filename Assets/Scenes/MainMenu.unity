@@ -7005,7 +7005,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Wonderful'
+  m_text: Wonderful
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8270,7 +8270,7 @@ GameObject:
   - component: {fileID: 500523350}
   - component: {fileID: 500523349}
   m_Layer: 5
-  m_Name: Description (1)
+  m_Name: Bottom Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8316,10 +8316,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- You can get one roll for every 500 points in game
-
-    -Switch which
-    animals to use in the collection!'
+  m_text: "You get one roll for every 500 points in game! \nSwap animals to display
+    in game at the collection!\nSave all the animals!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8532,7 +8530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 43.227, y: -16.892, z: -27.836}
   m_AnchorMin: {x: 0.32900003, y: 0}
   m_AnchorMax: {x: 0.97550005, y: 0.99000007}
-  m_AnchoredPosition: {x: -323.99994, y: 120}
+  m_AnchoredPosition: {x: -324, y: 120}
   m_SizeDelta: {x: -662, y: -742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546229280
@@ -9470,7 +9468,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 604.77155, y: 571.97894}
+  m_SizeDelta: {x: 581.0158, y: 571.97894}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &687053982
 MonoBehaviour:
@@ -10139,7 +10137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Instructions
+  m_text: Gachapon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}
   m_sharedMaterial: {fileID: -1070311100974691643, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}
@@ -10624,7 +10622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21124999, y: 0}
   m_AnchorMax: {x: 0.36800003, y: 1}
-  m_AnchoredPosition: {x: 280.50003, y: 0}
+  m_AnchoredPosition: {x: 280.5, y: 0}
   m_SizeDelta: {x: 1125, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &821605073
@@ -10773,7 +10771,7 @@ GameObject:
   - component: {fileID: 826126822}
   - component: {fileID: 826126821}
   m_Layer: 5
-  m_Name: Description
+  m_Name: Top Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10819,10 +10817,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Roll to save unique animals!
-
-    - Animals have several rarities from
-    common to rare:'
+  m_text: "Roll to save unique animals! \nAnimals have several rarities from common
+    to rare:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11578,7 +11574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Instructions
+  m_text: Collection
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}
   m_sharedMaterial: {fileID: -1070311100974691643, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}
@@ -16878,7 +16874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Nice'
+  m_text: Nice
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17347,7 +17343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.41525, y: 1}
-  m_AnchoredPosition: {x: 23.03003, y: -334.49}
+  m_AnchoredPosition: {x: 0, y: -345}
   m_SizeDelta: {x: -59.40802, y: -718.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234016711
@@ -18309,7 +18305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.022}
   m_AnchorMin: {x: 0, y: 0.89000005}
   m_AnchorMax: {x: 0.16875002, y: 1}
-  m_AnchoredPosition: {x: 13.620361, y: -6}
+  m_AnchoredPosition: {x: 13.620239, y: -6}
   m_SizeDelta: {x: -10.432922, y: -43.287003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429496695
@@ -19041,7 +19037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Amazing'
+  m_text: Amazing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19579,7 +19575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Great
+  m_text: 'Great
 
 '
   m_isRightToLeft: 0
@@ -24980,10 +24976,10 @@ RectTransform:
   m_Father: {fileID: 1234016710}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000005722, y: 0.00000047684}
-  m_SizeDelta: {x: 699.8713, y: 103.2826}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751491110
 MonoBehaviour:
@@ -24994,7 +24990,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1751491108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -25002,13 +24998,15 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 40, y: 0}
-  m_Constraint: 2
-  m_ConstraintCount: 1
+  m_ChildAlignment: 0
+  m_Spacing: 40
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
 --- !u!1 &1763149665
 GameObject:
   m_ObjectHideFlags: 0
@@ -25067,7 +25065,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Awesome'
+  m_text: Awesome
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -26027,8 +26025,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150.644}
-  m_SizeDelta: {x: 763.502, y: 118.544}
+  m_AnchoredPosition: {x: 0.0000038147, y: -55}
+  m_SizeDelta: {x: 715.552, y: 467.105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850050285
 MonoBehaviour:
@@ -26050,10 +26048,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201CAccording to all known laws of aviation, there is no way a bee should
-    be able to fly. It\u2019s wings are too small to get its fat little body off
-    the ground. The bee, of course, flies anyway, because bees don\u2019t care what
-    humans think is impossible.\u201D"
+  m_text: "View all your saved animals from gacha here! You can change which animals
+    to save in game. To do this:\n\n1. Select one of the animals from your collection.
+    \n2. Select one of the animals in your party on the bottom left.\n3. Click \"Switch\"!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -26080,8 +26077,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -28144,7 +28141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19475001, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 354.31717, y: 41}
+  m_AnchoredPosition: {x: 354.31714, y: 41}
   m_SizeDelta: {x: 156.113, y: 161.676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8652355944794067263
