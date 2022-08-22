@@ -57,6 +57,7 @@ public class JSONSaver : Singleton<JSONSaver>
             PlayerData.Instance.TutorialDone = save.TutorialDone;
             PlayerData.Instance.SkipRollAnimations = save.SkipRollAnimations;
             PlayerData.Instance.HighScore = save.HighScore;
+            PlayerData.Instance.TotalScore = save.TotalScore;
             PlayerData.Instance.Rolls = save.Rolls;
             PlayerData.Instance.currentAnimalSkins = save.AnimalSkins;
 

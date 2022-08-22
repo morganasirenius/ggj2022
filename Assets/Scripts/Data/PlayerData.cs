@@ -13,8 +13,17 @@ public class PlayerData : Singleton<PlayerData>
     // List of strings deonting the current animals used for the game
     public List<string> currentAnimalSkins = new List<string>();
     public int Rolls { get; set; }
-    private int scoreUntilRoll = 0;
     public int HighScore = 0;
+    private int m_TotalScore = 0;
+    public int TotalScore
+    {
+        get { return m_TotalScore; }
+        set
+        {
+            if (m_TotalScore == value) return;
+            m_TotalScore = value;
+        }
+    }
     private int m_PlayerScore = 0;
     public int PlayerScore
     {
@@ -30,6 +39,7 @@ public class PlayerData : Singleton<PlayerData>
             }
             if (OnScoreChange != null)
                 OnScoreChange(m_PlayerScore, HighScore);
+
         }
     }
     public delegate void OnVariableChangeDelegate(int PlayerScore, int HighScore);
@@ -37,13 +47,18 @@ public class PlayerData : Singleton<PlayerData>
     public void AddScore(int score_num)
     {
         PlayerScore += score_num;
-        scoreUntilRoll += score_num;
-        if (scoreUntilRoll >= Globals.scoreForRoll)
-        {
-            scoreUntilRoll = 0;
-            Rolls++;
-            JSONSaver.Instance.SaveData();
-        }
+    }
+
+    public void UpdateFinalScore()
+    {
+        // Add the player score to the overall score amount
+        UpdateScore(PlayerScore);
+    }
+
+    public void UpdateScore(int score)
+    {
+        TotalScore += score;
+        JSONSaver.Instance.SaveData();
     }
 
     public void ResetScore()

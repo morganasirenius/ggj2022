@@ -32,6 +32,15 @@ public static class Globals
         {(GachaponRarities.Amazing), new Color32(90,86,35,255)}, // Golden
     };
 
+    public static Dictionary<int, int> rollsToPoints = new Dictionary<int, int>()
+    {
+        {(1), 1000},
+        {(10), 9000},
+        {(25), 20000},
+        {(50), 40000},
+        {(100), 80000},
+    };
+
     // Defines tutorial text associated with a part of a tutorial
     // These enums map 1-1 with the associated scriptable object
     public enum TutorialTextNames

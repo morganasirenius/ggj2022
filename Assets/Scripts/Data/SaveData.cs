@@ -11,6 +11,7 @@ public class SaveData
     public bool TutorialDone;
     public bool SkipRollAnimations;
     public int HighScore;
+    public int TotalScore;
     public int Rolls;
     public List<SaveAnimalData> AnimalData;
 
@@ -21,6 +22,7 @@ public class SaveData
         TutorialDone = data.TutorialDone;
         SkipRollAnimations = data.SkipRollAnimations;
         HighScore = data.HighScore;
+        TotalScore = data.TotalScore;
         Rolls = data.Rolls;
         AnimalData = acquiredAnimalData;
         AnimalSkins = data.currentAnimalSkins;

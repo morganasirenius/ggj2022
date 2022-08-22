@@ -177,6 +177,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             //Show end screen or something
             UIManager.Instance.EndScreen();
+            PlayerData.Instance.UpdateFinalScore();
             gameObject.SetActive(false);
             isDead = true;
         }
