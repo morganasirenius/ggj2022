@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject GachaHelpScreen;
     [SerializeField]
+    private GameObject RollPurchaseScreen;
+    [SerializeField]
     private GameObject CollectionScreen;
     [SerializeField]
     private GameObject CollectionHelpScreen;
@@ -67,6 +69,16 @@ public class MainMenu : MonoBehaviour
     public void CloseGachaHelpScreen()
     {
         GachaHelpScreen.SetActive(false);
+    }
+
+    public void OpenRollPurchaseScreen()
+    {
+        RollPurchaseScreen.SetActive(true);
+    }
+
+    public void CloseRollPurchaseScreen()
+    {
+        RollPurchaseScreen.SetActive(false);
     }
 
     public void OpenCollectionHelpScreen()
