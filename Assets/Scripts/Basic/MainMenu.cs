@@ -20,6 +20,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject CollectionHelpScreen;
     [SerializeField]
+    private GameObject SettingsScreen;
+    [SerializeField]
     private GameObject CurrentScreen;
     public void StartGame()
     {
@@ -27,10 +29,12 @@ public class MainMenu : MonoBehaviour
         if (PlayerData.Instance.TutorialDone)
         {
             SceneManager.LoadScene("LevelOne");
+            // AudioManager.Instance.PlayMusic("Pixel War 2");
         }
         else
         {
             SceneManager.LoadScene("LevelTutorial");
+            AudioManager.Instance.PlayMusic("The Laboratory");
         }
     }
 
@@ -59,6 +63,13 @@ public class MainMenu : MonoBehaviour
         CurrentScreen.SetActive(false);
         CollectionScreen.SetActive(true);
         CurrentScreen = CollectionScreen;
+    }
+
+    public void SetSettingsScreen()
+    {
+        CurrentScreen.SetActive(false);
+        SettingsScreen.SetActive(true);
+        CurrentScreen = SettingsScreen;
     }
 
     public void OpenGachaHelpScreen()

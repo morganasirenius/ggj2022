@@ -25,7 +25,7 @@ public class DarkBeam : Laser
         {
             if (!soundPlaying)
             {
-                AudioManager.Instance.PlayDarkBeamSound("dark_beam", 0.1f);
+                AudioManager.Instance.PlayDarkBeamSound("dark_beam");
                 soundPlaying = true;
             }
         }

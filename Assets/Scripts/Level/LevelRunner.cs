@@ -58,7 +58,7 @@ public class LevelRunner : MonoBehaviour
 
     void PlayLevelMusic(string trackName)
     {
-        AudioManager.Instance.PlaySong(trackName);
+        AudioManager.Instance.PlayMusic(trackName);
     }
 
     // Setup Object Poolers based on level- cache them

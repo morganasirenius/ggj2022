@@ -191,7 +191,7 @@ public class PlayerController : Singleton<PlayerController>
 
             // Explosion Effect
             GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
-            AudioManager.Instance.PlaySfx("explode-7", 1f);
+            AudioManager.Instance.PlaySfx("explode-7");
         }
         else
         {

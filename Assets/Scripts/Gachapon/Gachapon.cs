@@ -103,12 +103,12 @@ public class Gachapon : MonoBehaviour
 
             // Start playing the particle effects
             baseCircle.Play();
-            AudioManager.Instance.PlaySfx("beam_circle_spin", 0.3f);
+            AudioManager.Instance.PlaySfx("beam_circle_spin");
             yield return new WaitForSeconds(1.3f);
             beamUp.Play();
             yield return new WaitForSeconds(1.7f);
             beamDown.Play();
-            AudioManager.Instance.PlaySfx("beam_down", 0.3f);
+            AudioManager.Instance.PlaySfx("beam_down");
             yield return new WaitForSeconds(0.8f);
         }
         gachaItem.SetSprite(animal.sprite);
