@@ -85,7 +85,7 @@ public class Enemy : Entity
             {
                 currentDamageTime = timeTilDamage;
                 Invoke("ResetMaterial", materialResetTime);
-                AudioManager.Instance.PlaySfx("hit-2");
+                AudioManager.Instance.PlaySfx("hit-5");
             }
         }
     }

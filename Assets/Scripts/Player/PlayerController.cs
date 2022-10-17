@@ -29,10 +29,17 @@ public class PlayerController : Singleton<PlayerController>
     private bool darkBeamEnabled;
     private bool lightBeamEnabled;
 
+    // Damage visual effects
+    private Material matDefault;
+    private SpriteRenderer sr;
+    private float materialResetTime = 0.08f;
 
     private void Awake()
     {
         playerControls = new PlayerControls();
+        // Setup renderer and materials for damaging visual effect
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        matDefault = sr.material;
     }
     // Start is called before the first frame update
     void Start()
@@ -173,6 +180,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         health -= damagedTaken;
         UIManager.Instance.UpdateHealth(health);
+        sr.material = ResourceManager.Instance.MaterialDictionary["WhiteFlash"];
         if (health <= 0)
         {
             //Show end screen or something
@@ -180,6 +188,15 @@ public class PlayerController : Singleton<PlayerController>
             PlayerData.Instance.UpdateFinalScore();
             gameObject.SetActive(false);
             isDead = true;
+
+            // Explosion Effect
+            GameObject explosion = (GameObject)Instantiate(ResourceManager.Instance.ParticleDictionary["Explosion"], transform.position, transform.rotation);
+            AudioManager.Instance.PlaySfx("explode-7", 1f);
+        }
+        else
+        {
+            Invoke("ResetMaterial", materialResetTime);
+            AudioManager.Instance.PlaySfx("hit-2");
         }
     }
 
@@ -228,5 +245,10 @@ public class PlayerController : Singleton<PlayerController>
             projObj.SetActive(false);
             yield return new WaitForSeconds(nukeClearDelay);
         }
+    }
+
+    private void ResetMaterial()
+    {
+        sr.material = matDefault;
     }
 }
