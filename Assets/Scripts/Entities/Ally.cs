@@ -153,7 +153,7 @@ public class Ally : Entity
                 rescued = true;
                 AddScore();
                 PlayerController.Instance.UpdateAlliesSaved();
-                AudioManager.Instance.PlayRandomRescueSfx(0.5f);
+                AudioManager.Instance.PlayRandomRescueSfx();
             }
         }
     }

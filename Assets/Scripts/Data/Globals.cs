@@ -4,6 +4,9 @@ using UnityEngine;
 
 public static class Globals
 {
+    public const string BackgroundVolumeKey = "backgroundVolume";
+    public const string SFXVolumeKey = "sfxVolume";
+    public const string BeamVolumeKey = "beamVolume";
     // For every X score, get a roll
     public static int scoreForRoll = 500;
     public enum GachaponRarities

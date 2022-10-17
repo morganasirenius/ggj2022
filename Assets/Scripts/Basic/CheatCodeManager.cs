@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class CheatCodeManager : Singleton<CheatCodeManager>
 {
-    private static readonly List<string> unlockAllAnimalsOrder = new List<string>{"Cat", "Llama", "Unicorn", "Kangaroo", "Turtle"};
-    private List<string> userOrder = new List<string>{};
+    private static readonly List<string> unlockAllAnimalsOrder = new List<string> { "Cat", "Llama", "Unicorn", "Kangaroo", "Turtle" };
+    private List<string> userOrder = new List<string> { };
     private int starClickCount = 0;
     [SerializeField]
     private int numClicksForRoll = 10;
@@ -16,7 +16,7 @@ public class CheatCodeManager : Singleton<CheatCodeManager>
     private int numRolls = 100;
     [SerializeField]
     private TMP_Text rollsText;
-    
+
     public void AddAnimalOrder(string animalName)
     {
         userOrder.Add(animalName);
@@ -31,7 +31,7 @@ public class CheatCodeManager : Singleton<CheatCodeManager>
                     {
                         PlayerData.Instance.acquiredAnimals[animalData.Value] += 1;
                     }
-                    else 
+                    else
                     {
                         PlayerData.Instance.acquiredAnimals[animalData.Value] = 1;
                     }
@@ -40,7 +40,7 @@ public class CheatCodeManager : Singleton<CheatCodeManager>
             }
             else
             {
-                AudioManager.Instance.PlaySfx("hit-2", 0.2f);
+                AudioManager.Instance.PlaySfx("hit-2", 0.5f);
             }
             userOrder.Clear();
         }
