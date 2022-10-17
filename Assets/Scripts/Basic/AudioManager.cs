@@ -12,6 +12,9 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField]
     private AudioSource BeamEffect;
 
+    [SerializeField]
+    private AudioSource DarkBeamEffect;
+
     public void PlaySong(string name)
     {
         BackgroundMusic.clip = ResourceManager.Instance.MusicDictionary[name];
@@ -42,10 +45,24 @@ public class AudioManager : Singleton<AudioManager>
         BeamEffect.Stop();
     }
 
+
+    public void PlayDarkBeamSound(string name, float volume = 1.0f)
+    {
+        DarkBeamEffect.clip = ResourceManager.Instance.SfxDictionary[name];
+        DarkBeamEffect.volume = volume;
+        DarkBeamEffect.Play();
+    }
+
+    public void StopDarkBeamSound()
+    {
+        DarkBeamEffect.Stop();
+    }
+
     public void StopSounds()
     {
         BackgroundMusic.Stop();
         SoundEffect.Stop();
         BeamEffect.Stop();
+        DarkBeamEffect.Stop();
     }
 }

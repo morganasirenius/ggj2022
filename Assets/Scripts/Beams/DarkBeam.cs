@@ -7,6 +7,7 @@ public class DarkBeam : Laser
     [SerializeField] private int damage;
 
     public GameObject EndVFX;
+    private bool soundPlaying;
 
     void Start()
     {
@@ -17,6 +18,22 @@ public class DarkBeam : Laser
         }
         FillLists();
         DisableLaser();
+    }
+    public void Update()
+    {
+        if (lineRenderer.enabled)
+        {
+            if (!soundPlaying)
+            {
+                AudioManager.Instance.PlayDarkBeamSound("dark_beam", 0.1f);
+                soundPlaying = true;
+            }
+        }
+        else
+        {
+            AudioManager.Instance.StopDarkBeamSound();
+            soundPlaying = false;
+        }
     }
     public void UpdateLaser(Vector2 mousePosition)
     {
