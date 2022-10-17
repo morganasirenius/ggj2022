@@ -87,6 +87,7 @@ public class Gachapon : MonoBehaviour
         return Globals.GachaponRarities.Nice;
     }
 
+    // Note: Most WaitforSeconds are delays based off the particle effects to simulate the whole beam animation
     IEnumerator GachaAnimation(Globals.GachaponRarities rarity, AnimalData animal)
     {
         rolling = true;
@@ -113,6 +114,7 @@ public class Gachapon : MonoBehaviour
         gachaItem.SetSprite(animal.sprite);
         rarityText.text = animal.rarity.ToString();
         animalText.text = animal.animalName;
+        yield return new WaitForSeconds(4.0f);
         rolling = false;
     }
 
