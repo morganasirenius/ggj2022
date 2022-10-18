@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 3b0c0e34e66eab6438a831992940841e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7651,7 +7651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13800001, y: 0.41750002}
   m_AnchorMax: {x: 0.312, y: 0.75250006}
-  m_AnchoredPosition: {x: -0.30792236, y: -0.27130127}
+  m_AnchoredPosition: {x: -0.3079834, y: -0.27130127}
   m_SizeDelta: {x: -3.102005, y: -0.54260015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277489866
@@ -15033,7 +15033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.1542969, y: -20.088837}
+  m_AnchoredPosition: {x: 3.1542969, y: -20.088867}
   m_SizeDelta: {x: -135.4967, y: -184.42998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &937528090
@@ -24151,7 +24151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: be004e9ac5d17724b8a8935f1ea94033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -31294,7 +31294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 44.645, y: -17.313, z: -28.442}
   m_AnchorMin: {x: 0.36275, y: 0}
   m_AnchorMax: {x: 0.93275005, y: 1}
-  m_AnchoredPosition: {x: -365.48682, y: 84.908325}
+  m_AnchoredPosition: {x: -365.4868, y: 84.908325}
   m_SizeDelta: {x: -723.774, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723887441
@@ -35504,7 +35504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: ae0b4250e5b3ca542a50f4c7b04c29f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
