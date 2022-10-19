@@ -114,7 +114,12 @@ public class Gachapon : MonoBehaviour
         gachaItem.SetSprite(animal.sprite);
         rarityText.text = animal.rarity.ToString();
         animalText.text = animal.animalName;
-        yield return new WaitForSeconds(4.0f);
+        // Add delay before clicking on the roll button if animations are not disabled
+        if (!PlayerData.Instance.SkipRollAnimations)
+        {
+            yield return new WaitForSeconds(4.0f);
+
+        }
         rolling = false;
     }
 

@@ -85,11 +85,13 @@ public class MainMenu : MonoBehaviour
     public void OpenRollPurchaseScreen()
     {
         RollPurchaseScreen.SetActive(true);
+        GachaScreen.SetActive(false);
     }
 
     public void CloseRollPurchaseScreen()
     {
         RollPurchaseScreen.SetActive(false);
+        GachaScreen.SetActive(true);
     }
 
     public void OpenCollectionHelpScreen()
