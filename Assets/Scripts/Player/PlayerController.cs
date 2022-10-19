@@ -44,6 +44,7 @@ public class PlayerController : Singleton<PlayerController>
     // Start is called before the first frame update
     void Start()
     {
+        nukeCharges = 3;
         UIManager.Instance.UpdateHealth(health);
         UIManager.Instance.UpdateNukeCharges(nukeCharges);
         // If handheld device, display mobile controls
