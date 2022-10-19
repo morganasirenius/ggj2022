@@ -71,6 +71,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""35effa1b-5e1d-4ffc-8d57-20d520d479c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +280,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Nuke"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7246210-a251-49cb-a7c3-b532e1463a87"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -284,6 +304,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Space_LightBeam = m_Space.FindAction("LightBeam", throwIfNotFound: true);
         m_Space_MousePosition = m_Space.FindAction("MousePosition", throwIfNotFound: true);
         m_Space_Nuke = m_Space.FindAction("Nuke", throwIfNotFound: true);
+        m_Space_Pause = m_Space.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -348,6 +369,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Space_LightBeam;
     private readonly InputAction m_Space_MousePosition;
     private readonly InputAction m_Space_Nuke;
+    private readonly InputAction m_Space_Pause;
     public struct SpaceActions
     {
         private @PlayerControls m_Wrapper;
@@ -357,6 +379,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @LightBeam => m_Wrapper.m_Space_LightBeam;
         public InputAction @MousePosition => m_Wrapper.m_Space_MousePosition;
         public InputAction @Nuke => m_Wrapper.m_Space_Nuke;
+        public InputAction @Pause => m_Wrapper.m_Space_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Space; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -381,6 +404,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Nuke.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnNuke;
                 @Nuke.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnNuke;
                 @Nuke.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnNuke;
+                @Pause.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_SpaceActionsCallbackInterface = instance;
             if (instance != null)
@@ -400,6 +426,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Nuke.started += instance.OnNuke;
                 @Nuke.performed += instance.OnNuke;
                 @Nuke.canceled += instance.OnNuke;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -411,5 +440,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnLightBeam(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnNuke(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
