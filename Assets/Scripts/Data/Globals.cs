@@ -49,31 +49,31 @@ public static class Globals
         {
              new RollProperty {
                 rolls = 1,
-                price = 1
+                price = 1000
              }
         },
         {
              new RollProperty {
                 rolls = 10,
-                price = 2
+                price = 8000
              }
         },
         {
              new RollProperty {
                 rolls = 25,
-                price = 3
+                price = 20000
              }
         },
         {
              new RollProperty {
                 rolls = 50,
-                price = 4
+                price = 40000
              }
         },
         {
              new RollProperty {
                 rolls = 100,
-                price = 5
+                price = 80000
              }
         },
     };

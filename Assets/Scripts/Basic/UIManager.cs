@@ -55,6 +55,7 @@ public class UIManager : Singleton<UIManager>
 
     public void MainMenuButton()
     {
+        AudioManager.Instance.PlayMusic("Space Ambience");
         SceneManager.LoadScene("MainMenu");
     }
 

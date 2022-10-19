@@ -183,9 +183,15 @@ public class PlayerController : Singleton<PlayerController>
         sr.material = ResourceManager.Instance.MaterialDictionary["WhiteFlash"];
         if (health <= 0)
         {
-            //Show end screen or something
+            // Show end screen
             UIManager.Instance.EndScreen();
             PlayerData.Instance.UpdateFinalScore();
+
+            // Stop beam audio
+            AudioManager.Instance.StopBeamSound();
+            AudioManager.Instance.StopDarkBeamSound();
+
+            // Handle game object removal
             gameObject.SetActive(false);
             isDead = true;
 
