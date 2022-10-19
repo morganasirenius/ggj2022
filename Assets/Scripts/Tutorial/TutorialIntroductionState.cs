@@ -10,7 +10,7 @@ public class TutorialIntroductionState : State
     {
         base.Enter();
         TutorialManager.Instance.DisplayTutorialText(Globals.TutorialTextNames.Introduction);
-        TutorialManager.Instance.ChangeState(new TutorialMovementState(), 6);
+        TutorialManager.Instance.ChangeState(new TutorialMovementState(), 10);
     }
 
     public override void LogicUpdate()

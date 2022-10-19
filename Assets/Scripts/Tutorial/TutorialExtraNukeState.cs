@@ -10,7 +10,7 @@ public class TutorialExtraNukeState : State
     {
         base.Enter();
         TutorialManager.Instance.DisplayTutorialText(Globals.TutorialTextNames.ExtraNuke);
-        TutorialManager.Instance.ChangeState(new TutorialDoneState(), 6);
+        TutorialManager.Instance.ChangeState(new TutorialDoneState(), 8);
     }
 
     public override void LogicUpdate()

@@ -9,7 +9,7 @@ public class TutorialDoneState : State
         base.Enter();
         //Display Dialogue UI
         TutorialManager.Instance.DisplayTutorialText(Globals.TutorialTextNames.Done);
-        TutorialManager.Instance.ChangeState(new TutorialSwitchMainState(), 4);
+        TutorialManager.Instance.ChangeState(new TutorialSwitchMainState(), 8);
     }
 
     public override void LogicUpdate()
