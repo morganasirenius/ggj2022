@@ -225,7 +225,7 @@ public class PlayerController : Singleton<PlayerController>
         else
         {
             Invoke("ResetMaterial", materialResetTime);
-            AudioManager.Instance.PlaySfx("hit-2");
+            AudioManager.Instance.PlaySfx("hit-4");
         }
     }
 
