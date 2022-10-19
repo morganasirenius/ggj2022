@@ -28,9 +28,9 @@ public class GameSettings : MonoBehaviour
         if (!PlayerPrefs.HasKey(Globals.BackgroundVolumeKey))
         {
             Debug.Log("No prefs found! Setting default values");
-            PlayerPrefs.SetFloat(Globals.BackgroundVolumeKey, 1);
-            PlayerPrefs.SetFloat(Globals.SFXVolumeKey, 1);
-            PlayerPrefs.SetFloat(Globals.BeamVolumeKey, 1);
+            PlayerPrefs.SetFloat(Globals.BackgroundVolumeKey, 0.15f);
+            PlayerPrefs.SetFloat(Globals.SFXVolumeKey, 0.35f);
+            PlayerPrefs.SetFloat(Globals.BeamVolumeKey, 0.15f);
         }
         Load();
     }
