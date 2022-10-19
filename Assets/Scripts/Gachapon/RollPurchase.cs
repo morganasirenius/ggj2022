@@ -32,6 +32,18 @@ public class RollPurchase : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        // Disable all the outline shaders at the start
+        // We keep them on by default since the package we use does not have a great way of 
+        // actually enabling them in builds
+        foreach (GameObject slot in rollSlots)
+        {
+            Material slotMaterial = slot.GetComponent<Image>().material;
+            slotMaterial.DisableKeyword("ALPHAOUTLINE_ON");
+        }
+    }
+
     public void UpdateCurrencies()
     {
         outerRollsText.text = PlayerData.Instance.Rolls.ToString();
