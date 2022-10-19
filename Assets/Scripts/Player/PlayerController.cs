@@ -36,6 +36,9 @@ public class PlayerController : Singleton<PlayerController>
     private SpriteRenderer sr;
     private float materialResetTime = 0.08f;
 
+    private bool gamePaused;
+    public bool inSettings;
+
     private void Awake()
     {
         playerControls = new PlayerControls();
@@ -65,6 +68,7 @@ public class PlayerController : Singleton<PlayerController>
             playerControls.Space.Shoot.canceled += DisableDarkBeam;
         }
         playerControls.Space.Nuke.performed += Nuke;
+        playerControls.Space.Pause.performed += Pause;
     }
 
     // Update is called once per frame
@@ -75,7 +79,7 @@ public class PlayerController : Singleton<PlayerController>
 
         Vector2 mousePosition = playerControls.Space.MousePosition.ReadValue<Vector2>();
         // Don't make ship rotate for handheld devices
-        if (SystemInfo.deviceType != DeviceType.Handheld)
+        if (SystemInfo.deviceType != DeviceType.Handheld && !gamePaused)
         {
             RotateToMouse(mousePosition);
         }
@@ -132,7 +136,10 @@ public class PlayerController : Singleton<PlayerController>
     }
     private void EnableLightBeam(InputAction.CallbackContext context)
     {
-        lightBeam.EnableLaser();
+        if (!gamePaused)
+        {
+            lightBeam.EnableLaser();
+        }
     }
     private void DisableLightBeam(InputAction.CallbackContext context)
     {
@@ -164,6 +171,17 @@ public class PlayerController : Singleton<PlayerController>
             lightBeamEnabled = false;
         }
     }
+
+    private void EnableDarkBeam(InputAction.CallbackContext context)
+    {
+        if (!gamePaused)
+        {
+            for (int i = 0; i < darkBeam.Count; i++)
+            {
+                darkBeam[i].EnableLaser();
+            }
+        }
+    }
     private void DisableDarkBeam(InputAction.CallbackContext context)
     {
         for (int i = 0; i < darkBeam.Count; i++)
@@ -171,13 +189,7 @@ public class PlayerController : Singleton<PlayerController>
             darkBeam[i].DisableLaser();
         }
     }
-    private void EnableDarkBeam(InputAction.CallbackContext context)
-    {
-        for (int i = 0; i < darkBeam.Count; i++)
-        {
-            darkBeam[i].EnableLaser();
-        }
-    }
+
     private void RotateToMouse(Vector2 mousePosition)
     {
         Vector2 direction = (Vector2)Camera.main.ScreenToWorldPoint(mousePosition) - (Vector2)transform.position;
@@ -255,5 +267,20 @@ public class PlayerController : Singleton<PlayerController>
     private void ResetMaterial()
     {
         sr.material = matDefault;
+    }
+    private void Pause(InputAction.CallbackContext context)
+    {
+        if (!gamePaused)
+        {
+            gamePaused = true;
+            UIManager.Instance.OpenPauseScreen();
+            Time.timeScale = 0;
+        }
+        else if (gamePaused && !inSettings)
+        {
+            gamePaused = false;
+            UIManager.Instance.ClosePauseScreen();
+            Time.timeScale = 1;
+        }
     }
 }

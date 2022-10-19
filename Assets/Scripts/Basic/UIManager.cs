@@ -19,6 +19,10 @@ public class UIManager : Singleton<UIManager>
     // Mobile UI
     public GameObject MobileUI;
 
+    // Pause UI
+    public GameObject PauseUI;
+    public GameObject PauseSettingsUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,11 +54,13 @@ public class UIManager : Singleton<UIManager>
 
     public void RestartButton()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("LevelOne");
     }
 
     public void MainMenuButton()
     {
+        Time.timeScale = 1;
         AudioManager.Instance.PlayMusic("Space Ambience");
         SceneManager.LoadScene("MainMenu");
     }
@@ -62,5 +68,30 @@ public class UIManager : Singleton<UIManager>
     public void DisplayMobileUI()
     {
         MobileUI.SetActive(true);
+    }
+
+    public void OpenPauseScreen()
+    {
+        PauseUI.SetActive(true);
+    }
+
+    public void ClosePauseScreen()
+    {
+        PauseUI.SetActive(false);
+    }
+
+    public void OpenPauseSettingsScreen()
+    {
+        PauseUI.SetActive(false);
+        PauseSettingsUI.SetActive(true);
+        // Prevents player from unpausing on accident
+        PlayerController.Instance.inSettings = true;
+    }
+
+    public void ClosePauseSettingsScreen()
+    {
+        PauseSettingsUI.SetActive(false);
+        PauseUI.SetActive(true);
+        PlayerController.Instance.inSettings = false;
     }
 }
