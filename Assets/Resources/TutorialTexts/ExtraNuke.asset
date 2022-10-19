@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3541f17115b77f4ba0e516fc824c47b, type: 3}
   m_Name: ExtraNuke
   m_EditorClassIdentifier: 
-  text: Yay you saved an animal! Every 5 saved animals will give you an extra nuke,
-    free of charge!
+  text: Yay you saved an animal! Every 2000 points will give you an extra nuke, free
+    of charge!
