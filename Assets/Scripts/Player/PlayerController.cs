@@ -91,6 +91,7 @@ public class PlayerController : Singleton<PlayerController>
             nukeCharges++;
             nukesGiven++;
             UIManager.Instance.UpdateNukeCharges(nukeCharges);
+            AudioManager.Instance.PlaySfx("win-8");
         }
     }
     private void OnEnable()
