@@ -20,7 +20,9 @@ public class PlayerController : Singleton<PlayerController>
     public PlayerControls playerControls;
     private Quaternion rotation;
 
-    private int alliesSaved;
+    private int nukesGiven;
+    [SerializeField]
+    private int bonusForNuke = 2000;
 
     public LightBeam lightBeam;
     public List<DarkBeam> darkBeam;
@@ -45,6 +47,7 @@ public class PlayerController : Singleton<PlayerController>
     void Start()
     {
         nukeCharges = 3;
+        nukesGiven = 1;
         UIManager.Instance.UpdateHealth(health);
         UIManager.Instance.UpdateNukeCharges(nukeCharges);
         // If handheld device, display mobile controls
@@ -82,6 +85,12 @@ public class PlayerController : Singleton<PlayerController>
             {
                 darkBeam[i].UpdateLaser(mousePosition);
             }
+        }
+        if (PlayerData.Instance.PlayerScore >= bonusForNuke * nukesGiven)
+        {
+            nukeCharges++;
+            nukesGiven++;
+            UIManager.Instance.UpdateNukeCharges(nukeCharges);
         }
     }
     private void OnEnable()
@@ -204,18 +213,6 @@ public class PlayerController : Singleton<PlayerController>
         {
             Invoke("ResetMaterial", materialResetTime);
             AudioManager.Instance.PlaySfx("hit-2");
-        }
-    }
-
-    // Updates the number of allies saved for the player
-    // If the number of allies saved hits a threshold, add a nuke charge
-    public void UpdateAlliesSaved()
-    {
-        alliesSaved++;
-        if (alliesSaved % numAlliesToNukeCharge == 0)
-        {
-            nukeCharges++;
-            UIManager.Instance.UpdateNukeCharges(nukeCharges);
         }
     }
 
