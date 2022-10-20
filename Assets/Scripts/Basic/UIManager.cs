@@ -9,7 +9,7 @@ public class UIManager : Singleton<UIManager>
     public TMP_Text ScoreText;
     public TMP_Text HighscoreText;
     public TMP_Text HealthText;
-    public TMP_Text NukeChargeText;
+    public TMP_Text BombChargeText;
 
     // End Game UI
     public GameObject EndScreenUI;
@@ -42,9 +42,9 @@ public class UIManager : Singleton<UIManager>
         EndScreenHighscoreText.text = "Highscore: " + highScore.ToString();
     }
 
-    public void UpdateNukeCharges(int charges)
+    public void UpdateBombCharges(int charges)
     {
-        NukeChargeText.text = "Charges: " + charges;
+        BombChargeText.text = "Bombs: " + charges;
     }
 
     public void EndScreen()

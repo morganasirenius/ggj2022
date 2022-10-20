@@ -272,7 +272,7 @@ MonoBehaviour:
   ScoreText: {fileID: 1554716829}
   HighscoreText: {fileID: 1994960750}
   HealthText: {fileID: 1432010587}
-  NukeChargeText: {fileID: 646995442}
+  BombChargeText: {fileID: 646995442}
   EndScreenUI: {fileID: 1270165936}
   EndScreenHighscoreText: {fileID: 1930090887}
   EndScreenScoreText: {fileID: 2129802412}
@@ -591,10 +591,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementVelocity: 6
   health: 5
-  nukeCharges: 3
-  nukeClearDelay: 0.1
-  numAlliesToNukeCharge: 5
-  bonusForNuke: 2000
+  bombCharges: 3
+  bombClearDelay: 0.1
+  bonusForBomb: 2000
   lightBeam: {fileID: 472064602}
   darkBeam:
   - {fileID: 423472011}
@@ -5978,7 +5977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.36275, y: 0}
   m_AnchorMax: {x: 0.93275005, y: 1}
-  m_AnchoredPosition: {x: -418.11676, y: 110.35297}
+  m_AnchoredPosition: {x: -418.1168, y: 110.35297}
   m_SizeDelta: {x: -560, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &270904840
@@ -17256,7 +17255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Charges: 3'
+  m_text: 'Bombs: 3'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}
   m_sharedMaterial: {fileID: -1070311100974691643, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}

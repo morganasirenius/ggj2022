@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class TutorialExtraNukeState : State
+public class TutorialExtraBombState : State
 {
     public override void Enter()
     {
         base.Enter();
-        TutorialManager.Instance.DisplayTutorialText(Globals.TutorialTextNames.ExtraNuke);
+        TutorialManager.Instance.DisplayTutorialText(Globals.TutorialTextNames.ExtraBomb);
         TutorialManager.Instance.ChangeState(new TutorialDoneState(), 8);
     }
 

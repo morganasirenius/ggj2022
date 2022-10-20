@@ -10,7 +10,7 @@ public class TutorialManager : Singleton<TutorialManager>
     [SerializeField]
     private GameObject tutorialAlly;
     [SerializeField]
-    private GameObject nukeEnemies;
+    private GameObject bombEnemies;
     [SerializeField]
     private TMP_Text tutorialText;
 
@@ -70,14 +70,14 @@ public class TutorialManager : Singleton<TutorialManager>
         return !tutorialAlly.activeSelf;
     }
 
-    public void SpawnNukeEnemies()
+    public void SpawnBombEnemies()
     {
-        nukeEnemies.SetActive(true);
+        bombEnemies.SetActive(true);
     }
 
-    public bool TutorialNukeEnemiesDead()
+    public bool TutorialBombEnemiesDead()
     {
-        foreach(Transform enemy in nukeEnemies.transform)
+        foreach(Transform enemy in bombEnemies.transform)
         {
             if (enemy.gameObject.activeSelf) return false;
         }

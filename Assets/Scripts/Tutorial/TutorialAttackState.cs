@@ -18,7 +18,7 @@ public class TutorialAttackState : State
     {
         if (TutorialManager.Instance.TutorialEnemyDead())
         {
-            TutorialManager.Instance.ChangeState(new TutorialNukeState());
+            TutorialManager.Instance.ChangeState(new TutorialBombState());
         }
     }
 

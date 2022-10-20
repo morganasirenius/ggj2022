@@ -64,7 +64,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Nuke"",
+                    ""name"": ""Bomb"",
                     ""type"": ""Button"",
                     ""id"": ""44d531d3-c8e2-45d6-9f40-17bf5b73b7e8"",
                     ""expectedControlType"": ""Button"",
@@ -277,7 +277,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Nuke"",
+                    ""action"": ""Bomb"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -303,7 +303,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Space_Shoot = m_Space.FindAction("Shoot", throwIfNotFound: true);
         m_Space_LightBeam = m_Space.FindAction("LightBeam", throwIfNotFound: true);
         m_Space_MousePosition = m_Space.FindAction("MousePosition", throwIfNotFound: true);
-        m_Space_Nuke = m_Space.FindAction("Nuke", throwIfNotFound: true);
+        m_Space_Bomb = m_Space.FindAction("Bomb", throwIfNotFound: true);
         m_Space_Pause = m_Space.FindAction("Pause", throwIfNotFound: true);
     }
 
@@ -368,7 +368,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Space_Shoot;
     private readonly InputAction m_Space_LightBeam;
     private readonly InputAction m_Space_MousePosition;
-    private readonly InputAction m_Space_Nuke;
+    private readonly InputAction m_Space_Bomb;
     private readonly InputAction m_Space_Pause;
     public struct SpaceActions
     {
@@ -378,7 +378,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Space_Shoot;
         public InputAction @LightBeam => m_Wrapper.m_Space_LightBeam;
         public InputAction @MousePosition => m_Wrapper.m_Space_MousePosition;
-        public InputAction @Nuke => m_Wrapper.m_Space_Nuke;
+        public InputAction @Bomb => m_Wrapper.m_Space_Bomb;
         public InputAction @Pause => m_Wrapper.m_Space_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Space; }
         public void Enable() { Get().Enable(); }
@@ -401,9 +401,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @MousePosition.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnMousePosition;
-                @Nuke.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnNuke;
-                @Nuke.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnNuke;
-                @Nuke.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnNuke;
+                @Bomb.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnBomb;
+                @Bomb.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnBomb;
+                @Bomb.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnBomb;
                 @Pause.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnPause;
@@ -423,9 +423,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
-                @Nuke.started += instance.OnNuke;
-                @Nuke.performed += instance.OnNuke;
-                @Nuke.canceled += instance.OnNuke;
+                @Bomb.started += instance.OnBomb;
+                @Bomb.performed += instance.OnBomb;
+                @Bomb.canceled += instance.OnBomb;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -439,7 +439,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnLightBeam(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
-        void OnNuke(InputAction.CallbackContext context);
+        void OnBomb(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
 }
