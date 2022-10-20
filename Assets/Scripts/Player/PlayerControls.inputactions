@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Nuke",
+                    "name": "Bomb",
                     "type": "Button",
                     "id": "44d531d3-c8e2-45d6-9f40-17bf5b73b7e8",
                     "expectedControlType": "Button",
@@ -255,7 +255,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Nuke",
+                    "action": "Bomb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

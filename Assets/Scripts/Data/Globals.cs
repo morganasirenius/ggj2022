@@ -90,11 +90,11 @@ public static class Globals
     {
         Movement = 0,
         Attack,
-        Nuke,
+        Bomb,
         Save,
         Done,
         Introduction,
-        ExtraNuke
+        ExtraBomb
     }
     public enum Action
     {

@@ -11,18 +11,16 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField]
     private int health;
     [SerializeField]
-    private int nukeCharges = 3;
+    private int bombCharges = 3;
     [SerializeField]
-    private float nukeClearDelay = 0.1f;
-    [SerializeField]
-    private int numAlliesToNukeCharge = 5;
+    private float bombClearDelay = 0.1f;
 
     public PlayerControls playerControls;
     private Quaternion rotation;
 
-    private int nukesGiven;
+    private int bombsGiven;
     [SerializeField]
-    private int bonusForNuke = 2000;
+    private int bonusForBomb = 2000;
 
     public LightBeam lightBeam;
     public List<DarkBeam> darkBeam;
@@ -49,10 +47,10 @@ public class PlayerController : Singleton<PlayerController>
     // Start is called before the first frame update
     void Start()
     {
-        nukeCharges = 3;
-        nukesGiven = 1;
+        bombCharges = 3;
+        bombsGiven = 1;
         UIManager.Instance.UpdateHealth(health);
-        UIManager.Instance.UpdateNukeCharges(nukeCharges);
+        UIManager.Instance.UpdateBombCharges(bombCharges);
         // If handheld device, display mobile controls
         if (SystemInfo.deviceType == DeviceType.Handheld)
         {
@@ -67,7 +65,7 @@ public class PlayerController : Singleton<PlayerController>
             playerControls.Space.Shoot.performed += EnableDarkBeam;
             playerControls.Space.Shoot.canceled += DisableDarkBeam;
         }
-        playerControls.Space.Nuke.performed += Nuke;
+        playerControls.Space.Bomb.performed += Bomb;
         playerControls.Space.Pause.performed += Pause;
     }
 
@@ -90,11 +88,11 @@ public class PlayerController : Singleton<PlayerController>
                 darkBeam[i].UpdateLaser(mousePosition);
             }
         }
-        if (PlayerData.Instance.PlayerScore >= bonusForNuke * nukesGiven)
+        if (PlayerData.Instance.PlayerScore >= bonusForBomb * bombsGiven)
         {
-            nukeCharges++;
-            nukesGiven++;
-            UIManager.Instance.UpdateNukeCharges(nukeCharges);
+            bombCharges++;
+            bombsGiven++;
+            UIManager.Instance.UpdateBombCharges(bombCharges);
             AudioManager.Instance.PlaySfx("win-8");
         }
     }
@@ -229,14 +227,14 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private void Nuke(InputAction.CallbackContext context)
+    private void Bomb(InputAction.CallbackContext context)
     {
-        if (nukeCharges > 0)
+        if (bombCharges > 0)
         {
             StartCoroutine(ClearEnemies());
             StartCoroutine(ClearProjectiles());
-            nukeCharges--;
-            UIManager.Instance.UpdateNukeCharges(nukeCharges);
+            bombCharges--;
+            UIManager.Instance.UpdateBombCharges(bombCharges);
         }
     }
 
@@ -249,7 +247,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             Enemy enemy = enemyObj.GetComponent<Enemy>();
             enemy.DestroyEnemy();
-            yield return new WaitForSeconds(nukeClearDelay);
+            yield return new WaitForSeconds(bombClearDelay);
         }
 
     }
@@ -260,7 +258,7 @@ public class PlayerController : Singleton<PlayerController>
         foreach (GameObject projObj in projectilesOnScreen)
         {
             projObj.SetActive(false);
-            yield return new WaitForSeconds(nukeClearDelay);
+            yield return new WaitForSeconds(bombClearDelay);
         }
     }
 

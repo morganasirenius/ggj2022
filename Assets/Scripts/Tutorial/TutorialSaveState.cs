@@ -17,7 +17,7 @@ public class TutorialSaveState : State
     {
         if (TutorialManager.Instance.TutorialAllySave())
         {
-            TutorialManager.Instance.ChangeState(new TutorialExtraNukeState());
+            TutorialManager.Instance.ChangeState(new TutorialExtraBombState());
 
         }
     }

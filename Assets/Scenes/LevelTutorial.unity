@@ -565,11 +565,13 @@ MonoBehaviour:
   ScoreText: {fileID: 1202865125}
   HighscoreText: {fileID: 1726498728}
   HealthText: {fileID: 1296581157}
-  NukeChargeText: {fileID: 493057764}
+  BombChargeText: {fileID: 493057764}
   EndScreenUI: {fileID: 294998217}
   EndScreenHighscoreText: {fileID: 59567645}
   EndScreenScoreText: {fileID: 1481760054}
   MobileUI: {fileID: 614509419}
+  PauseUI: {fileID: 0}
+  PauseSettingsUI: {fileID: 0}
 --- !u!114 &68305561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialEnemy: {fileID: 997427163}
   tutorialAlly: {fileID: 1016129312}
-  nukeEnemies: {fileID: 251151636}
+  bombEnemies: {fileID: 251151636}
   tutorialText: {fileID: 763561191}
 --- !u!1 &99699956
 GameObject:
@@ -818,13 +820,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementVelocity: 6
   health: 5
-  nukeCharges: 3
-  nukeClearDelay: 0.1
-  numAlliesToNukeCharge: 5
+  bombCharges: 3
+  bombClearDelay: 0.1
+  bonusForBomb: 2000
   lightBeam: {fileID: 472064602}
   darkBeam:
   - {fileID: 423472011}
   isDead: 0
+  inSettings: 0
 --- !u!4 &99699962
 Transform:
   m_ObjectHideFlags: 0
@@ -16328,7 +16331,7 @@ GameObject:
   - component: {fileID: 493057765}
   - component: {fileID: 493057764}
   m_Layer: 5
-  m_Name: Nuke Charges
+  m_Name: Bomb Charges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16374,7 +16377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Charges: 3'
+  m_text: 'Bombs: 3'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}
   m_sharedMaterial: {fileID: -1070311100974691643, guid: 46e690ad1f935c94da7254845e295dcf, type: 2}
